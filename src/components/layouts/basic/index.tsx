@@ -6,6 +6,7 @@ import { UserContext } from "@/components/contexts/user";
 import { BasicLayoutProps } from "@/types/layouts";
 import { UserContextProviderType } from "@/types/usercontext";
 import { User } from "@/types/user";
+import Menu from "@/components/menu";
 
 export default function BasicLayout(props: BasicLayoutProps) {
   const { data: session, status } = useSession();
@@ -48,6 +49,7 @@ export default function BasicLayout(props: BasicLayoutProps) {
         <title>{props.title || "EnvEdit"}</title>
       </Head>
       <div className="container transition-[padding] duration-300 sm:px-8 px-4 pb-5 flex flex-col">
+        <Menu />
         <div className="pt-5 flex-grow flex flex-col min-h-0">
           {props.children}
         </div>
