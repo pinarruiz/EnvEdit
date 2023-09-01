@@ -8,8 +8,15 @@ export default function ProjectCard(props: ProjectCardProps) {
     <div
       className={cn(
         "rounded-md border py-3 px-4 flex transition-colors",
-        props.loading ? "hover:cursor-progress" : "hover:bg-accent",
+        props.loading
+          ? "hover:cursor-progress"
+          : "hover:bg-accent hover:cursor-pointer",
       )}
+      onClick={
+        props.loading
+          ? undefined
+          : () => window.location.assign(`/project/${props.projectId}`)
+      }
     >
       {props.loading ? (
         <Skeleton className="w-full h-6" />
