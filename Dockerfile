@@ -2,8 +2,7 @@ FROM node:20.5.1-alpine
 
 ENV APP_USER envedit
 
-RUN npm i -g pnpm@8.7.1
-RUN adduser -s /bin/ash -D ${APP_USER}
+RUN npm i -g pnpm@8.7.1 && adduser -s /bin/ash -D ${APP_USER}
 
 USER ${APP_USER}
 WORKDIR /home/${APP_USER}
