@@ -1,0 +1,158 @@
+---
+name: Reviewdog
+
+"on":
+  pull_request:
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+      checks: write
+    steps:
+      - uses: actions/checkout@v3.6.0
+      - uses: reviewdog/action-shellcheck@v1.18.1
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          path: "."
+          pattern: |
+            *.bash
+            *.sh
+          exclude: "./.git/*"
+          fail_on_error: true
+  SHFmt:
+    name: SHFmt
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+      checks: write
+    steps:
+      - uses: actions/checkout@v3.6.0
+      - uses: reviewdog/action-shfmt@v1.0.2
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+  YamlLint:
+    name: YamlLint
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+      checks: write
+    steps:
+      - uses: actions/checkout@v3.6.0
+      - uses: reviewdog/action-yamllint@v1.7.2
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+  RemarkLint:
+    name: RemarkLint
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+      checks: write
+    steps:
+      - uses: actions/checkout@v3.6.0
+      - name: Install remark presets
+        run: npm install remark-preset-lint-recommended
+        shell: bash
+      - name: remark-lint
+        uses: reviewdog/action-remark-lint@v5.7.2
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          fail_on_error: true
+  # HadoLint:
+  #   name: HadoLint
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     pull-requests: write
+  #     contents: write
+  #     checks: write
+  #   steps:
+  #     - uses: actions/checkout@v3.6.0
+  #     - uses: reviewdog/action-hadolint@v1.35.0
+  #       env:
+  #         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         github_token: ${{ secrets.GITHUB_TOKEN }}
+  #         reporter: github-pr-check
+  #         fail_on_error: true
+  MarkdownLint:
+    name: MarkdownLint
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+      checks: write
+    steps:
+      - uses: actions/checkout@v3.6.0
+      - uses: reviewdog/action-markdownlint@v0.12.1
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          fail_on_error: true
+  DetectSecrets:
+    name: DetectSecrets
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+      checks: write
+    steps:
+      - uses: actions/checkout@v3.6.0
+      - uses: reviewdog/action-detect-secrets@v0.12.1
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          fail_on_error: true
+  GitLeaks:
+    name: GitLeaks
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+      checks: write
+    steps:
+      - uses: actions/checkout@v3.6.0
+      - uses: reviewdog/action-gitleaks@v1.2.0
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          fail_on_error: true
+  StyleLint:
+    name: StyleLint
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+      checks: write
+    steps:
+      - uses: actions/checkout@v3.6.0
+      - uses: reviewdog/action-stylelint@v1.17.1
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          fail_on_error: true
