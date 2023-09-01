@@ -8,4 +8,5 @@ module.exports = {
   GITLAB_CLIENT_ID: process.env.GITLAB_CLIENT_ID || "",
   GITLAB_CLIENT_SECRET: process.env.GITLAB_CLIENT_SECRET || "",
   GITLAB_DOMAIN: process.env.GITLAB_DOMAIN || "gitlab.com",
+  GITLAB_PER_PAGE: process.env.GITLAB_PER_PAGE || 50,
 };
