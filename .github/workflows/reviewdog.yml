@@ -76,22 +76,22 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
           fail_on_error: true
-  # HadoLint:
-  #   name: HadoLint
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     pull-requests: write
-  #     contents: write
-  #     checks: write
-  #   steps:
-  #     - uses: actions/checkout@v3.6.0
-  #     - uses: reviewdog/action-hadolint@v1.35.0
-  #       env:
-  #         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #       with:
-  #         github_token: ${{ secrets.GITHUB_TOKEN }}
-  #         reporter: github-pr-check
-  #         fail_on_error: true
+  HadoLint:
+    name: HadoLint
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+      checks: write
+    steps:
+      - uses: actions/checkout@v3.6.0
+      - uses: reviewdog/action-hadolint@v1.35.0
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          fail_on_error: true
   MarkdownLint:
     name: MarkdownLint
     runs-on: ubuntu-latest
