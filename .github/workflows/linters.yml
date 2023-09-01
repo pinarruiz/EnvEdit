@@ -1,0 +1,35 @@
+---
+name: Linters
+
+"on":
+  pull_request:
+
+jobs:
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3.6.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3.8.1
+        with:
+          node-version-file: .nvmrc
+          cache: "pnpm"
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Get dependencies
+        run: npm ci
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v2.3.0
+        with:
+          eslint: true
+          prettier: true
+          continue_on_error: false
