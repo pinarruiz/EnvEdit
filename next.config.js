@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const appEnv = require("./lib/appEnv");
+const appEnv = require("./src/lib/appEnv");
 
 const nextConfig = {
   reactStrictMode: true,
