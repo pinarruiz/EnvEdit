@@ -54,7 +54,7 @@ jobs:
             !contains(github.ref, 'beta') }}
           tags: |
             type=ref,event=tag
-            type=edge,branch=main
+            type=edge,branch=master
 
       - name: Build and Push to Container Registries
         uses: docker/build-push-action@v4.1.1
