@@ -17,6 +17,11 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v3.6.0
 
+      - name: Set Up pnpm standalone
+        uses: pnpm/action-setup@v2.4.0
+        with:
+          standalone: true
+
       - name: Set up Node.js
         uses: actions/setup-node@v3.8.1
         with:
@@ -25,7 +30,7 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       - name: Get dependencies
-        run: npm ci
+        run: pnpm i
 
       - name: Run linters
         uses: wearerequired/lint-action@v2.3.0
