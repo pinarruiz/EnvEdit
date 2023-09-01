@@ -124,6 +124,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
           fail_on_error: true
+          detect_secrets_flags: --exclude-files pnpm-lock.yaml
   GitLeaks:
     name: GitLeaks
     runs-on: ubuntu-latest
