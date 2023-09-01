@@ -16,8 +16,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@tanstack/react-query": "4.33.0",
     "class-variance-authority": "0.7.0",
     "clsx": "2.0.0",
+    "cookies-next": "3.0.0",
     "lucide-react": "0.274.0",
     "next": "13.4.19",
     "react": "18.2.0",
@@ -26,6 +28,8 @@
     "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "4.34.1",
+    "@tanstack/react-query-devtools": "4.33.0",
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",

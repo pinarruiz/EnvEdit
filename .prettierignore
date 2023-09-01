@@ -2,3 +2,4 @@ node_modules
 src/components/ui
 .gitignore
 .husky
+pnpm-lock.yaml
