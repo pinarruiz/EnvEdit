@@ -3,12 +3,12 @@ import {
   GITLAB_CLIENT_ID,
   GITLAB_CLIENT_SECRET,
   GITLAB_DOMAIN,
-  SECRET,
+  NEXTAUTH_SECRET,
 } from "@/lib/appEnv";
 import GitlabProvider from "next-auth/providers/gitlab";
 
 export const authOptions: AuthOptions = {
-  secret: SECRET,
+  secret: NEXTAUTH_SECRET,
   providers: [
     GitlabProvider({
       clientId: GITLAB_CLIENT_ID,
