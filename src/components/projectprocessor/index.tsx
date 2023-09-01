@@ -5,6 +5,8 @@ import { queryProjects } from "@/lib/gitlab/projects";
 import { UserContextProviderType } from "@/types/usercontext";
 import { UserContext } from "@/components/contexts/user";
 import { Input } from "@/components/ui/input";
+import ProjectCard from "@/components/projectcard";
+import { GITLAB_PER_PAGE } from "@/lib/appEnv";
 
 export default function ProjectProcessor() {
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
@@ -35,12 +37,6 @@ export default function ProjectProcessor() {
       userData.accessToken !== "",
   });
 
-  React.useEffect(() => {
-    if (lastCardRefEntry?.isIntersecting) {
-      fetchNextPage();
-    }
-  }, [fetchNextPage, lastCardRefEntry?.isIntersecting]);
-
   const _flatProjects = projectsData?.pages
     .flatMap((page) => page.data)
     .filter((project) => !project.archived);
@@ -51,13 +47,13 @@ export default function ProjectProcessor() {
       project.path_with_namespace.includes(globalFilter),
   );
 
-  if (
-    !isFetchingNextPage &&
-    !isLoading &&
-    hasNextPage &&
-    _filteredFlatProjects?.length === 0
-  ) {
-    fetchNextPage();
+  if (!isFetchingNextPage && !isLoading && hasNextPage) {
+    if (
+      (_filteredFlatProjects?.length === 0 && _flatProjects?.length !== 0) ||
+      lastCardRefEntry?.isIntersecting
+    ) {
+      fetchNextPage();
+    }
   }
 
   return (
@@ -80,9 +76,26 @@ export default function ProjectProcessor() {
                 : undefined
             }
           >
-            {project.name}
+            <ProjectCard
+              projectName={project.name}
+              projectId={project.id}
+              namespace={project.name_with_namespace.replace(
+                ` / ${project.name}`,
+                "",
+              )}
+            />
           </div>
         ))}
+        {(isLoading || isFetchingNextPage) &&
+          Array.from(Array(GITLAB_PER_PAGE)).map((index) => (
+            <ProjectCard
+              key={`loading${index}`}
+              projectName=""
+              projectId={0}
+              namespace=""
+              loading
+            />
+          ))}
       </div>
     </div>
   );
