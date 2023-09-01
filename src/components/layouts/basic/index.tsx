@@ -10,7 +10,7 @@ import Menu from "@/components/menu";
 
 export default function BasicLayout(props: BasicLayoutProps) {
   const { data: session, status } = useSession();
-  const { setUserData } = React.useContext(
+  const { userData, setUserData } = React.useContext(
     UserContext,
   ) as UserContextProviderType;
 
@@ -30,15 +30,15 @@ export default function BasicLayout(props: BasicLayoutProps) {
       session.user.name
     ) {
       userTokenMutation.mutateAsync().then((res) => {
-        setUserData((prevState: User) => {
-          const newData = {
-            email: session.user?.email,
-            name: session.user?.name,
-            accessToken: res["token"]["gitlab"]["accessToken"],
-            refreshToken: res["token"]["gitlab"]["refreshToken"],
-          } as User;
-          return { ...prevState, ...newData };
-        });
+        const newData: User = {
+          email: session.user?.email as string,
+          name: session.user?.name as string,
+          accessToken: res["token"]["gitlab"]["accessToken"],
+          refreshToken: res["token"]["gitlab"]["refreshToken"],
+        };
+        if (JSON.stringify(newData) !== JSON.stringify(userData)) {
+          setUserData(newData);
+        }
       });
     }
   }, [status, session]);
