@@ -10,5 +10,6 @@ export async function queryProjects(oauthToken: string, page: number = 1) {
     pagination: "offset",
     showExpanded: true,
     page: page,
+    simple: true,
   });
 }
