@@ -59,8 +59,8 @@ export default function ProjectProcessor(props: ProjectProcessorProps) {
   }
 
   return (
-    <div className="container bg-background p-4 shadow-sm flex flex-col border rounded-lg">
-      <div className="transition-[padding] duration-300 flex flex-col items-center sm:pb-4 pb-2 w-full">
+    <div className="container bg-background p-0 shadow-sm flex flex-col border rounded-lg">
+      <div className="transition-[padding] duration-300 px-4 pt-4 flex flex-col items-center w-full">
         <Input
           placeholder="Filter projects ..."
           onChange={(event) => setGlobalFilter(String(event.target.value))}
@@ -68,7 +68,7 @@ export default function ProjectProcessor(props: ProjectProcessorProps) {
           disabled={_flatProjects?.length === 0}
         />
       </div>
-      <div className="transition-[gap] flex flex-col sm:gap-3 gap-2 overflow-auto">
+      <div className="transition-[gap] grid sm:gap-4 gap-2 md:grid-cols-2 lg:grid-cols-3 overflow-auto px-4 sm:py-4 py-2">
         {!props.loading &&
           _filteredFlatProjects?.map((project, index) => (
             <div
