@@ -7,8 +7,9 @@ import { UserContext } from "@/components/contexts/user";
 import { Input } from "@/components/ui/input";
 import ProjectCard from "@/components/projectcard";
 import { GITLAB_PER_PAGE } from "@/lib/appEnv";
+import { ProjectProcessorProps } from "@/types/projectprocessor";
 
-export default function ProjectProcessor() {
+export default function ProjectProcessor(props: ProjectProcessorProps) {
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
   const lastCardRef = React.useRef<HTMLDivElement>(null);
   const { ref: lastCardRefIntersect, entry: lastCardRefEntry } =
@@ -34,7 +35,8 @@ export default function ProjectProcessor() {
     enabled:
       userData.accessToken !== undefined &&
       userData.accessToken !== null &&
-      userData.accessToken !== "",
+      userData.accessToken !== "" &&
+      !props.loading,
   });
 
   const _flatProjects = projectsData?.pages
@@ -67,26 +69,27 @@ export default function ProjectProcessor() {
         />
       </div>
       <div className="transition-[gap] flex flex-col sm:gap-3 gap-2 overflow-auto">
-        {_filteredFlatProjects?.map((project, index) => (
-          <div
-            key={project.id}
-            ref={
-              index === _filteredFlatProjects.length - 1
-                ? lastCardRefIntersect
-                : undefined
-            }
-          >
-            <ProjectCard
-              projectName={project.name}
-              projectId={project.id}
-              namespace={project.name_with_namespace.replace(
-                ` / ${project.name}`,
-                "",
-              )}
-            />
-          </div>
-        ))}
-        {(isLoading || isFetchingNextPage) &&
+        {!props.loading &&
+          _filteredFlatProjects?.map((project, index) => (
+            <div
+              key={project.id}
+              ref={
+                index === _filteredFlatProjects.length - 1
+                  ? lastCardRefIntersect
+                  : undefined
+              }
+            >
+              <ProjectCard
+                projectName={project.name}
+                projectId={project.id}
+                namespace={project.name_with_namespace.replace(
+                  ` / ${project.name}`,
+                  "",
+                )}
+              />
+            </div>
+          ))}
+        {(props.loading || isLoading || isFetchingNextPage) &&
           Array.from(Array(GITLAB_PER_PAGE)).map((index) => (
             <ProjectCard
               key={`loading${index}`}
