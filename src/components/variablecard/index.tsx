@@ -15,10 +15,8 @@ export default function VariableCard(props: VariableCardProps) {
     >
       {props.loading ? (
         <>
-          <Skeleton className="w-full h-6" />
-          <div className="pt-6">
-            <Skeleton className="w-full h-10" />
-          </div>
+          <Skeleton className="h-6 w-96" />
+          <Skeleton className="h-6 w-40 ml-auto" />
         </>
       ) : (
         <>
