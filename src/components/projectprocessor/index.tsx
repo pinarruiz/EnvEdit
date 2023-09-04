@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import ProjectCard from "@/components/projectcard";
 import { GITLAB_PER_PAGE } from "@/lib/appEnv";
 import { ProjectProcessorProps } from "@/types/projectprocessor";
+import { cn } from "@/lib/utils";
 
 export default function ProjectProcessor(props: ProjectProcessorProps) {
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
@@ -58,6 +59,16 @@ export default function ProjectProcessor(props: ProjectProcessorProps) {
     }
   }
 
+  const noProjects =
+    !isFetchingNextPage && !isLoading && _flatProjects?.length === 0;
+
+  const noResults =
+    !isFetchingNextPage &&
+    !isLoading &&
+    _flatProjects &&
+    _flatProjects.length > 0 &&
+    _filteredFlatProjects?.length === 0;
+
   return (
     <div className="container bg-background p-0 shadow-sm flex flex-col border rounded-lg">
       <div className="transition-[padding] duration-300 px-4 pt-4 flex flex-col items-center w-full">
@@ -68,7 +79,12 @@ export default function ProjectProcessor(props: ProjectProcessorProps) {
           disabled={_flatProjects?.length === 0}
         />
       </div>
-      <div className="transition-[gap] grid sm:gap-4 gap-2 md:grid-cols-2 lg:grid-cols-3 overflow-auto px-4 sm:py-4 py-2">
+      <div
+        className={cn(
+          "transition-[gap] grid sm:gap-4 gap-2 md:grid-cols-2 lg:grid-cols-3 overflow-auto px-4 sm:py-4 py-2",
+          noResults || noProjects ? "flex" : "",
+        )}
+      >
         {!props.loading &&
           _filteredFlatProjects?.map((project, index) => (
             <div
@@ -99,6 +115,10 @@ export default function ProjectProcessor(props: ProjectProcessorProps) {
               loading
             />
           ))}
+        {noResults && <p className="text-center w-full">No results</p>}
+        {noProjects && (
+          <p className="text-center w-full">There are no visible projects</p>
+        )}
       </div>
     </div>
   );
