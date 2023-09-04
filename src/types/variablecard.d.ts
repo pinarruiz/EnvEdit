@@ -1,6 +1,8 @@
 import { ProjectVariableSchema } from "@gitbeaker/rest";
 
-export type VariableCardProps = {
-  variable: ProjectVariableSchema;
-  loading?: boolean;
-};
+export type VariableCardProps =
+  | { loading: true }
+  | {
+      variable: ProjectVariableSchema;
+      loading?: false;
+    };
