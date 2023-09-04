@@ -8,7 +8,7 @@ import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/usercontext";
 import { VariableProcessorProps } from "@/types/variableprocessor";
 import { queryVariables } from "@/lib/gitlab/variables";
-import VariableCard from "@/components/variablecard";
+import VariableCard, { LoadingVariableCard } from "@/components/variablecard";
 import { GITLAB_PER_PAGE } from "@/lib/appEnv";
 
 export default function VariableProcessor(props: VariableProcessorProps) {
@@ -99,7 +99,7 @@ export default function VariableProcessor(props: VariableProcessorProps) {
         ))}
         {(props.loading || isLoading || isFetchingNextPage) &&
           Array.from(Array(GITLAB_PER_PAGE)).map((index) => (
-            <VariableCard key={`loading${index}`} loading />
+            <LoadingVariableCard key={`loading${index}`} />
           ))}
         {noResults && <p className="text-center w-full">No results</p>}
         {noVariables && (
