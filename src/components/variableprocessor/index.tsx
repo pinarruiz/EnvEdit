@@ -3,6 +3,7 @@ import { useDebouncedState } from "@mantine/hooks";
 import { Input } from "@/components/ui/input";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { cn } from "@/lib/utils";
+import { ProjectVariableSchema } from "@gitbeaker/rest";
 import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/usercontext";
 import { VariableProcessorProps } from "@/types/variableprocessor";
@@ -18,6 +19,8 @@ export default function VariableProcessor(props: VariableProcessorProps) {
     data: variablesData,
     isLoading,
     isFetchingNextPage,
+    hasNextPage,
+    fetchNextPage,
   } = useInfiniteQuery({
     queryKey: ["variables", props.projectId, userData.accessToken],
     queryFn: async ({ pageParam = 1 }) =>
@@ -39,9 +42,27 @@ export default function VariableProcessor(props: VariableProcessorProps) {
     .flatMap((page) => page.data)
     .filter((variable) => variable.variable_type === "env_var");
 
-  const _filteredFlatVariables = _flatVariables?.filter((variable) =>
-    variable.key.toLowerCase().includes(globalFilter.toLowerCase()),
-  );
+  const _consolidatedVariables: Record<
+    ProjectVariableSchema["key"],
+    Record<
+      ProjectVariableSchema["environment_scope"],
+      ProjectVariableSchema["value"]
+    >
+  > = {};
+
+  _flatVariables?.forEach((variable) => {
+    if (variable.key.toLowerCase().includes(globalFilter.toLowerCase())) {
+      if (!Object.keys(_consolidatedVariables).includes(variable.key)) {
+        _consolidatedVariables[variable.key] = {};
+      }
+      _consolidatedVariables[variable.key][variable.environment_scope] =
+        variable.value;
+    }
+  });
+
+  if (!isFetchingNextPage && !isLoading && hasNextPage) {
+    fetchNextPage();
+  }
 
   const noVariables =
     !isFetchingNextPage && !isLoading && _flatVariables?.length === 0;
@@ -51,7 +72,7 @@ export default function VariableProcessor(props: VariableProcessorProps) {
     !isLoading &&
     _flatVariables &&
     _flatVariables.length > 0 &&
-    _filteredFlatVariables?.length === 0;
+    Object.keys(_consolidatedVariables).length === 0;
 
   return (
     <div className="container bg-background p-0 shadow-sm flex flex-col border rounded-lg">
@@ -69,8 +90,12 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           noResults || noVariables ? "flex" : "",
         )}
       >
-        {_filteredFlatVariables?.map((variable, index) => (
-          <VariableCard key={index} variable={variable} />
+        {Object.keys(_consolidatedVariables).map((key) => (
+          <VariableCard
+            key={key}
+            variable_name={key}
+            variable={_consolidatedVariables[key]}
+          />
         ))}
         {(props.loading || isLoading || isFetchingNextPage) &&
           Array.from(Array(GITLAB_PER_PAGE)).map((index) => (
