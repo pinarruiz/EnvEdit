@@ -46,8 +46,10 @@ export default function ProjectProcessor(props: ProjectProcessorProps) {
 
   const _filteredFlatProjects = _flatProjects?.filter(
     (project) =>
-      project.name.includes(globalFilter) ||
-      project.path_with_namespace.includes(globalFilter),
+      project.name.toLowerCase().includes(globalFilter.toLowerCase()) ||
+      project.path_with_namespace
+        .toLowerCase()
+        .includes(globalFilter.toLowerCase()),
   );
 
   if (!isFetchingNextPage && !isLoading && hasNextPage) {
