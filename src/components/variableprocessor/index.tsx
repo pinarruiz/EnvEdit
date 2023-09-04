@@ -6,6 +6,7 @@ import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/usercontext";
 import { VariableProcessorProps } from "@/types/variableprocessor";
 import { queryVariables } from "@/lib/gitlab/variables";
+import VariableCard from "@/components/variablecard";
 
 export default function VariableProcessor(props: VariableProcessorProps) {
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
@@ -44,9 +45,9 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           disabled={_flatVariables?.length === 0}
         />
       </div>
-      <div className="transition-[gap] overflow-auto px-4 sm:py-4 py-2 flex flex-col">
+      <div className="transition-[gap] overflow-auto px-4 sm:py-4 py-2 flex flex-col sm:gap-4 gap-2">
         {_filteredFlatVariables?.map((variable, index) => (
-          <p key={index}>{variable.key}</p>
+          <VariableCard key={index} variable={variable} />
         ))}
       </div>
     </div>

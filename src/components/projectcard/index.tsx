@@ -1,7 +1,7 @@
 import React from "react";
-import { ProjectCardProps } from "@/types/projectcard";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ProjectCardProps } from "@/types/projectcard";
 
 export default function ProjectCard(props: ProjectCardProps) {
   return (
