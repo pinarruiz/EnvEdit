@@ -20,10 +20,7 @@ export default function VariableCard(props: VariableCardProps) {
         </>
       ) : (
         <>
-          <p className="font-bold">{props.variable.key}</p>
-          <p className="text-sm opacity-40 flex-grow text-right">
-            {props.variable.environment_scope}
-          </p>
+          <p className="font-bold">{props.variable_name}</p>
         </>
       )}
     </div>
