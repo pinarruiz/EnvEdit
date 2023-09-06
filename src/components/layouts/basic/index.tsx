@@ -1,12 +1,13 @@
 import React from "react";
 import Head from "next/head";
-import { useMutation } from "@tanstack/react-query";
-import { signIn, useSession } from "next-auth/react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { UserContext } from "@/components/contexts/user";
 import { BasicLayoutProps } from "@/types/layouts";
 import { UserContextProviderType } from "@/types/usercontext";
 import { User } from "@/types/user";
 import Menu from "@/components/menu";
+import { getUserMe } from "@/lib/gitlab/getUser";
 
 export default function BasicLayout(props: BasicLayoutProps) {
   const { data: session, status } = useSession();
@@ -17,6 +18,12 @@ export default function BasicLayout(props: BasicLayoutProps) {
   const userTokenMutation = useMutation({
     mutationFn: async () => await (await fetch("/api/token")).json(),
     mutationKey: ["userToken"],
+  });
+
+  const { data: userMe, isLoading: userMeLoading } = useQuery({
+    queryKey: ["userMe", userData.accessToken],
+    queryFn: () => getUserMe(userData.accessToken as string),
+    enabled: userData.accessToken !== undefined,
   });
 
   React.useEffect(() => {
@@ -42,6 +49,10 @@ export default function BasicLayout(props: BasicLayoutProps) {
       });
     }
   }, [status, session]);
+
+  if (!userMeLoading && userMe && !Object.keys(userMe).includes("id")) {
+    signOut({ redirect: false });
+  }
 
   return (
     <>
