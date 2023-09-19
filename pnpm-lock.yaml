@@ -9,8 +9,8 @@ dependencies:
     specifier: 39.15.0
     version: 39.15.0
   '@mantine/hooks':
-    specifier: 6.0.20
-    version: 6.0.20(react@18.2.0)
+    specifier: 7.0.0
+    version: 7.0.0(react@18.2.0)
   '@radix-ui/react-dropdown-menu':
     specifier: 2.0.5
     version: 2.0.5(@types/react-dom@18.2.7)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
@@ -253,10 +253,10 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@mantine/hooks@6.0.20(react@18.2.0):
-    resolution: {integrity: sha512-Sys2qr6KwyNjAWgzm94F9rGG94l709G69pO3iofQXwzKX/fZushk1NMIt5g9De9F+qXm+67wa0DpA0QWLNLxlg==}
+  /@mantine/hooks@7.0.0(react@18.2.0):
+    resolution: {integrity: sha512-HdZ6qE15OKNA3esbO72+mRqztMcdGphL/wl/ks8N7iAlSUu7sFtgZN+IU6MfJxGc/MEN3x5dEceWG6FgwOmHOw==}
     peerDependencies:
-      react: '>=16.8.0'
+      react: ^18.2.0
     dependencies:
       react: 18.2.0
     dev: false
