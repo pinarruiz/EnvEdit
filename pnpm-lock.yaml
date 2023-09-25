@@ -62,8 +62,8 @@ devDependencies:
     specifier: 4.35.3
     version: 4.35.3(@tanstack/react-query@4.35.3)(react-dom@18.2.0)(react@18.2.0)
   '@types/node':
-    specifier: 20.6.3
-    version: 20.6.3
+    specifier: 20.6.5
+    version: 20.6.5
   '@types/react':
     specifier: 18.2.22
     version: 18.2.22
@@ -913,8 +913,8 @@ packages:
     resolution: {integrity: sha512-Mnq3O9Xz52exs3mlxMcQuA7/9VFe/dXcrgAyfjLkABIqxXKOgBRjyazTxUbjsxDa4BP7hhPliyjVTP9RDP14xg==}
     dev: false
 
-  /@types/node@20.6.3:
-    resolution: {integrity: sha512-HksnYH4Ljr4VQgEy2lTStbCKv/P590tmPe5HqOnv9Gprffgv5WXAY+Y5Gqniu0GGqeTCUdBnzC3QSrzPkBkAMA==}
+  /@types/node@20.6.5:
+    resolution: {integrity: sha512-2qGq5LAOTh9izcc0+F+dToFigBWiK1phKPt7rNhOqJSr35y8rlIBjDwGtFSgAI6MGIhjwOVNSQZVdJsZJ2uR1w==}
     dev: true
 
   /@types/prop-types@15.7.5:
