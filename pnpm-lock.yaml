@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@gitbeaker/rest':
-    specifier: 39.15.0
-    version: 39.15.0
+    specifier: 39.16.0
+    version: 39.16.0
   '@mantine/hooks':
     specifier: 7.0.1
     version: 7.0.1(react@18.2.0)
@@ -183,29 +183,29 @@ packages:
     resolution: {integrity: sha512-m0G6wlnhm/AX0H12IOWtK8gASEMffnX08RtKkCgTdHb9JpHKGloI7icFfLg9ZmQeavcvR0PKmzxClyuFPSjKWw==}
     dev: false
 
-  /@gitbeaker/core@39.15.0:
-    resolution: {integrity: sha512-ydwsPyuhdJOL/Mg1aE/if0QFsogy/QUpUzpGohlZzbrv3CX4xGB69eKBxNpWhLNgK/dCEHz13F+1D0t0SVyZzw==}
+  /@gitbeaker/core@39.16.0:
+    resolution: {integrity: sha512-O0CiVt7EwD7zOqMBluEI+PsJL0bIotxcmvQLTh0vd7ylpK0J3QVPpe1/63hI1njaJDpwBR1jfErXD1xxkjQ5zA==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@gitbeaker/requester-utils': 39.15.0
+      '@gitbeaker/requester-utils': 39.16.0
       qs: 6.11.2
       xcase: 2.0.1
     dev: false
 
-  /@gitbeaker/requester-utils@39.15.0:
-    resolution: {integrity: sha512-2QpI4RQ3eV1OuEJF5iykvce89+27a7iCZtZ2ReBBZ6teE0sV2IgEHmbftByU4XwCaM6Cb8ED18q+aWszEKKokA==}
+  /@gitbeaker/requester-utils@39.16.0:
+    resolution: {integrity: sha512-SEBGY4yyuuAPU7Bk/oWxHNM/bUhCMToW6r8G0PItM7BfYbF344MpRUYmcKvbFNBycctpU0qoyabWYi5SH3cVaw==}
     engines: {node: '>=18.0.0'}
     dependencies:
       qs: 6.11.2
       xcase: 2.0.1
     dev: false
 
-  /@gitbeaker/rest@39.15.0:
-    resolution: {integrity: sha512-tVJR90Zdj84AnvTCBWhPDaqygUPGDYLurKgelIBq6BOHITr4xHnNFEchC9DSM2uDQzO+ivq0pHBXR4/dqmSa5A==}
+  /@gitbeaker/rest@39.16.0:
+    resolution: {integrity: sha512-J7JRYO4AuZaeNA75dHeH48ZuOp9111kWUYOlAmwl2VfhTwkjdjjDSKV8/bn7vs/3qLJlyxI1NxoHpOpTyyWEyw==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@gitbeaker/core': 39.15.0
-      '@gitbeaker/requester-utils': 39.15.0
+      '@gitbeaker/core': 39.16.0
+      '@gitbeaker/requester-utils': 39.16.0
     dev: false
 
   /@humanwhocodes/config-array@0.11.11:
