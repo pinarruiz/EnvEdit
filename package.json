@@ -34,7 +34,7 @@
     "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "4.36.0",
+    "@tanstack/eslint-plugin-query": "4.36.1",
     "@tanstack/react-query-devtools": "4.35.7",
     "@types/node": "20.8.3",
     "@types/react": "18.2.25",
