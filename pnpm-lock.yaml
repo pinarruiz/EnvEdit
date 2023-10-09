@@ -59,8 +59,8 @@ devDependencies:
     specifier: 4.36.0
     version: 4.36.0(eslint@8.51.0)
   '@tanstack/react-query-devtools':
-    specifier: 4.35.3
-    version: 4.35.3(@tanstack/react-query@4.36.1)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 4.35.7
+    version: 4.35.7(@tanstack/react-query@4.36.1)(react-dom@18.2.0)(react@18.2.0)
   '@types/node':
     specifier: 20.8.3
     version: 20.8.3
@@ -871,10 +871,10 @@ packages:
   /@tanstack/query-core@4.36.1:
     resolution: {integrity: sha512-DJSilV5+ytBP1FbFcEJovv4rnnm/CokuVvrBEtW/Va9DvuJ3HksbXUJEpI0aV1KtuL4ZoO9AVE6PyNLzF7tLeA==}
 
-  /@tanstack/react-query-devtools@4.35.3(@tanstack/react-query@4.36.1)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-UvLT7qPzCuCZ3NfjwsOqDUVN84JvSOuW6ukrjZmSqgjPqVxD6ra/HUp1CEOatQY2TRvKCp8y1lTVu+trXM30fg==}
+  /@tanstack/react-query-devtools@4.35.7(@tanstack/react-query@4.36.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-oe3reHNvXBTUvNb9jwLY8EYOXyp8Oq8/c40iwpXBnEkAtJI+RryrCXaGKFTivg72roPcYHzKILQHR9jbX8sn1Q==}
     peerDependencies:
-      '@tanstack/react-query': ^4.35.3
+      '@tanstack/react-query': ^4.35.7
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
