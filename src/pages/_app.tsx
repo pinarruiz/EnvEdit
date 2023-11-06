@@ -7,12 +7,12 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "@/components/theme/provider";
 import { UserContextProvider } from "@/components/contexts/user";
 
+const queryClient = new QueryClient();
+
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) {
-  const queryClient = new QueryClient();
-
   return (
     <SessionProvider session={session}>
       <UserContextProvider>
@@ -20,7 +20,7 @@ export default function App({
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Component {...pageProps} />
           </ThemeProvider>
-          <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"} />
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </UserContextProvider>
     </SessionProvider>
