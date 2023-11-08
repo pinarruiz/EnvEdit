@@ -86,8 +86,8 @@ devDependencies:
     specifier: 5.7.4
     version: 5.7.4(@tanstack/react-query@5.7.2)(react-dom@18.2.0)(react@18.2.0)
   '@types/node':
-    specifier: 20.8.10
-    version: 20.8.10
+    specifier: 20.9.0
+    version: 20.9.0
   '@types/react':
     specifier: 18.2.37
     version: 18.2.37
@@ -1390,8 +1390,8 @@ packages:
     resolution: {integrity: sha512-Mnq3O9Xz52exs3mlxMcQuA7/9VFe/dXcrgAyfjLkABIqxXKOgBRjyazTxUbjsxDa4BP7hhPliyjVTP9RDP14xg==}
     dev: false
 
-  /@types/node@20.8.10:
-    resolution: {integrity: sha512-TlgT8JntpcbmKUFzjhsyhGfP2fsiz1Mv56im6enJ905xG1DAYesxJaeSbGqQmAw8OWPdhyJGhGSQGKRNJ45u9w==}
+  /@types/node@20.9.0:
+    resolution: {integrity: sha512-nekiGu2NDb1BcVofVcEKMIwzlx4NjHlcjhoxxKBNLtz15Y1z7MYf549DFvkHSId02Ax6kGwWntIBPC3l/JZcmw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
