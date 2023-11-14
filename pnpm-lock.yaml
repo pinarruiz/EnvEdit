@@ -80,8 +80,8 @@ dependencies:
 
 devDependencies:
   '@tanstack/eslint-plugin-query':
-    specifier: 5.6.0
-    version: 5.6.0(eslint@8.53.0)(typescript@5.2.2)
+    specifier: 5.8.3
+    version: 5.8.3(eslint@8.53.0)(typescript@5.2.2)
   '@tanstack/react-query-devtools':
     specifier: 5.7.4
     version: 5.7.4(@tanstack/react-query@5.8.1)(react-dom@18.2.0)(react@18.2.0)
@@ -1317,8 +1317,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@tanstack/eslint-plugin-query@5.6.0(eslint@8.53.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-A0D8fXIh6fuHcT7e+VaL+QnlLhY9V5QmiaLOTLOIcyVKCpWVZLSHrLP6ghZV6CB+JLalHWCAUF0QW0UaEyyz7g==}
+  /@tanstack/eslint-plugin-query@5.8.3(eslint@8.53.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-xq6TqtyTfXXAYeWPRir1Phvt30m2sXk0nJ6m30ejA6WrRW0XpCVnJRMUFhCxUxjLJAhGxJHZmeJ3vkzaXrzHIA==}
     peerDependencies:
       eslint: ^8.0.0
     dependencies:
