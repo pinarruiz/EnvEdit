@@ -23,7 +23,8 @@ export default function VariableProcessor(props: VariableProcessorProps) {
     fetchNextPage,
   } = useInfiniteQuery({
     queryKey: ["variables", props.projectId, userData.accessToken],
-    queryFn: async ({ pageParam = 1 }) =>
+    initialPageParam: 1,
+    queryFn: async ({ pageParam }) =>
       queryVariables(
         userData.accessToken as string,
         props.projectId,
