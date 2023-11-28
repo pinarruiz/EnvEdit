@@ -1,9 +1,12 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ProjectCardProps } from "@/types/projectcard";
 
 export default function ProjectCard(props: ProjectCardProps) {
+  const router = useRouter();
+
   return (
     <div
       className={cn(
@@ -15,7 +18,7 @@ export default function ProjectCard(props: ProjectCardProps) {
       onClick={
         props.loading
           ? undefined
-          : () => window.location.assign(`/project/${props.projectId}`)
+          : () => router.push(`/project/${props.projectId}`)
       }
     >
       {props.loading ? (
