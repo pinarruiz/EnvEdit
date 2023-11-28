@@ -29,7 +29,8 @@ export default function ProjectProcessor(props: ProjectProcessorProps) {
     hasNextPage,
   } = useInfiniteQuery({
     queryKey: ["projectsData", userData.accessToken],
-    queryFn: async ({ pageParam = 1 }) =>
+    initialPageParam: 1,
+    queryFn: async ({ pageParam }) =>
       queryProjects(userData.accessToken as string, pageParam),
     getNextPageParam: (lastPage) => lastPage.paginationInfo.next,
     getPreviousPageParam: (lastPage) => lastPage.paginationInfo.previous,
