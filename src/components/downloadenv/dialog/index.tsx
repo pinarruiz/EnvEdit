@@ -1,4 +1,5 @@
 import React from "react";
+import { ProjectVariableSchema } from "@gitbeaker/rest";
 import { Button } from "@/components/ui/button";
 import { DialogHeader, DialogFooter } from "@/components/ui/dialog";
 import {
@@ -12,6 +13,7 @@ import {
 type DownloadEnvDialogProps = {
   children?: React.ReactNode;
   projectId: number;
+  variables?: ProjectVariableSchema[];
 };
 
 export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
