@@ -21,11 +21,11 @@ function checkOverflow(ref: HTMLParagraphElement | null): boolean {
 
 export function LoadingVariableCard() {
   return (
-    <div className="rounded-md border py-3 px-4 flex flex-col sm:flex-row transition h-full hover:cursor-progress">
+    <div className="rounded-md border py-3 px-4 flex flex-col gap-4 sm:flex-row transition h-full hover:cursor-progress">
       <div className="pb-5 sm:pb-0">
-        <Skeleton className="h-6 w-96 m-auto sm:m-0 sm:pb-0" />
+        <Skeleton className="h-6 w-full sm:w-96 m-auto sm:m-0 sm:pb-0" />
       </div>
-      <Skeleton className="h-6 w-40 m-auto sm:m-0 sm:ml-auto" />
+      <Skeleton className="h-6 w-1/3 sm:w-40 m-auto sm:m-0 sm:ml-auto" />
     </div>
   );
 }
