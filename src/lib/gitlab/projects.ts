@@ -1,4 +1,4 @@
-import { Gitlab } from "@gitbeaker/rest";
+import { Gitlab, SimpleProjectSchema } from "@gitbeaker/rest";
 import { GITLAB_DOMAIN, GITLAB_PER_PAGE } from "@/lib/appEnv";
 
 export async function queryProjects(oauthToken: string, page: number = 1) {
@@ -13,4 +13,16 @@ export async function queryProjects(oauthToken: string, page: number = 1) {
     simple: true,
     perPage: GITLAB_PER_PAGE,
   });
+}
+
+export async function getProject(
+  oauthToken: string,
+  projectId: SimpleProjectSchema["id"],
+  showExpanded: boolean = false,
+) {
+  const api = new Gitlab({
+    host: `https://${GITLAB_DOMAIN}`,
+    oauthToken: oauthToken,
+  });
+  return api.Projects.show(projectId, { showExpanded: showExpanded });
 }
