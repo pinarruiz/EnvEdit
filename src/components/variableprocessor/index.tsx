@@ -88,7 +88,10 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           className="w-full"
           disabled={_flatVariables?.length === 0}
         />
-        <DownloadEnvDialog projectId={props.projectId}>
+        <DownloadEnvDialog
+          projectId={props.projectId}
+          variables={_flatVariables}
+        >
           <Button
             disabled={
               props.loading ||
