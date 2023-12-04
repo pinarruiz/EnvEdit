@@ -12,6 +12,7 @@ import { VariableProcessorProps } from "@/types/variableprocessor";
 import { queryVariables } from "@/lib/gitlab/variables";
 import VariableCard, { LoadingVariableCard } from "@/components/variablecard";
 import { GITLAB_PER_PAGE } from "@/lib/appEnv";
+import DownloadEnvDialog from "@/components/downloadenv/dialog";
 
 export default function VariableProcessor(props: VariableProcessorProps) {
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
@@ -87,32 +88,34 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           className="w-full"
           disabled={_flatVariables?.length === 0}
         />
-        <Button
-          disabled={
-            props.loading ||
-            isLoading ||
-            isFetchingNextPage ||
-            status === "pending" ||
-            hasNextPage
-          }
-          variant="outline"
-          className="duration-300 whitespace-nowrap flex group/downloadbutton w-full sm:w-fit"
-        >
-          <Loader2
-            className={cn(
-              "opacity-70 animate-spin ",
+        <DownloadEnvDialog projectId={props.projectId}>
+          <Button
+            disabled={
               props.loading ||
-                isLoading ||
-                isFetchingNextPage ||
-                status === "pending" ||
-                hasNextPage
-                ? "mr-3 w-6"
-                : "duration-300 w-0",
-            )}
-          />
-          <DownloadCloud className="duration-300 opacity-70 rotate-180 scale-0 w-0 group-hover/downloadbutton:mr-3 group-hover/downloadbutton:rotate-0 group-hover/downloadbutton:scale-100 group-hover/downloadbutton:w-6" />
-          Download Env
-        </Button>
+              isLoading ||
+              isFetchingNextPage ||
+              status === "pending" ||
+              hasNextPage
+            }
+            variant="outline"
+            className="duration-300 whitespace-nowrap flex group/downloadbutton w-full sm:w-fit"
+          >
+            <Loader2
+              className={cn(
+                "opacity-70 animate-spin",
+                props.loading ||
+                  isLoading ||
+                  isFetchingNextPage ||
+                  status === "pending" ||
+                  hasNextPage
+                  ? "mr-3 w-6"
+                  : "duration-300 w-0",
+              )}
+            />
+            <DownloadCloud className="duration-300 opacity-70 rotate-180 scale-0 w-0 group-hover/downloadbutton:mr-3 group-hover/downloadbutton:rotate-0 group-hover/downloadbutton:scale-100 group-hover/downloadbutton:w-6" />
+            Download Env
+          </Button>
+        </DownloadEnvDialog>
       </div>
       <div
         className={cn(
