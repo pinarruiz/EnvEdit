@@ -2,6 +2,7 @@ import React from "react";
 import { useDebouncedState } from "@mantine/hooks";
 import { Input } from "@/components/ui/input";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { DownloadCloud } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ProjectVariableSchema } from "@gitbeaker/rest";
 import { UserContext } from "@/components/contexts/user";
@@ -10,6 +11,7 @@ import { VariableProcessorProps } from "@/types/variableprocessor";
 import { queryVariables } from "@/lib/gitlab/variables";
 import VariableCard, { LoadingVariableCard } from "@/components/variablecard";
 import { GITLAB_PER_PAGE } from "@/lib/appEnv";
+import { Button } from "@/components/ui/button";
 
 export default function VariableProcessor(props: VariableProcessorProps) {
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
@@ -77,13 +79,20 @@ export default function VariableProcessor(props: VariableProcessorProps) {
 
   return (
     <div className="container bg-background p-0 shadow-sm flex flex-col border rounded-lg">
-      <div className="transition-[padding] duration-300 px-4 pt-4 flex flex-col items-center w-full">
+      <div className="transition-[padding] duration-300 px-4 pt-4 pb-4 flex flex-col items-center w-full gap-2 sm:pb-0 sm:gap-5 sm:flex-row">
         <Input
           placeholder="Filter variables ..."
           onChange={(event) => setGlobalFilter(String(event.target.value))}
           className="w-full"
           disabled={_flatVariables?.length === 0}
         />
+        <Button
+          variant="outline"
+          className="duration-300 whitespace-nowrap flex group/downloadbutton w-full sm:w-fit"
+        >
+          <DownloadCloud className="duration-300 opacity-70 rotate-180 scale-0 w-0 group-hover/downloadbutton:mr-3 group-hover/downloadbutton:rotate-0 group-hover/downloadbutton:scale-100 group-hover/downloadbutton:w-6" />
+          Download Env
+        </Button>
       </div>
       <div
         className={cn(
