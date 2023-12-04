@@ -1,5 +1,6 @@
 import React from "react";
 import { ProjectVariableSchema } from "@gitbeaker/rest";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { DialogHeader, DialogFooter } from "@/components/ui/dialog";
 import {
@@ -16,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 
 type DownloadEnvDialogProps = {
   children?: React.ReactNode;
@@ -25,15 +27,22 @@ type DownloadEnvDialogProps = {
 
 export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
   const [openedDialog, setOpenedDialog] = React.useState(false);
-  const envSelected = React.useState<
-    undefined | ProjectVariableSchema["environment_scope"]
-  >(undefined);
 
   const envScopes = Array.from(
     new Set(
       props.variables?.map((variable) => variable.environment_scope),
     ).values(),
-  ).filter((envScope) => envScope !== "*");
+  );
+
+  const [envSelected, setEnvSelected] = React.useState<
+    undefined | ProjectVariableSchema["environment_scope"]
+  >(envScopes.length === 1 ? envScopes[0] : undefined);
+
+  React.useEffect(() => {
+    if (envSelected === undefined && envScopes.length === 1) {
+      setEnvSelected(envScopes[0]);
+    }
+  }, [envScopes, envSelected]);
 
   return (
     <Dialog open={openedDialog} onOpenChange={setOpenedDialog}>
@@ -47,7 +56,7 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
         </DialogHeader>
         <form className="flex flex-col gap-4">
           <div className="grid gap-4 py-4">
-            <Select onValueChange={envSelected[1]}>
+            <Select onValueChange={setEnvSelected} value={envSelected}>
               <SelectTrigger disabled={envScopes.length === 0}>
                 <SelectValue placeholder="Environment" />
               </SelectTrigger>
@@ -59,6 +68,26 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
                 ))}
               </SelectContent>
             </Select>
+            <div
+              className={cn(
+                "duration-300 flex gap-3 h-5 opacity-100 overflow-hidden",
+                envSelected === undefined || envSelected === "*"
+                  ? "h-0 opacity-0"
+                  : "",
+              )}
+            >
+              <Checkbox
+                id="includedefault"
+                defaultChecked={false}
+                disabled={envSelected === "*"}
+              />
+              <label
+                htmlFor="includedefault"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Include default scope
+              </label>
+            </div>
           </div>
           <DialogFooter>
             <Button
@@ -71,7 +100,12 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
             >
               Cancel
             </Button>
-            <Button onClick={(e) => e.preventDefault()}>Download</Button>
+            <Button
+              disabled={envSelected === undefined}
+              onClick={(e) => e.preventDefault()}
+            >
+              Download
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>
