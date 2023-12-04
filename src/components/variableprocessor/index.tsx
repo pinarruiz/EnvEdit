@@ -2,7 +2,8 @@ import React from "react";
 import { useDebouncedState } from "@mantine/hooks";
 import { Input } from "@/components/ui/input";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { DownloadCloud } from "lucide-react";
+import { DownloadCloud, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ProjectVariableSchema } from "@gitbeaker/rest";
 import { UserContext } from "@/components/contexts/user";
@@ -11,7 +12,6 @@ import { VariableProcessorProps } from "@/types/variableprocessor";
 import { queryVariables } from "@/lib/gitlab/variables";
 import VariableCard, { LoadingVariableCard } from "@/components/variablecard";
 import { GITLAB_PER_PAGE } from "@/lib/appEnv";
-import { Button } from "@/components/ui/button";
 
 export default function VariableProcessor(props: VariableProcessorProps) {
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
@@ -23,6 +23,7 @@ export default function VariableProcessor(props: VariableProcessorProps) {
     isFetchingNextPage,
     hasNextPage,
     fetchNextPage,
+    status,
   } = useInfiniteQuery({
     queryKey: ["variables", props.projectId, userData.accessToken],
     initialPageParam: 1,
@@ -87,9 +88,28 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           disabled={_flatVariables?.length === 0}
         />
         <Button
+          disabled={
+            props.loading ||
+            isLoading ||
+            isFetchingNextPage ||
+            status === "pending" ||
+            hasNextPage
+          }
           variant="outline"
           className="duration-300 whitespace-nowrap flex group/downloadbutton w-full sm:w-fit"
         >
+          <Loader2
+            className={cn(
+              "opacity-70 animate-spin ",
+              props.loading ||
+                isLoading ||
+                isFetchingNextPage ||
+                status === "pending" ||
+                hasNextPage
+                ? "mr-3 w-6"
+                : "duration-300 w-0",
+            )}
+          />
           <DownloadCloud className="duration-300 opacity-70 rotate-180 scale-0 w-0 group-hover/downloadbutton:mr-3 group-hover/downloadbutton:rotate-0 group-hover/downloadbutton:scale-100 group-hover/downloadbutton:w-6" />
           Download Env
         </Button>
@@ -107,7 +127,10 @@ export default function VariableProcessor(props: VariableProcessorProps) {
             variable={_consolidatedVariables[key]}
           />
         ))}
-        {(props.loading || isLoading || isFetchingNextPage) &&
+        {(props.loading ||
+          isLoading ||
+          isFetchingNextPage ||
+          status === "pending") &&
           Array.from(Array(GITLAB_PER_PAGE)).map((index) => (
             <LoadingVariableCard key={`loading${index}`} />
           ))}
