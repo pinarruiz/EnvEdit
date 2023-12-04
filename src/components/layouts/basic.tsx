@@ -8,6 +8,7 @@ import { UserContextProviderType } from "@/types/usercontext";
 import { User } from "@/types/user";
 import Menu from "@/components/menu";
 import { getUserMe } from "@/lib/gitlab/getUser";
+import { DEFAULT_TITLE } from "@/lib/appEnv";
 
 export default function BasicLayout(props: BasicLayoutProps) {
   const { data: session, status } = useSession();
@@ -57,7 +58,7 @@ export default function BasicLayout(props: BasicLayoutProps) {
   return (
     <>
       <Head>
-        <title>{props.title || "EnvEdit"}</title>
+        <title>{props.title || DEFAULT_TITLE}</title>
       </Head>
       <div className="container transition-[padding] duration-300 sm:px-8 px-4 pb-5 flex flex-col">
         <Menu />
