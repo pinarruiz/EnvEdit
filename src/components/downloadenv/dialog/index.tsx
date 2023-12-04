@@ -9,6 +9,13 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 type DownloadEnvDialogProps = {
   children?: React.ReactNode;
@@ -17,8 +24,19 @@ type DownloadEnvDialogProps = {
 };
 
 export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
+  const [openedDialog, setOpenedDialog] = React.useState(false);
+  const envSelected = React.useState<
+    undefined | ProjectVariableSchema["environment_scope"]
+  >(undefined);
+
+  const envScopes = Array.from(
+    new Set(
+      props.variables?.map((variable) => variable.environment_scope),
+    ).values(),
+  ).filter((envScope) => envScope !== "*");
+
   return (
-    <Dialog>
+    <Dialog open={openedDialog} onOpenChange={setOpenedDialog}>
       <DialogTrigger asChild>{props.children}</DialogTrigger>
       <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
         <DialogHeader>
@@ -28,8 +46,31 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
           </DialogDescription>
         </DialogHeader>
         <form className="flex flex-col gap-4">
-          <div className="grid gap-4 py-4"></div>
+          <div className="grid gap-4 py-4">
+            <Select onValueChange={envSelected[1]}>
+              <SelectTrigger disabled={envScopes.length === 0}>
+                <SelectValue placeholder="Environment" />
+              </SelectTrigger>
+              <SelectContent>
+                {envScopes.map((envScope) => (
+                  <SelectItem key={envScope} value={envScope}>
+                    {envScope}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
           <DialogFooter>
+            <Button
+              variant="secondary"
+              className="mr-auto"
+              onClick={(e) => {
+                e.preventDefault();
+                setOpenedDialog(false);
+              }}
+            >
+              Cancel
+            </Button>
             <Button onClick={(e) => e.preventDefault()}>Download</Button>
           </DialogFooter>
         </form>
