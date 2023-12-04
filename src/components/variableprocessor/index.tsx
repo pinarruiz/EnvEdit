@@ -95,7 +95,8 @@ export default function VariableProcessor(props: VariableProcessorProps) {
               isLoading ||
               isFetchingNextPage ||
               status === "pending" ||
-              hasNextPage
+              hasNextPage ||
+              _flatVariables?.length === 0
             }
             variant="outline"
             className="duration-300 whitespace-nowrap flex group/downloadbutton w-full sm:w-fit"
