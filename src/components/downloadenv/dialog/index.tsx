@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import scopedVarsToEnv from "@/lib/scopedVarsToEnv";
 
 type DownloadEnvDialogProps = {
   children?: React.ReactNode;
@@ -27,6 +28,8 @@ type DownloadEnvDialogProps = {
 
 export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
   const [openedDialog, setOpenedDialog] = React.useState(false);
+  const [checkedIncludeDefault, setCheckedIncludeDefault] =
+    React.useState(true);
 
   const envScopes = Array.from(
     new Set(
@@ -78,7 +81,10 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
             >
               <Checkbox
                 id="includedefault"
-                defaultChecked={false}
+                checked={checkedIncludeDefault}
+                onCheckedChange={(e) =>
+                  setCheckedIncludeDefault(e === "indeterminate" ? false : e)
+                }
                 disabled={envSelected === "*"}
               />
               <label
@@ -102,7 +108,34 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
             </Button>
             <Button
               disabled={envSelected === undefined}
-              onClick={(e) => e.preventDefault()}
+              onClick={(e) => {
+                e.preventDefault();
+                if (props.variables && envSelected) {
+                  const envFile = new File(
+                    [
+                      scopedVarsToEnv({
+                        variables: props.variables,
+                        environment_scope: envSelected,
+                        includeDefault: checkedIncludeDefault,
+                      }),
+                    ],
+                    `${props.projectId}-${
+                      envSelected === "*" ? "all" : envSelected
+                    }.env`,
+                    { type: "text/plain" },
+                  );
+                  const link = document.createElement("a");
+                  const url = URL.createObjectURL(envFile);
+
+                  link.href = url;
+                  link.download = envFile.name;
+                  document.body.appendChild(link);
+                  link.click();
+
+                  document.body.removeChild(link);
+                  window.URL.revokeObjectURL(url);
+                }
+              }}
             >
               Download
             </Button>
