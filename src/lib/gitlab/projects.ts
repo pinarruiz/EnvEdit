@@ -18,11 +18,10 @@ export async function queryProjects(oauthToken: string, page: number = 1) {
 export async function getProject(
   oauthToken: string,
   projectId: SimpleProjectSchema["id"],
-  showExpanded: boolean = false,
 ) {
   const api = new Gitlab({
     host: `https://${GITLAB_DOMAIN}`,
     oauthToken: oauthToken,
   });
-  return api.Projects.show(projectId, { showExpanded: showExpanded });
+  return await api.Projects.show(projectId);
 }

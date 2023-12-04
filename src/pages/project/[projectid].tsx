@@ -22,7 +22,8 @@ export default function Project() {
   return (
     <BasicLayout
       title={
-        (status === "success" ? projectData.name + " - " : "") + DEFAULT_TITLE
+        (status === "success" && projectData ? projectData.name + " - " : "") +
+        DEFAULT_TITLE
       }
     >
       <VariableProcessor
