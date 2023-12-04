@@ -83,8 +83,8 @@ devDependencies:
     specifier: 5.10.0
     version: 5.10.0(eslint@8.54.0)(typescript@5.3.2)
   '@tanstack/react-query-devtools':
-    specifier: 5.8.8
-    version: 5.8.8(@tanstack/react-query@5.10.0)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 5.10.0
+    version: 5.10.0(@tanstack/react-query@5.10.0)(react@18.2.0)
   '@types/node':
     specifier: 20.10.3
     version: 20.10.3
@@ -1332,21 +1332,19 @@ packages:
   /@tanstack/query-core@5.10.0:
     resolution: {integrity: sha512-wlw/l2E+U70iABaJnOtZIJN/5VMhuj4RPViafwUYiIGoqw1VqqqaxBnBL90qLhWswoOaK8RAj3+NiG0duk+cRg==}
 
-  /@tanstack/query-devtools@5.8.8:
-    resolution: {integrity: sha512-JbmXB0+aSYDLd5PtUijD82YqS1xodtgeuaAixuopmcdp4CpEO3DF35Soa88PEpM8Dgrt+piwAhHlbNvrY+4CnA==}
+  /@tanstack/query-devtools@5.10.0:
+    resolution: {integrity: sha512-ZN17ZHiPFc8B1AZplueTLI6qxqNPuelV/8Q6gx2coNac2++AD1gq8NvCQxfq9HoaqFJM8xqS3oPYxa3HZZTo8w==}
     dev: true
 
-  /@tanstack/react-query-devtools@5.8.8(@tanstack/react-query@5.10.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-oC60LSopUHptugBOJ/N56AwiT4tsc9U0bp3lPWX087faw949XEve8TRfA1e/qUkwQN8/IrzCRjuDOPpHr8gmdw==}
+  /@tanstack/react-query-devtools@5.10.0(@tanstack/react-query@5.10.0)(react@18.2.0):
+    resolution: {integrity: sha512-amQN/6BdSMiYtILISk5j3IrZZiWz+HOHjJdcJNZHaTpzS7aIM1Z82bghCSoPdBtS7P1KbdoW35aD4glm9EkIuQ==}
     peerDependencies:
-      '@tanstack/react-query': ^5.8.7
+      '@tanstack/react-query': ^5.10.0
       react: ^18.0.0
-      react-dom: ^18.0.0
     dependencies:
-      '@tanstack/query-devtools': 5.8.8
+      '@tanstack/query-devtools': 5.10.0
       '@tanstack/react-query': 5.10.0(react@18.2.0)
       react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: true
 
   /@tanstack/react-query@5.10.0(react@18.2.0):
@@ -3914,6 +3912,7 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
 
   /react-hook-form@7.48.2(react@18.2.0):
     resolution: {integrity: sha512-H0T2InFQb1hX7qKtDIZmvpU1Xfn/bdahWBN1fH19gSe4bBEqTfmlr7H3XWTaVtiK4/tpPaI1F3355GPMZYge+A==}
@@ -4121,6 +4120,7 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
 
   /semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
