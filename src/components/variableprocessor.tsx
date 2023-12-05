@@ -2,8 +2,6 @@ import React from "react";
 import { useDebouncedState } from "@mantine/hooks";
 import { Input } from "@/components/ui/input";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { DownloadCloud, Loader2, UploadCloud } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ProjectVariableSchema } from "@gitbeaker/rest";
 import { UserContext } from "@/components/contexts/user";
@@ -12,7 +10,8 @@ import { VariableProcessorProps } from "@/types/variableprocessor";
 import { queryVariables } from "@/lib/gitlab/variables";
 import VariableCard, { LoadingVariableCard } from "@/components/variablecard";
 import { GITLAB_PER_PAGE } from "@/lib/appEnv";
-import DownloadEnvDialog from "@/components/downloadenv/dialog";
+import DownloadEnvButton from "@/components/downloadenv/button";
+import UploadEnvButton from "@/components/uploadenv/button";
 
 export default function VariableProcessor(props: VariableProcessorProps) {
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
@@ -89,65 +88,28 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           disabled={_flatVariables?.length === 0}
         />
         <div className="flex gap-2 md:gap-5 w-full md:w-auto">
-          <DownloadEnvDialog
+          <DownloadEnvButton
             projectId={props.projectId}
-            variables={_flatVariables}
-          >
-            <Button
-              disabled={
-                props.loading ||
-                isLoading ||
-                isFetchingNextPage ||
-                status === "pending" ||
-                hasNextPage ||
-                _flatVariables?.length === 0
-              }
-              variant="outline"
-              className="duration-300 whitespace-nowrap flex group/downloadbutton w-full md:w-fit"
-            >
-              <Loader2
-                className={cn(
-                  "opacity-70 animate-spin",
-                  props.loading ||
-                    isLoading ||
-                    isFetchingNextPage ||
-                    status === "pending" ||
-                    hasNextPage
-                    ? "mr-3 w-6"
-                    : "duration-300 w-0",
-                )}
-              />
-              <DownloadCloud className="duration-300 opacity-70 rotate-180 scale-0 w-0 group-hover/downloadbutton:mr-3 group-hover/downloadbutton:rotate-0 group-hover/downloadbutton:scale-100 group-hover/downloadbutton:w-6" />
-              Download Env
-            </Button>
-          </DownloadEnvDialog>
-          <Button
-            disabled={
+            flatVariables={_flatVariables !== undefined ? _flatVariables : []}
+            loading={
               props.loading ||
               isLoading ||
               isFetchingNextPage ||
               status === "pending" ||
-              hasNextPage ||
-              _flatVariables?.length === 0
+              hasNextPage
             }
-            variant="outline"
-            className="duration-300 whitespace-nowrap flex group/downloadbutton w-full md:w-fit"
-          >
-            <Loader2
-              className={cn(
-                "opacity-70 animate-spin",
-                props.loading ||
-                  isLoading ||
-                  isFetchingNextPage ||
-                  status === "pending" ||
-                  hasNextPage
-                  ? "mr-3 w-6"
-                  : "duration-300 w-0",
-              )}
-            />
-            <UploadCloud className="duration-300 opacity-70 rotate-180 scale-0 w-0 group-hover/downloadbutton:mr-3 group-hover/downloadbutton:rotate-0 group-hover/downloadbutton:scale-100 group-hover/downloadbutton:w-6" />
-            Upload Env
-          </Button>
+          />
+          <UploadEnvButton
+            projectId={props.projectId}
+            flatVariables={_flatVariables !== undefined ? _flatVariables : []}
+            loading={
+              props.loading ||
+              isLoading ||
+              isFetchingNextPage ||
+              status === "pending" ||
+              hasNextPage
+            }
+          />
         </div>
       </div>
       <div
