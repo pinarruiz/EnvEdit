@@ -1,9 +1,11 @@
 import React from "react";
 import { ProjectVariableSchema } from "@gitbeaker/rest";
-import variablesToScopes from "@/lib/variablesToScopes";
+import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
+import variablesToScopes from "@/lib/variablesToScopes";
 
 type UploadEnvSelectorProps = {
   variables: ProjectVariableSchema[];
@@ -29,11 +31,26 @@ export default function UploadEnvSelector(props: UploadEnvSelectorProps) {
         props.enabled ? "h-52" : "h-0 overflow-hidden",
       )}
     >
-      <Input
-        onChange={(e) => setSearchScope(e.currentTarget.value)}
-        value={searchScope}
-        placeholder="Search for environment scope..."
-      />
+      <div className="flex">
+        <Input
+          onChange={(e) => setSearchScope(e.currentTarget.value)}
+          value={searchScope}
+          placeholder="Search for environment scope..."
+        />
+        <Button
+          size="icon"
+          variant="outline"
+          className={cn(
+            "group/createenv duration-300 transition-all",
+            envScopes.includes(searchScope.toLowerCase()) || searchScope === ""
+              ? "w-0 border-none"
+              : "w-10 ml-3",
+          )}
+          onClick={(e) => e.preventDefault()}
+        >
+          <Plus className="duration-300 group-hover/createenv:rotate-90 h-6 w-6" />
+        </Button>
+      </div>
       <ScrollArea
         className={cn(
           "duration-300 overflow-auto px-3 py-2 border rounded-md",
