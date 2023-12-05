@@ -51,6 +51,7 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
               <Input
                 type="file"
                 ref={fileInputRef}
+                accept="text/plain,.env"
                 onChange={(e) =>
                   setFileUploaded(e.currentTarget.files?.length !== 0)
                 }
