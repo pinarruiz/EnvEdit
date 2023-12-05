@@ -13,7 +13,7 @@ type UploadEnvButtonProps = {
 
 export default function UploadEnvButton(props: UploadEnvButtonProps) {
   return (
-    <UploadEnvDialog>
+    <UploadEnvDialog variables={props.flatVariables}>
       <Button
         disabled={props.loading}
         variant="outline"
