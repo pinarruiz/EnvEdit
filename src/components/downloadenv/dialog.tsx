@@ -19,11 +19,12 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import scopedVarsToEnv from "@/lib/scopedVarsToEnv";
+import variablesToScopes from "@/lib/variablesToScopes";
 
 type DownloadEnvDialogProps = {
   children?: React.ReactNode;
   projectId: number;
-  variables?: ProjectVariableSchema[];
+  variables: ProjectVariableSchema[];
 };
 
 export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
@@ -31,11 +32,7 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
   const [checkedIncludeDefault, setCheckedIncludeDefault] =
     React.useState(true);
 
-  const envScopes = Array.from(
-    new Set(
-      props.variables?.map((variable) => variable.environment_scope),
-    ).values(),
-  );
+  const envScopes = variablesToScopes(props.variables);
 
   const [envSelected, setEnvSelected] = React.useState<
     undefined | ProjectVariableSchema["environment_scope"]
