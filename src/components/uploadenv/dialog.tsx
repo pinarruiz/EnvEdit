@@ -12,9 +12,12 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { X } from "lucide-react";
+import { ProjectVariableSchema } from "@gitbeaker/rest";
+import UploadEnvSelector from "@/components/uploadenv/envselector";
 
 type UploadEnvDialogProps = {
   children?: React.ReactNode;
+  variables: ProjectVariableSchema[];
 };
 
 export default function UploadEnvDialog(props: UploadEnvDialogProps) {
@@ -75,6 +78,10 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
                 <X className="duration-150 rotate-0 group-hover/removebutton:rotate-90" />
               </Button>
             </div>
+            <UploadEnvSelector
+              variables={props.variables}
+              enabled={fileUploaded}
+            />
           </div>
           <DialogFooter>
             <Button
