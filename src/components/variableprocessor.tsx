@@ -2,7 +2,7 @@ import React from "react";
 import { useDebouncedState } from "@mantine/hooks";
 import { Input } from "@/components/ui/input";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { DownloadCloud, Loader2 } from "lucide-react";
+import { DownloadCloud, Loader2, UploadCloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ProjectVariableSchema } from "@gitbeaker/rest";
@@ -81,17 +81,46 @@ export default function VariableProcessor(props: VariableProcessorProps) {
 
   return (
     <div className="container bg-background p-0 shadow-sm flex flex-col border rounded-lg">
-      <div className="transition-[padding] duration-300 px-4 pt-4 pb-4 flex flex-col items-center w-full gap-2 sm:pb-0 sm:gap-5 sm:flex-row">
+      <div className="transition-[padding] duration-300 px-4 pt-4 pb-4 flex flex-col items-center w-full gap-2 md:pb-0 md:gap-5 md:flex-row">
         <Input
           placeholder="Filter variables ..."
           onChange={(event) => setGlobalFilter(String(event.target.value))}
           className="w-full"
           disabled={_flatVariables?.length === 0}
         />
-        <DownloadEnvDialog
-          projectId={props.projectId}
-          variables={_flatVariables}
-        >
+        <div className="flex gap-2 md:gap-5 w-full md:w-auto">
+          <DownloadEnvDialog
+            projectId={props.projectId}
+            variables={_flatVariables}
+          >
+            <Button
+              disabled={
+                props.loading ||
+                isLoading ||
+                isFetchingNextPage ||
+                status === "pending" ||
+                hasNextPage ||
+                _flatVariables?.length === 0
+              }
+              variant="outline"
+              className="duration-300 whitespace-nowrap flex group/downloadbutton w-full md:w-fit"
+            >
+              <Loader2
+                className={cn(
+                  "opacity-70 animate-spin",
+                  props.loading ||
+                    isLoading ||
+                    isFetchingNextPage ||
+                    status === "pending" ||
+                    hasNextPage
+                    ? "mr-3 w-6"
+                    : "duration-300 w-0",
+                )}
+              />
+              <DownloadCloud className="duration-300 opacity-70 rotate-180 scale-0 w-0 group-hover/downloadbutton:mr-3 group-hover/downloadbutton:rotate-0 group-hover/downloadbutton:scale-100 group-hover/downloadbutton:w-6" />
+              Download Env
+            </Button>
+          </DownloadEnvDialog>
           <Button
             disabled={
               props.loading ||
@@ -102,7 +131,7 @@ export default function VariableProcessor(props: VariableProcessorProps) {
               _flatVariables?.length === 0
             }
             variant="outline"
-            className="duration-300 whitespace-nowrap flex group/downloadbutton w-full sm:w-fit"
+            className="duration-300 whitespace-nowrap flex group/downloadbutton w-full md:w-fit"
           >
             <Loader2
               className={cn(
@@ -116,14 +145,14 @@ export default function VariableProcessor(props: VariableProcessorProps) {
                   : "duration-300 w-0",
               )}
             />
-            <DownloadCloud className="duration-300 opacity-70 rotate-180 scale-0 w-0 group-hover/downloadbutton:mr-3 group-hover/downloadbutton:rotate-0 group-hover/downloadbutton:scale-100 group-hover/downloadbutton:w-6" />
-            Download Env
+            <UploadCloud className="duration-300 opacity-70 rotate-180 scale-0 w-0 group-hover/downloadbutton:mr-3 group-hover/downloadbutton:rotate-0 group-hover/downloadbutton:scale-100 group-hover/downloadbutton:w-6" />
+            Upload Env
           </Button>
-        </DownloadEnvDialog>
+        </div>
       </div>
       <div
         className={cn(
-          "transition-[gap] overflow-auto px-4 sm:py-4 py-2 flex flex-col sm:gap-4 gap-2",
+          "transition-[gap] overflow-auto px-4 md:py-4 py-2 flex flex-col md:gap-4 gap-2",
           noResults || noVariables ? "flex" : "",
         )}
       >
