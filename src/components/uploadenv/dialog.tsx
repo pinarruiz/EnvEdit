@@ -146,7 +146,7 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
             <Button disabled={uploadButtonDisabled}>
               <p
                 className={cn(
-                  "overflow-hidden duration-300 whitespace-nowrap",
+                  "overflow-hidden duration-300 whitespace-nowrap text-left",
                   envScopes.includes(searchScope) || uploadButtonDisabled
                     ? "w-0"
                     : "w-28",
