@@ -129,9 +129,10 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
               </ScrollArea>
             </div>
           </div>
-          <DialogFooter>
+          <DialogFooter className="flex gap-3">
             <Button
               variant="secondary"
+              className="sm:mr-auto"
               onClick={(e) => {
                 e.preventDefault();
                 handleDialogOpenClose(false);
