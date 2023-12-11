@@ -92,10 +92,10 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
               </label>
             </div>
           </div>
-          <DialogFooter>
+          <DialogFooter className="flex gap-3">
             <Button
               variant="secondary"
-              className="mr-auto"
+              className="sm:mr-auto"
               onClick={(e) => {
                 e.preventDefault();
                 setOpenedDialog(false);
