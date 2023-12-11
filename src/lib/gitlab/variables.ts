@@ -56,3 +56,29 @@ export async function updateVariable(
     filter: { environment_scope: environmentScope },
   });
 }
+
+export async function updateCreateVariable(
+  oauthToken: string,
+  projectId: SimpleProjectSchema["id"],
+  key: ProjectVariableSchema["key"],
+  value: ProjectVariableSchema["value"],
+  environmentScope: ProjectVariableSchema["environment_scope"],
+) {
+  try {
+    return await updateVariable(
+      oauthToken,
+      projectId,
+      key,
+      value,
+      environmentScope,
+    );
+  } catch (error) {
+    return await createVariable(
+      oauthToken,
+      projectId,
+      key,
+      value,
+      environmentScope,
+    );
+  }
+}
