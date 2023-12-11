@@ -1,6 +1,6 @@
 import React from "react";
-import { useQueryClient } from "@tanstack/react-query";
-import { X } from "lucide-react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Loader2, X } from "lucide-react";
 import { ProjectVariableSchema, SimpleProjectSchema } from "@gitbeaker/rest";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import variablesToScopes from "@/lib/variablesToScopes";
-import { createVariable, updateVariable } from "@/lib/gitlab/variables";
+import { updateCreateVariable } from "@/lib/gitlab/variables";
 import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/usercontext";
 import { readInputFile } from "@/lib/files";
@@ -32,6 +32,7 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
 
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
   const [openedDialog, setOpenedDialog] = React.useState(false);
+  const [isUploading, setIsUploading] = React.useState(false);
   const [fileUploaded, setFileUploaded] = React.useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -53,8 +54,33 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
     setOpenedDialog(event);
   }
 
+  const uploadVariablesMutation = useMutation({
+    mutationKey: ["uploadVariables"],
+    mutationFn: async (args: {
+      variables: Record<
+        ProjectVariableSchema["key"],
+        ProjectVariableSchema["value"]
+      >;
+      environment_scope: ProjectVariableSchema["environment_scope"];
+      oauthToken: string;
+    }) => {
+      for (const variable of Object.keys(args.variables)) {
+        updateCreateVariable(
+          args.oauthToken,
+          props.projectId,
+          variable,
+          args.variables[variable],
+          args.environment_scope,
+        );
+      }
+    },
+  });
+
   const uploadButtonDisabled =
-    !fileUploaded || searchScope.length === 0 || searchScope === "";
+    !fileUploaded ||
+    searchScope.length === 0 ||
+    searchScope === "" ||
+    isUploading;
 
   return (
     <Dialog open={openedDialog} onOpenChange={handleDialogOpenClose}>
@@ -157,6 +183,7 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
               disabled={uploadButtonDisabled}
               onClick={async (e) => {
                 e.preventDefault();
+                setIsUploading(true);
                 if (
                   fileInputRef.current &&
                   fileInputRef.current.files &&
@@ -165,27 +192,21 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
                   const fileContent = (
                     await readInputFile(fileInputRef.current.files[0])
                   ).trim();
+                  const variables: Record<
+                    ProjectVariableSchema["key"],
+                    ProjectVariableSchema["value"]
+                  > = {};
                   for (const variable of fileContent.split("\n")) {
                     const [key, ...valueSplit] = variable.split("=");
                     const value = valueSplit.join("=");
-                    try {
-                      await updateVariable(
-                        userData.accessToken,
-                        props.projectId,
-                        key,
-                        value,
-                        searchScope,
-                      );
-                    } catch (error) {
-                      await createVariable(
-                        userData.accessToken,
-                        props.projectId,
-                        key,
-                        value,
-                        searchScope,
-                      );
-                    }
+                    variables[key] = value;
                   }
+                  await uploadVariablesMutation.mutateAsync({
+                    variables: variables,
+                    environment_scope: searchScope,
+                    oauthToken: userData.accessToken,
+                  });
+                  uploadVariablesMutation.reset();
                   await queryClient.invalidateQueries({
                     queryKey: [
                       "variables",
@@ -194,6 +215,7 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
                     ],
                   });
                 }
+                setIsUploading(false);
                 handleDialogOpenClose(false);
               }}
             >
@@ -207,7 +229,14 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
               >
                 Create env and
               </p>
-              <p>Upload</p>
+              <Loader2
+                className={cn(
+                  "animate-spin overflow-hidden",
+                  isUploading ? "w-6 h-6 mr-2" : "w-0 h-0",
+                )}
+                style={{ transitionDuration: "300ms" }}
+              />
+              <p>{isUploading ? "Uploading..." : "Upload"}</p>
             </Button>
           </DialogFooter>
         </form>
