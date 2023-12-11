@@ -27,9 +27,7 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   const envScopes = variablesToScopes(props.variables);
-  const [searchScope, setSearchScope] = React.useState(
-    envScopes.length === 1 ? envScopes[0] : "",
-  );
+  const [searchScope, setSearchScope] = React.useState("");
 
   const filteredScopes = envScopes.filter(
     (envScope) =>
