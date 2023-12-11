@@ -13,7 +13,9 @@ type UploadEnvSelectorProps = {
 };
 
 export default function UploadEnvSelector(props: UploadEnvSelectorProps) {
-  const envScopes = variablesToScopes(props.variables);
+  const [envScopes, setEnvScopes] = React.useState(
+    variablesToScopes(props.variables),
+  );
   const [searchScope, setSearchScope] = React.useState(
     envScopes.length === 1 ? envScopes[0] : "",
   );
@@ -46,7 +48,10 @@ export default function UploadEnvSelector(props: UploadEnvSelectorProps) {
               ? "w-0 border-none"
               : "w-10 ml-3",
           )}
-          onClick={(e) => e.preventDefault()}
+          onClick={(e) => {
+            e.preventDefault();
+            setEnvScopes((oldEnvScopes) => oldEnvScopes.concat([searchScope]));
+          }}
         >
           <Plus className="duration-300 group-hover/createenv:rotate-90 h-6 w-6" />
         </Button>
