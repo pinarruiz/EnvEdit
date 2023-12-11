@@ -44,8 +44,13 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
     }
   }, [envScopes, envSelected]);
 
+  function handleDialogOpenClose(event: boolean) {
+    setEnvSelected(undefined);
+    setOpenedDialog(event);
+  }
+
   return (
-    <Dialog open={openedDialog} onOpenChange={setOpenedDialog}>
+    <Dialog open={openedDialog} onOpenChange={handleDialogOpenClose}>
       <DialogTrigger asChild>{props.children}</DialogTrigger>
       <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
         <DialogHeader>
@@ -98,7 +103,7 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
               className="sm:mr-auto"
               onClick={(e) => {
                 e.preventDefault();
-                setOpenedDialog(false);
+                handleDialogOpenClose(false);
               }}
             >
               Cancel
