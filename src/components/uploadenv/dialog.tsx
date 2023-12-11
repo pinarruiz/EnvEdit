@@ -1,4 +1,7 @@
 import React from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { X } from "lucide-react";
+import { ProjectVariableSchema, SimpleProjectSchema } from "@gitbeaker/rest";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,18 +13,24 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { X } from "lucide-react";
-import { ProjectVariableSchema } from "@gitbeaker/rest";
-import variablesToScopes from "@/lib/variablesToScopes";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Input } from "@/components/ui/input";
+import variablesToScopes from "@/lib/variablesToScopes";
+import { createVariable, updateVariable } from "@/lib/gitlab/variables";
+import { UserContext } from "@/components/contexts/user";
+import { UserContextProviderType } from "@/types/usercontext";
+import { readInputFile } from "@/lib/files";
 
 type UploadEnvDialogProps = {
   children?: React.ReactNode;
   variables: ProjectVariableSchema[];
+  projectId: SimpleProjectSchema["id"];
 };
 
 export default function UploadEnvDialog(props: UploadEnvDialogProps) {
+  const queryClient = useQueryClient();
+
+  const { userData } = React.useContext(UserContext) as UserContextProviderType;
   const [openedDialog, setOpenedDialog] = React.useState(false);
   const [fileUploaded, setFileUploaded] = React.useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
@@ -40,6 +49,7 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
       fileInputRef.current.value = "";
     }
     setFileUploaded(false);
+    setSearchScope("");
     setOpenedDialog(event);
   }
 
@@ -143,7 +153,50 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
             >
               Cancel
             </Button>
-            <Button disabled={uploadButtonDisabled}>
+            <Button
+              disabled={uploadButtonDisabled}
+              onClick={async (e) => {
+                e.preventDefault();
+                if (
+                  fileInputRef.current &&
+                  fileInputRef.current.files &&
+                  userData.accessToken
+                ) {
+                  const fileContent = (
+                    await readInputFile(fileInputRef.current.files[0])
+                  ).trim();
+                  for (const variable of fileContent.split("\n")) {
+                    const [key, ...valueSplit] = variable.split("=");
+                    const value = valueSplit.join("=");
+                    try {
+                      await updateVariable(
+                        userData.accessToken,
+                        props.projectId,
+                        key,
+                        value,
+                        searchScope,
+                      );
+                    } catch (error) {
+                      await createVariable(
+                        userData.accessToken,
+                        props.projectId,
+                        key,
+                        value,
+                        searchScope,
+                      );
+                    }
+                  }
+                  await queryClient.invalidateQueries({
+                    queryKey: [
+                      "variables",
+                      props.projectId,
+                      userData.accessToken,
+                    ],
+                  });
+                }
+                handleDialogOpenClose(false);
+              }}
+            >
               <p
                 className={cn(
                   "overflow-hidden duration-300 whitespace-nowrap text-left",
