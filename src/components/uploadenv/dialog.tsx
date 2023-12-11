@@ -43,6 +43,9 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
     setOpenedDialog(event);
   }
 
+  const uploadButtonDisabled =
+    !fileUploaded || searchScope.length === 0 || searchScope === "";
+
   return (
     <Dialog open={openedDialog} onOpenChange={handleDialogOpenClose}>
       <DialogTrigger asChild>{props.children}</DialogTrigger>
@@ -139,6 +142,11 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
               }}
             >
               Cancel
+            </Button>
+            <Button disabled={uploadButtonDisabled}>
+              {uploadButtonDisabled || envScopes.includes(searchScope)
+                ? "Upload"
+                : "Create env and Upload"}
             </Button>
           </DialogFooter>
         </form>
