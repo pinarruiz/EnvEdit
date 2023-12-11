@@ -1,9 +1,13 @@
-import { Gitlab } from "@gitbeaker/rest";
+import {
+  Gitlab,
+  ProjectVariableSchema,
+  SimpleProjectSchema,
+} from "@gitbeaker/rest";
 import { GITLAB_DOMAIN, GITLAB_PER_PAGE } from "@/lib/appEnv";
 
 export async function queryVariables(
   oauthToken: string,
-  projectId: string | number,
+  projectId: SimpleProjectSchema["id"],
   page: number = 1,
 ) {
   const api = new Gitlab({
@@ -15,5 +19,40 @@ export async function queryVariables(
     showExpanded: true,
     page: page,
     perPage: GITLAB_PER_PAGE,
+  });
+}
+
+export async function createVariable(
+  oauthToken: string,
+  projectId: SimpleProjectSchema["id"],
+  key: ProjectVariableSchema["key"],
+  value: ProjectVariableSchema["value"],
+  environmentScope: ProjectVariableSchema["environment_scope"],
+) {
+  const api = new Gitlab({
+    host: `https://${GITLAB_DOMAIN}`,
+    oauthToken: oauthToken,
+  });
+
+  return await api.ProjectVariables.create(projectId, key, value, {
+    environmentScope: environmentScope,
+  });
+}
+
+export async function updateVariable(
+  oauthToken: string,
+  projectId: SimpleProjectSchema["id"],
+  key: ProjectVariableSchema["key"],
+  value: ProjectVariableSchema["value"],
+  environmentScope: ProjectVariableSchema["environment_scope"],
+) {
+  const api = new Gitlab({
+    host: `https://${GITLAB_DOMAIN}`,
+    oauthToken: oauthToken,
+  });
+
+  return await api.ProjectVariables.edit(projectId, key, value, {
+    environmentScope: environmentScope,
+    filter: { environment_scope: environmentScope },
   });
 }
