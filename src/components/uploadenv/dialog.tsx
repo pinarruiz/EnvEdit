@@ -144,9 +144,17 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
               Cancel
             </Button>
             <Button disabled={uploadButtonDisabled}>
-              {uploadButtonDisabled || envScopes.includes(searchScope)
-                ? "Upload"
-                : "Create env and Upload"}
+              <p
+                className={cn(
+                  "overflow-hidden duration-300 whitespace-nowrap",
+                  envScopes.includes(searchScope) || uploadButtonDisabled
+                    ? "w-0"
+                    : "w-28",
+                )}
+              >
+                Create env and
+              </p>
+              <p>Upload</p>
             </Button>
           </DialogFooter>
         </form>
