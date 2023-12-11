@@ -129,7 +129,7 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           isLoading ||
           isFetchingNextPage ||
           status === "pending") &&
-          Array.from(Array(GITLAB_PER_PAGE)).map((index) => (
+          Array.from(Array(GITLAB_PER_PAGE)).map((_, index) => (
             <LoadingVariableCard key={`loading${index}`} />
           ))}
         {noResults && <p className="text-center w-full">No results</p>}
