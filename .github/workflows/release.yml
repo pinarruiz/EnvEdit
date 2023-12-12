@@ -65,6 +65,7 @@ jobs:
           cache-to: type=gha
           tags: ${{ steps.dockermeta.outputs.tags }}
           labels: ${{ steps.dockermeta.outputs.labels }}
+          provenance: false
           build-args: |
             NODE_VERSION=${{ steps.parseversion.outputs.node-version }}
 
