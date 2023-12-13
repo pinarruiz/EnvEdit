@@ -27,6 +27,7 @@ export default function ProjectProcessor(props: ProjectProcessorProps) {
     isLoading,
     isFetchingNextPage,
     hasNextPage,
+    status,
   } = useInfiniteQuery({
     queryKey: ["projectsData", userData.accessToken],
     initialPageParam: 1,
@@ -108,7 +109,10 @@ export default function ProjectProcessor(props: ProjectProcessorProps) {
               />
             </div>
           ))}
-        {(props.loading || isLoading || isFetchingNextPage) &&
+        {(props.loading ||
+          isLoading ||
+          isFetchingNextPage ||
+          status === "pending") &&
           Array.from(Array(GITLAB_PER_PAGE)).map((index) => (
             <ProjectCard
               key={`loading${index}`}
