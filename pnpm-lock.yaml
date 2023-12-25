@@ -42,8 +42,8 @@ dependencies:
     specifier: 1.0.2
     version: 1.0.2(@types/react@18.2.45)(react@18.2.0)
   '@tanstack/react-query':
-    specifier: 5.14.2
-    version: 5.14.2(react@18.2.0)
+    specifier: 5.14.6
+    version: 5.14.6(react@18.2.0)
   class-variance-authority:
     specifier: 0.7.0
     version: 0.7.0
@@ -93,7 +93,7 @@ devDependencies:
     version: 5.14.6(eslint@8.56.0)(typescript@5.3.3)
   '@tanstack/react-query-devtools':
     specifier: 5.14.5
-    version: 5.14.5(@tanstack/react-query@5.14.2)(react@18.2.0)
+    version: 5.14.5(@tanstack/react-query@5.14.6)(react@18.2.0)
   '@types/node':
     specifier: 20.10.5
     version: 20.10.5
@@ -1109,7 +1109,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.2
       '@radix-ui/primitive': 1.0.1
       '@radix-ui/react-collection': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.45)(react@18.2.0)
@@ -1641,19 +1641,19 @@ packages:
     resolution: {integrity: sha512-xM8BQbE4FBAVEPr8t6MFbOJP+canDFz0hcY9Ho+5Z4LQciC60wE+7ZALx5n3InP4R7IELx8AodS5G3KYzBAwCg==}
     dev: true
 
-  /@tanstack/react-query-devtools@5.14.5(@tanstack/react-query@5.14.2)(react@18.2.0):
+  /@tanstack/react-query-devtools@5.14.5(@tanstack/react-query@5.14.6)(react@18.2.0):
     resolution: {integrity: sha512-aDntW1dWc/feVUYwVqfM/r5OXa3RN06VhtYrTYW9fhj0Ks2dJw6Diknh9VpYqhI+gJrhVID95Rv/ZzS6W2lANA==}
     peerDependencies:
       '@tanstack/react-query': ^5.14.2
       react: ^18.0.0
     dependencies:
       '@tanstack/query-devtools': 5.14.5
-      '@tanstack/react-query': 5.14.2(react@18.2.0)
+      '@tanstack/react-query': 5.14.6(react@18.2.0)
       react: 18.2.0
     dev: true
 
-  /@tanstack/react-query@5.14.2(react@18.2.0):
-    resolution: {integrity: sha512-SbOzV7UBW8ED3tOnyn6kqNGscnOAfoxShYlbvaQo/5528mDZKpvrwoL/1du1/ukSC6RMAiKmx95SrYqlwPzWDw==}
+  /@tanstack/react-query@5.14.6(react@18.2.0):
+    resolution: {integrity: sha512-+INnJdq/904d+K2XQjqdIC58glpNGfQ8Xz93M6WBeJs5FPGFV8SEuFVzPtW/bKZ/Hu7hAiJpbFLDg5Lysvwmuw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
