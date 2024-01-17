@@ -128,8 +128,8 @@ devDependencies:
     specifier: 3.1.1
     version: 3.1.1
   shadcn-ui:
-    specifier: 0.6.0
-    version: 0.6.0(typescript@5.3.3)
+    specifier: 0.8.0
+    version: 0.8.0(typescript@5.3.3)
   tailwindcss:
     specifier: 3.4.1
     version: 3.4.1
@@ -1663,7 +1663,7 @@ packages:
   /@ts-morph/common@0.19.0:
     resolution: {integrity: sha512-Unz/WHmd4pGax91rdIKWi51wnVUW11QttMEPpBiBgIewnc9UQIX7UDLxr5vRlqeByXCwhkF6VabSsI0raWcyAQ==}
     dependencies:
-      fast-glob: 3.3.1
+      fast-glob: 3.3.2
       minimatch: 7.4.6
       mkdirp: 2.1.6
       path-browserify: 1.0.1
@@ -2924,6 +2924,17 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
+
+  /fast-glob@3.3.2:
+    resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
+    engines: {node: '>=8.6.0'}
+    dependencies:
+      '@nodelib/fs.stat': 2.0.5
+      '@nodelib/fs.walk': 1.2.8
+      glob-parent: 5.1.2
+      merge2: 1.4.1
+      micromatch: 4.0.5
+    dev: true
 
   /fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
@@ -4508,8 +4519,8 @@ packages:
       lru-cache: 6.0.0
     dev: true
 
-  /shadcn-ui@0.6.0(typescript@5.3.3):
-    resolution: {integrity: sha512-z0mIhlj+wDwxO8ZtVq7ZiM7H1i6F9AV90bTDBcON0fUJ0ayHf9GnIyDUWfhpzJwDlv7acdvmp/NyAL8RbsmlRA==}
+  /shadcn-ui@0.8.0(typescript@5.3.3):
+    resolution: {integrity: sha512-avqRgjJ6PIQQXdfvoCAWQpyLTLk6oHhtU5DQKmLeYcgu1ZIsgMqA9MKWAkr0HpEdCAenCCZvFbvJ2C2m5ZXRiA==}
     hasBin: true
     dependencies:
       '@antfu/ni': 0.21.8
@@ -4521,6 +4532,7 @@ packages:
       cosmiconfig: 8.3.6(typescript@5.3.3)
       diff: 5.1.0
       execa: 7.2.0
+      fast-glob: 3.3.2
       fs-extra: 11.1.1
       https-proxy-agent: 6.2.1
       lodash.template: 4.5.0
