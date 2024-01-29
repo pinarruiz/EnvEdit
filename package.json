@@ -16,7 +16,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@gitbeaker/rest": "39.33.0",
+    "@gitbeaker/rest": "39.33.2",
     "@hookform/resolvers": "3.3.4",
     "@mantine/hooks": "7.4.2",
     "@radix-ui/react-checkbox": "1.0.4",
