@@ -89,8 +89,8 @@ dependencies:
 
 devDependencies:
   '@tanstack/eslint-plugin-query':
-    specifier: 5.17.20
-    version: 5.17.20(eslint@8.56.0)(typescript@5.3.3)
+    specifier: 5.18.0
+    version: 5.18.0(eslint@8.56.0)(typescript@5.3.3)
   '@tanstack/react-query-devtools':
     specifier: 5.17.21
     version: 5.17.21(@tanstack/react-query@5.17.19)(react@18.2.0)
@@ -1648,8 +1648,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@tanstack/eslint-plugin-query@5.17.20(eslint@8.56.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-Jxu/GV7JqDgI6HMP8wQqc5a8efe0GaXoc0qCI+YjVBWEaWh8+T+wF5Ywha44gVraaEGlqkEhYmZrykg6dUG3OA==}
+  /@tanstack/eslint-plugin-query@5.18.0(eslint@8.56.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-R7x4YV304oduB9IYi660pfNpeO4XcFntkmIG0QV9/IaLeUq+H6M1C+5Th/092ScIrDtU6XgngY2YsS6bwt4vAg==}
     peerDependencies:
       eslint: ^8.0.0
     dependencies:
@@ -2673,7 +2673,7 @@ packages:
       eslint: 8.56.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.56.0)
       eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.56.0)
-      fast-glob: 3.3.1
+      fast-glob: 3.3.2
       get-tsconfig: 4.7.0
       is-core-module: 2.13.0
       is-glob: 4.0.3
@@ -3210,7 +3210,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.3.1
+      fast-glob: 3.3.2
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
