@@ -57,7 +57,7 @@ jobs:
             type=edge,branch=master
 
       - name: Build and Push to Container Registries
-        uses: docker/build-push-action@v5.1.0
+        uses: docker/build-push-action@v5.3.0
         with:
           platforms: linux/arm64,linux/amd64
           push: true
