@@ -1,4 +1,4 @@
-FROM node:21.6.2-alpine
+FROM node:21.7.2-alpine
 
 ENV APP_USER envedit
 
