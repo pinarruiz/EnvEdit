@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "5.20.1",
-    "@tanstack/react-query-devtools": "5.18.0",
+    "@tanstack/react-query-devtools": "5.24.0",
     "@types/node": "20.12.5",
     "@types/react": "18.2.57",
     "@types/react-dom": "18.2.24",
