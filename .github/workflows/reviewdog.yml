@@ -84,7 +84,7 @@ jobs:
       checks: write
     steps:
       - uses: actions/checkout@v4.1.4
-      - uses: reviewdog/action-hadolint@v1.41.0
+      - uses: reviewdog/action-hadolint@v1.41.1
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
