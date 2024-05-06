@@ -38,6 +38,9 @@ jobs:
           restore-keys: |
             mkdocs-material-
 
+      - name: Preparing build env
+        run: python docs/scripts/prepareEnv.py
+
       - name: Build docs
         run: mkdocs build -d github-pages
 
