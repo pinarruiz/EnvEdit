@@ -1,3 +1,5 @@
 <!-- markdownlint-disable MD041 -->
 
---8<-- "README.md"
+```text
+--8<-- "LICENSE"
+```

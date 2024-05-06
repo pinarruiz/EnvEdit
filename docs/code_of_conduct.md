@@ -1,3 +1,3 @@
 <!-- markdownlint-disable MD041 -->
 
---8<-- "README.md"
+--8<-- "CODE_OF_CONDUCT.md"

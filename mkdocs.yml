@@ -111,3 +111,10 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
+nav:
+  - Home:
+      - Overview: index.md
+      - License: license.md
+  - Development:
+      - Code of Conduct: code_of_conduct.md
