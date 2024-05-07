@@ -30,7 +30,7 @@ if __name__ == "__main__":
             REPOSITORY_NAME = GITHUB_REPOSITORY.split("/")[1]
             write_to_env_file(f"{REPOSITORY_NAME=}")
 
-            SITE_NAME = f"{REPOSITORY_NAME} Docs\n"
+            SITE_NAME = f"{REPOSITORY_NAME} Docs"
             write_to_env_file(f"{SITE_NAME=}")
 
             PAGES_URL = f"https://{REPOSITORY_OWNER}.github.io/{REPOSITORY_NAME}/"
