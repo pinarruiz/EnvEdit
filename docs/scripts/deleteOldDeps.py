@@ -14,7 +14,7 @@ if __name__ == "__main__":
         if is_inactive:
             try:
                 print(f"Deleting {deployment.id} ...")
-                reqdelete(
+                res = reqdelete(
                     url=deployment.url,
                     timeout=20,
                     headers={
@@ -23,6 +23,9 @@ if __name__ == "__main__":
                         "X-GitHub-Api-Version": "2022-11-28",
                     },
                 )
-                print(f"Deleted {deployment.id}")
+                if res.status_code == 204:
+                    print(f"Deleted {deployment.id}")
+                else:
+                    print(f"Cannot delete {deployment.id}, error {res.status_code}")
             except Timeout:
                 print(f"Timeout for {deployment.id}")
