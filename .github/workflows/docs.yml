@@ -49,6 +49,11 @@ jobs:
         with:
           path: "./github-pages"
 
+      - name: Delete old deployments
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python docs/scripts/deleteOldDeps.py
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
