@@ -36,6 +36,7 @@ export async function createVariable(
 
   return await api.ProjectVariables.create(projectId, key, value, {
     environmentScope: environmentScope,
+    protected: true,
   });
 }
 
