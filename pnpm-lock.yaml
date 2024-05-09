@@ -15,8 +15,8 @@ importers:
         specifier: 3.3.4
         version: 3.3.4(react-hook-form@7.51.4(react@18.3.1))
       '@mantine/hooks':
-        specifier: 7.9.0
-        version: 7.9.0(react@18.3.1)
+        specifier: 7.9.1
+        version: 7.9.1(react@18.3.1)
       '@radix-ui/react-checkbox':
         specifier: 1.0.4
         version: 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -391,8 +391,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.19':
     resolution: {integrity: sha512-kf37QtfW+Hwx/buWGMPcR60iF9ziHa6r/CZJIHbmcm4+0qrXiVdxegAH0F6yddEVQ7zdkjcGCgCzUu+BcbhQxw==}
 
-  '@mantine/hooks@7.9.0':
-    resolution: {integrity: sha512-LKgyrlaIK0S/gcn/VDbhqLBZOYjvhXfVcH7rMs4MIBVD+wuRo2LvvAYe3cUfQbBCfmlpRjqvewwvsIYYsjSofQ==}
+  '@mantine/hooks@7.9.1':
+    resolution: {integrity: sha512-nb2Ar+2HfGxLjGZgObapeUeqcQsUWJ+rvj4X2KNTUy3+YpvLIMD3CqREowWHF7/5OTGh4BCyBqQNZ9JFpnMeHQ==}
     peerDependencies:
       react: ^18.2.0
 
@@ -3150,7 +3150,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@mantine/hooks@7.9.0(react@18.3.1)':
+  '@mantine/hooks@7.9.1(react@18.3.1)':
     dependencies:
       react: 18.3.1
 
