@@ -45,7 +45,7 @@
     "yup": "1.4.0"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "5.32.1",
+    "@tanstack/eslint-plugin-query": "5.35.6",
     "@tanstack/react-query-devtools": "5.35.1",
     "@types/node": "20.12.11",
     "@types/react": "18.3.1",
