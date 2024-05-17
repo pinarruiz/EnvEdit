@@ -12,7 +12,7 @@ jobs:
       contents: write
       checks: write
     steps:
-      - uses: actions/checkout@v4.1.5
+      - uses: actions/checkout@v4.1.6
       - uses: reviewdog/action-shellcheck@v1.20.0
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -33,7 +33,7 @@ jobs:
       contents: write
       checks: write
     steps:
-      - uses: actions/checkout@v4.1.5
+      - uses: actions/checkout@v4.1.6
       - uses: reviewdog/action-shfmt@v1.0.2
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -48,7 +48,7 @@ jobs:
       contents: write
       checks: write
     steps:
-      - uses: actions/checkout@v4.1.5
+      - uses: actions/checkout@v4.1.6
       - uses: reviewdog/action-yamllint@v1.14.0
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -63,7 +63,7 @@ jobs:
       contents: write
       checks: write
     steps:
-      - uses: actions/checkout@v4.1.5
+      - uses: actions/checkout@v4.1.6
       - name: Install remark presets
         run: npm install remark-preset-lint-recommended
         shell: bash
@@ -83,7 +83,7 @@ jobs:
       contents: write
       checks: write
     steps:
-      - uses: actions/checkout@v4.1.5
+      - uses: actions/checkout@v4.1.6
       - uses: reviewdog/action-hadolint@v1.41.1
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -99,7 +99,7 @@ jobs:
       contents: write
       checks: write
     steps:
-      - uses: actions/checkout@v4.1.5
+      - uses: actions/checkout@v4.1.6
       - uses: reviewdog/action-markdownlint@v0.18.0
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -115,7 +115,7 @@ jobs:
       contents: write
       checks: write
     steps:
-      - uses: actions/checkout@v4.1.5
+      - uses: actions/checkout@v4.1.6
       - uses: reviewdog/action-detect-secrets@v0.21.0
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -132,7 +132,7 @@ jobs:
       contents: write
       checks: write
     steps:
-      - uses: actions/checkout@v4.1.5
+      - uses: actions/checkout@v4.1.6
       - uses: reviewdog/action-gitleaks@v1.4.0
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -148,7 +148,7 @@ jobs:
       contents: write
       checks: write
     steps:
-      - uses: actions/checkout@v4.1.5
+      - uses: actions/checkout@v4.1.6
       - uses: reviewdog/action-stylelint@v1.18.1
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
