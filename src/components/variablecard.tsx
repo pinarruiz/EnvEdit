@@ -34,7 +34,12 @@ export default function VariableCard(props: VariableCardProps) {
   const envsPRef = React.useRef<HTMLParagraphElement>(null);
 
   return (
-    <VariableForm variable={props.variable} variable_name={props.variable_name}>
+    <VariableForm
+      variable={props.variable}
+      variable_name={props.variable_name}
+      project_id={props.project_id}
+      env_scopes={props.env_scopes}
+    >
       <div className="rounded-md border py-3 px-4 flex flex-col sm:flex-row transition h-full hover:bg-accent hover:cursor-pointer">
         <p className="font-bold m-auto sm:m-0 pb-5 sm:pb-0">
           {props.variable_name}

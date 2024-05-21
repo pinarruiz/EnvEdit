@@ -1,4 +1,5 @@
 import React from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   Dialog,
   DialogContent,
@@ -16,8 +17,42 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { VariableFormProps } from "@/types/variableform";
+import { UserContext } from "@/components/contexts/user";
+import { UserContextProviderType } from "@/types/usercontext";
+import { deleteVariable, updateCreateVariable } from "@/lib/gitlab/variables";
 
 export default function VariableForm(props: VariableFormProps) {
+  const queryClient = useQueryClient();
+  const { userData } = React.useContext(UserContext) as UserContextProviderType;
+
+  const updateEnvScopesMutation = useMutation({
+    mutationKey: ["updateEnvScopes", props.project_id, props.variable_name],
+    mutationFn: async (args: {
+      value: VariableFormProps["variable"]["value"];
+      environment_scope: VariableFormProps["variable"]["environment_scope"];
+      enabled: boolean;
+    }) => {
+      if (userData.accessToken) {
+        if (args.enabled) {
+          return await updateCreateVariable(
+            userData.accessToken,
+            props.project_id,
+            props.variable_name,
+            args.value,
+            args.environment_scope,
+          );
+        } else {
+          return await deleteVariable(
+            userData.accessToken,
+            props.project_id,
+            props.variable_name,
+            args.environment_scope,
+          );
+        }
+      }
+    },
+  });
+
   const variablePool = Object.keys(props.variable)
     .map((envName) => {
       return { environment_scope: envName, value: props.variable[envName] };
@@ -62,14 +97,26 @@ export default function VariableForm(props: VariableFormProps) {
                       key={envName}
                       variant="outline"
                       className="duration-300 transition-[opacity] bg-accent opacity-75 hover:opacity-100 m-1 first:ml-0 last:mr-0"
-                      onClick={(event) => {
+                      onClick={async (event) => {
                         event.preventDefault();
+                        await updateEnvScopesMutation.mutateAsync({
+                          environment_scope: envName,
+                          value: envValue,
+                          enabled: false,
+                        });
+                        await queryClient.invalidateQueries({
+                          queryKey: [
+                            "variables",
+                            props.project_id,
+                            userData.accessToken,
+                          ],
+                        });
                       }}
                     >
                       {envName}
                     </Button>
                   ))}
-                  {Object.keys(props.variable)
+                  {props.env_scopes
                     .filter(
                       (envVar) =>
                         !Object.values(variablePool[envValue]).includes(envVar),
@@ -79,8 +126,20 @@ export default function VariableForm(props: VariableFormProps) {
                         key={envName}
                         variant="outline"
                         className="m-1 first:ml-0 last:mr-0"
-                        onClick={(event) => {
+                        onClick={async (event) => {
                           event.preventDefault();
+                          await updateEnvScopesMutation.mutateAsync({
+                            environment_scope: envName,
+                            value: envValue,
+                            enabled: true,
+                          });
+                          await queryClient.invalidateQueries({
+                            queryKey: [
+                              "variables",
+                              props.project_id,
+                              userData.accessToken,
+                            ],
+                          });
                         }}
                       >
                         {envName}

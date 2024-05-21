@@ -1,4 +1,4 @@
-import { ProjectVariableSchema } from "@gitbeaker/rest";
+import { ProjectVariableSchema, SimpleProjectSchema } from "@gitbeaker/rest";
 
 export type VariableCardProps = {
   variable: Record<
@@ -6,4 +6,6 @@ export type VariableCardProps = {
     ProjectVariableSchema["value"]
   >;
   variable_name: string;
+  project_id: SimpleProjectSchema["id"];
+  env_scopes: ProjectVariableSchema["environment_scope"][];
 };

@@ -46,6 +46,12 @@ export default function VariableProcessor(props: VariableProcessorProps) {
     .flatMap((page) => page.data)
     .filter((variable) => variable.variable_type === "env_var");
 
+  const _flatEnvironmentScopes = _flatVariables
+    ?.flatMap((data) => data.environment_scope)
+    .filter((value, index, self) => {
+      return self.indexOf(value) === index;
+    });
+
   const _consolidatedVariables: Record<
     ProjectVariableSchema["key"],
     Record<
@@ -123,6 +129,8 @@ export default function VariableProcessor(props: VariableProcessorProps) {
             key={key}
             variable_name={key}
             variable={_consolidatedVariables[key]}
+            env_scopes={_flatEnvironmentScopes || []}
+            project_id={props.projectId}
           />
         ))}
         {(props.loading ||
