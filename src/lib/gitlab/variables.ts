@@ -58,6 +58,22 @@ export async function updateVariable(
   });
 }
 
+export async function deleteVariable(
+  oauthToken: string,
+  projectId: SimpleProjectSchema["id"],
+  key: ProjectVariableSchema["key"],
+  environmentScope: ProjectVariableSchema["environment_scope"],
+) {
+  const api = new Gitlab({
+    host: `https://${GITLAB_DOMAIN}`,
+    oauthToken: oauthToken,
+  });
+
+  return await api.ProjectVariables.remove(projectId, key, {
+    filter: { environment_scope: environmentScope },
+  });
+}
+
 export async function updateCreateVariable(
   oauthToken: string,
   projectId: SimpleProjectSchema["id"],
