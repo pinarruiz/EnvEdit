@@ -1,5 +1,6 @@
 import React from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { cn } from "@/lib/utils";
 import {
   Dialog,
   DialogContent,
@@ -99,18 +100,22 @@ export default function VariableForm(props: VariableFormProps) {
                     {envValue}
                   </AccordionTrigger>
                 </div>
-                <AccordionContent>
-                  {variablePool[envValue].map((envName) => (
+                <AccordionContent className="flex gap-2">
+                  {props.env_scopes.map((envName) => (
                     <Button
                       key={envName}
                       variant="outline"
-                      className="duration-300 transition-[opacity] bg-accent opacity-75 hover:opacity-100 m-1 first:ml-0 last:mr-0"
+                      className={cn(
+                        "duration-300 transition-[opacity,background]",
+                        variablePool[envValue].includes(envName) &&
+                          "bg-accent opacity-75 hover:opacity-100",
+                      )}
                       onClick={async (event) => {
                         event.preventDefault();
                         await updateEnvScopesMutation.mutateAsync({
                           environment_scope: envName,
                           value: envValue,
-                          enabled: false,
+                          enabled: !variablePool[envValue].includes(envName),
                         });
                         await queryClient.invalidateQueries({
                           queryKey: [
@@ -124,35 +129,6 @@ export default function VariableForm(props: VariableFormProps) {
                       {envName}
                     </Button>
                   ))}
-                  {props.env_scopes
-                    .filter(
-                      (envVar) =>
-                        !Object.values(variablePool[envValue]).includes(envVar),
-                    )
-                    .map((envName) => (
-                      <Button
-                        key={envName}
-                        variant="outline"
-                        className="m-1 first:ml-0 last:mr-0"
-                        onClick={async (event) => {
-                          event.preventDefault();
-                          await updateEnvScopesMutation.mutateAsync({
-                            environment_scope: envName,
-                            value: envValue,
-                            enabled: true,
-                          });
-                          await queryClient.invalidateQueries({
-                            queryKey: [
-                              "variables",
-                              props.project_id,
-                              userData.accessToken,
-                            ],
-                          });
-                        }}
-                      >
-                        {envName}
-                      </Button>
-                    ))}
                 </AccordionContent>
               </AccordionItem>
             ))}
