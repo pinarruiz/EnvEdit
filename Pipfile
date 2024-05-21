@@ -8,7 +8,7 @@ name = "pypi"
 [dev-packages]
 mkdocs-material = "==9.5.23"
 pygithub = "==2.3.0"
-requests = "==2.31.0"
+requests = "==2.32.1"
 
 [requires]
 python_version = "3.12"
