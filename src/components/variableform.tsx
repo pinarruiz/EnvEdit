@@ -20,6 +20,7 @@ import { VariableFormProps } from "@/types/variableform";
 import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/usercontext";
 import { deleteVariable, updateCreateVariable } from "@/lib/gitlab/variables";
+import CopyToClipboard from "@/components/clipboard/copy";
 
 export default function VariableForm(props: VariableFormProps) {
   const queryClient = useQueryClient();
@@ -90,7 +91,12 @@ export default function VariableForm(props: VariableFormProps) {
           <Accordion type="multiple" className="w-full">
             {Object.keys(variablePool).map((envValue) => (
               <AccordionItem value={envValue} key={envValue}>
-                <AccordionTrigger>{envValue}</AccordionTrigger>
+                <div className="flex items-center gap-4">
+                  <div className="flex gap-2">
+                    <CopyToClipboard value={envValue} />
+                  </div>
+                  <AccordionTrigger>{envValue}</AccordionTrigger>
+                </div>
                 <AccordionContent className="">
                   {variablePool[envValue].map((envName) => (
                     <Button
