@@ -91,13 +91,15 @@ export default function VariableForm(props: VariableFormProps) {
           <Accordion type="multiple" className="w-full">
             {Object.keys(variablePool).map((envValue) => (
               <AccordionItem value={envValue} key={envValue}>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 [&>h3]:flex-grow">
                   <div className="flex gap-2">
                     <CopyToClipboard value={envValue} />
                   </div>
-                  <AccordionTrigger>{envValue}</AccordionTrigger>
+                  <AccordionTrigger className="flex-grow">
+                    {envValue}
+                  </AccordionTrigger>
                 </div>
-                <AccordionContent className="">
+                <AccordionContent>
                   {variablePool[envValue].map((envName) => (
                     <Button
                       key={envName}
