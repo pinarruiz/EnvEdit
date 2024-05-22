@@ -18,7 +18,7 @@ export default function VariableProcessor(props: VariableProcessorProps) {
   const [globalFilter, setGlobalFilter] = useDebouncedState("", 200);
   const [extraEnvs, setExtraEnvs] = React.useState<
     ProjectVariableSchema["environment_scope"][]
-  >([]);
+  >(["*"]);
 
   const {
     data: variablesData,
