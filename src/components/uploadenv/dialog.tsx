@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
-import variablesToScopes from "@/lib/variablesToScopes";
 import { updateCreateVariable } from "@/lib/gitlab/variables";
 import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/usercontext";
@@ -23,7 +22,7 @@ import { readInputFile } from "@/lib/files";
 
 type UploadEnvDialogProps = {
   children?: React.ReactNode;
-  variables: ProjectVariableSchema[];
+  env_scopes: ProjectVariableSchema["environment_scope"][];
   projectId: SimpleProjectSchema["id"];
 };
 
@@ -36,10 +35,9 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
   const [fileUploaded, setFileUploaded] = React.useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
-  const envScopes = variablesToScopes(props.variables);
   const [searchScope, setSearchScope] = React.useState("");
 
-  const filteredScopes = envScopes.filter(
+  const filteredScopes = props.env_scopes.filter(
     (envScope) =>
       envScope.toLowerCase().includes(searchScope.toLowerCase()) ||
       searchScope === "",
@@ -150,19 +148,19 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
                     : "",
                 )}
               >
-                {envScopes.map((envScope) => (
+                {props.env_scopes.map((env_scope) => (
                   <p
                     className={cn(
                       "duration-300 overflow-hidden hover:bg-secondary/80 hover:cursor-pointer rounded-md",
                       filteredScopes.length <= 1 ? "mb-0" : "mb-1 last:mb-0",
-                      filteredScopes.includes(envScope) || searchScope === ""
+                      filteredScopes.includes(env_scope) || searchScope === ""
                         ? "h-8 px-2 py-1"
                         : "h-0 mb-0",
                     )}
-                    onClick={() => setSearchScope(envScope)}
-                    key={envScope}
+                    onClick={() => setSearchScope(env_scope)}
+                    key={env_scope}
                   >
-                    {envScope}
+                    {env_scope}
                   </p>
                 ))}
               </ScrollArea>
@@ -222,7 +220,7 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
               <p
                 className={cn(
                   "overflow-hidden duration-300 whitespace-nowrap text-left",
-                  envScopes.includes(searchScope) || uploadButtonDisabled
+                  props.env_scopes.includes(searchScope) || uploadButtonDisabled
                     ? "w-0"
                     : "w-28",
                 )}

@@ -7,16 +7,13 @@ import UploadEnvDialog from "@/components/uploadenv/dialog";
 
 type UploadEnvButtonProps = {
   projectId: SimpleProjectSchema["id"];
-  flatVariables: ProjectVariableSchema[];
+  env_scopes: ProjectVariableSchema["environment_scope"][];
   loading: boolean;
 };
 
 export default function UploadEnvButton(props: UploadEnvButtonProps) {
   return (
-    <UploadEnvDialog
-      variables={props.flatVariables}
-      projectId={props.projectId}
-    >
+    <UploadEnvDialog env_scopes={props.env_scopes} projectId={props.projectId}>
       <Button
         disabled={props.loading}
         variant="outline"

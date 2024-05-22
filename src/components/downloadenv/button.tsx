@@ -8,6 +8,7 @@ import DownloadEnvDialog from "@/components/downloadenv/dialog";
 type DownloadEnvButtonProps = {
   projectId: SimpleProjectSchema["id"];
   flatVariables: ProjectVariableSchema[];
+  env_scopes_no_extra: ProjectVariableSchema["environment_scope"][];
   loading: boolean;
 };
 
@@ -16,6 +17,7 @@ export default function DownloadEnvButton(props: DownloadEnvButtonProps) {
     <DownloadEnvDialog
       projectId={props.projectId}
       variables={props.flatVariables}
+      env_scopes_no_extra={props.env_scopes_no_extra}
     >
       <Button
         disabled={props.loading || props.flatVariables?.length === 0}

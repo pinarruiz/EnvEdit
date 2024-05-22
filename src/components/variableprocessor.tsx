@@ -106,6 +106,7 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           <DownloadEnvButton
             projectId={props.projectId}
             flatVariables={_flatVariables !== undefined ? _flatVariables : []}
+            env_scopes_no_extra={_flatEnvironmentScopes}
             loading={
               props.loading ||
               isLoading ||
@@ -116,7 +117,7 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           />
           <UploadEnvButton
             projectId={props.projectId}
-            flatVariables={_flatVariables !== undefined ? _flatVariables : []}
+            env_scopes={_flatEnvironmentScopesExtras}
             loading={
               props.loading ||
               isLoading ||

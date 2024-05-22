@@ -19,12 +19,12 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import scopedVarsToEnv from "@/lib/scopedVarsToEnv";
-import variablesToScopes from "@/lib/variablesToScopes";
 
 type DownloadEnvDialogProps = {
   children?: React.ReactNode;
   projectId: number;
   variables: ProjectVariableSchema[];
+  env_scopes_no_extra: ProjectVariableSchema["environment_scope"][];
 };
 
 export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
@@ -32,17 +32,19 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
   const [checkedIncludeDefault, setCheckedIncludeDefault] =
     React.useState(true);
 
-  const envScopes = variablesToScopes(props.variables);
-
   const [envSelected, setEnvSelected] = React.useState<
     undefined | ProjectVariableSchema["environment_scope"]
-  >(envScopes.length === 1 ? envScopes[0] : undefined);
+  >(
+    props.env_scopes_no_extra.length === 1
+      ? props.env_scopes_no_extra[0]
+      : undefined,
+  );
 
   React.useEffect(() => {
-    if (envSelected === undefined && envScopes.length === 1) {
-      setEnvSelected(envScopes[0]);
+    if (envSelected === undefined && props.env_scopes_no_extra.length === 1) {
+      setEnvSelected(props.env_scopes_no_extra[0]);
     }
-  }, [envScopes, envSelected]);
+  }, [props.env_scopes_no_extra, envSelected]);
 
   function handleDialogOpenClose(event: boolean) {
     setEnvSelected(undefined);
@@ -62,13 +64,13 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
         <form className="flex flex-col gap-4">
           <div className="grid gap-4 py-4">
             <Select onValueChange={setEnvSelected} value={envSelected}>
-              <SelectTrigger disabled={envScopes.length === 0}>
+              <SelectTrigger disabled={props.env_scopes_no_extra.length === 0}>
                 <SelectValue placeholder="Environment" />
               </SelectTrigger>
               <SelectContent>
-                {envScopes.map((envScope) => (
-                  <SelectItem key={envScope} value={envScope}>
-                    {envScope}
+                {props.env_scopes_no_extra.map((env_scope) => (
+                  <SelectItem key={env_scope} value={env_scope}>
+                    {env_scope}
                   </SelectItem>
                 ))}
               </SelectContent>
