@@ -39,6 +39,8 @@ export default function VariableCard(props: VariableCardProps) {
       variable_name={props.variable_name}
       project_id={props.project_id}
       env_scopes={props.env_scopes}
+      extraEnvs={props.extraEnvs}
+      setExtraEnvs={props.setExtraEnvs}
     >
       <div className="rounded-md border py-3 px-4 flex flex-col sm:flex-row transition h-full hover:bg-accent hover:cursor-pointer">
         <p className="font-bold m-auto sm:m-0 pb-5 sm:pb-0">

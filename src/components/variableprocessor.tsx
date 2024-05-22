@@ -16,6 +16,9 @@ import UploadEnvButton from "@/components/uploadenv/button";
 export default function VariableProcessor(props: VariableProcessorProps) {
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
   const [globalFilter, setGlobalFilter] = useDebouncedState("", 200);
+  const [extraEnvs, setExtraEnvs] = React.useState<
+    ProjectVariableSchema["environment_scope"][]
+  >([]);
 
   const {
     data: variablesData,
@@ -46,11 +49,17 @@ export default function VariableProcessor(props: VariableProcessorProps) {
     .flatMap((page) => page.data)
     .filter((variable) => variable.variable_type === "env_var");
 
-  const _flatEnvironmentScopes = _flatVariables
-    ?.flatMap((data) => data.environment_scope)
-    .filter((value, index, self) => {
-      return self.indexOf(value) === index;
-    });
+  const _flatEnvironmentScopes =
+    _flatVariables
+      ?.flatMap((data) => data.environment_scope)
+      .filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      }) || [];
+
+  const _flatEnvironmentScopesExtras = [
+    ..._flatEnvironmentScopes,
+    ...extraEnvs.filter((envName) => !_flatEnvironmentScopes.includes(envName)),
+  ];
 
   const _consolidatedVariables: Record<
     ProjectVariableSchema["key"],
@@ -129,8 +138,10 @@ export default function VariableProcessor(props: VariableProcessorProps) {
             key={key}
             variable_name={key}
             variable={_consolidatedVariables[key]}
-            env_scopes={_flatEnvironmentScopes || []}
+            env_scopes={_flatEnvironmentScopesExtras}
             project_id={props.projectId}
+            extraEnvs={extraEnvs}
+            setExtraEnvs={setExtraEnvs}
           />
         ))}
         {(props.loading ||

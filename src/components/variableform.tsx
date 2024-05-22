@@ -22,6 +22,7 @@ import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/usercontext";
 import { deleteVariable, updateCreateVariable } from "@/lib/gitlab/variables";
 import CopyToClipboard from "@/components/clipboard/copy";
+import CreateScope from "@/components/createscope";
 
 export default function VariableForm(props: VariableFormProps) {
   const queryClient = useQueryClient();
@@ -134,9 +135,9 @@ export default function VariableForm(props: VariableFormProps) {
             </AccordionItem>
           ))}
         </Accordion>
-        <DialogFooter className="flex">
+        <DialogFooter className="flex gap-2">
           <Button
-            className="mr-auto"
+            className="sm:mr-auto"
             variant="secondary"
             onClick={(e) => {
               e.preventDefault();
@@ -145,6 +146,13 @@ export default function VariableForm(props: VariableFormProps) {
           >
             Close
           </Button>
+          <CreateScope
+            variable_name={props.variable_name}
+            env_scopes={props.env_scopes}
+            project_id={props.project_id}
+            extraEnvs={props.extraEnvs}
+            setExtraEnvs={props.setExtraEnvs}
+          />
         </DialogFooter>
       </DialogContent>
     </Dialog>
