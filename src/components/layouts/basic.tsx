@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { Toaster } from "@/components/ui/toaster";
 import { UserContext } from "@/components/contexts/user";
 import { BasicLayoutProps } from "@/types/layouts";
 import { UserContextProviderType } from "@/types/usercontext";
@@ -64,6 +65,7 @@ export default function BasicLayout(props: BasicLayoutProps) {
         <Menu />
         <div className="pt-5 flex-grow flex flex-col min-h-0">
           {props.children}
+          <Toaster />
         </div>
       </div>
     </>
