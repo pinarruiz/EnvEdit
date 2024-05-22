@@ -27,6 +27,8 @@ export default function VariableForm(props: VariableFormProps) {
   const queryClient = useQueryClient();
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
 
+  const [openDialog, setOpenDialog] = React.useState(false);
+
   const updateEnvScopesMutation = useMutation({
     mutationKey: ["updateEnvScopes", props.project_id, props.variable_name],
     mutationFn: async (args: {
@@ -76,7 +78,7 @@ export default function VariableForm(props: VariableFormProps) {
     );
 
   return (
-    <Dialog>
+    <Dialog open={openDialog} onOpenChange={setOpenDialog}>
       <DialogTrigger asChild>{props.children}</DialogTrigger>
       <DialogContent
         className="transition-[padding] sm:p-8 px-6 rounded-md overflow-y-auto max-h-[90%] max-w-7xl md:w-[90%] w-[95%]"
@@ -88,62 +90,62 @@ export default function VariableForm(props: VariableFormProps) {
             Found {Object.keys(props.variable).length} environments.
           </DialogDescription>
         </DialogHeader>
-        <form className="flex flex-col gap-4">
-          <Accordion type="multiple" className="w-full">
-            {Object.keys(variablePool).map((envValue) => (
-              <AccordionItem value={envValue} key={envValue}>
-                <div className="flex items-center gap-4 [&>h3]:flex-grow">
-                  <div className="flex gap-2">
-                    <CopyToClipboard value={envValue} />
-                  </div>
-                  <AccordionTrigger className="flex-grow">
-                    {envValue}
-                  </AccordionTrigger>
+        <Accordion type="multiple" className="w-full">
+          {Object.keys(variablePool).map((envValue) => (
+            <AccordionItem value={envValue} key={envValue}>
+              <div className="flex items-center gap-4 [&>h3]:flex-grow">
+                <div className="flex gap-2">
+                  <CopyToClipboard value={envValue} />
                 </div>
-                <AccordionContent className="flex gap-2">
-                  {props.env_scopes.map((envName) => (
-                    <Button
-                      key={envName}
-                      variant="outline"
-                      className={cn(
-                        "duration-300 transition-[opacity,background]",
-                        variablePool[envValue].includes(envName) &&
-                          "bg-accent opacity-75 hover:opacity-100",
-                      )}
-                      onClick={async (event) => {
-                        event.preventDefault();
-                        await updateEnvScopesMutation.mutateAsync({
-                          environment_scope: envName,
-                          value: envValue,
-                          enabled: !variablePool[envValue].includes(envName),
-                        });
-                        await queryClient.invalidateQueries({
-                          queryKey: [
-                            "variables",
-                            props.project_id,
-                            userData.accessToken,
-                          ],
-                        });
-                      }}
-                    >
-                      {envName}
-                    </Button>
-                  ))}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-          <DialogFooter>
-            <Button
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
-              Save changes
-            </Button>
-          </DialogFooter>
-        </form>
+                <AccordionTrigger className="flex-grow">
+                  {envValue}
+                </AccordionTrigger>
+              </div>
+              <AccordionContent className="flex gap-2">
+                {props.env_scopes.map((envName) => (
+                  <Button
+                    key={envName}
+                    variant="outline"
+                    className={cn(
+                      "duration-300 transition-[opacity,background]",
+                      variablePool[envValue].includes(envName) &&
+                        "bg-accent opacity-75 hover:opacity-100",
+                    )}
+                    onClick={async (event) => {
+                      event.preventDefault();
+                      await updateEnvScopesMutation.mutateAsync({
+                        environment_scope: envName,
+                        value: envValue,
+                        enabled: !variablePool[envValue].includes(envName),
+                      });
+                      await queryClient.invalidateQueries({
+                        queryKey: [
+                          "variables",
+                          props.project_id,
+                          userData.accessToken,
+                        ],
+                      });
+                    }}
+                  >
+                    {envName}
+                  </Button>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+        <DialogFooter className="flex">
+          <Button
+            className="mr-auto"
+            variant="secondary"
+            onClick={(e) => {
+              e.preventDefault();
+              setOpenDialog(false);
+            }}
+          >
+            Close
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
