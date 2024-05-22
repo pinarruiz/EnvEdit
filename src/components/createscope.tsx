@@ -1,5 +1,6 @@
 import React from "react";
 import { useInputState, useToggle } from "@mantine/hooks";
+import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -12,11 +13,14 @@ const sharedClassName =
 export default function CreateScope(props: CreateScopeProps) {
   const [isWriting, setIsWriting] = useToggle([false, true] as const);
   const [newScopeValue, setNewScopeValue] = useInputState("");
+  const { toast } = useToast();
 
   function setExtraEnvs(value: string) {
-    if (!props.extraEnvs.includes(value)) {
+    if (!props.env_scopes.includes(value)) {
       props.setExtraEnvs((oldExtraEnvs) => [...oldExtraEnvs, value]);
       setNewScopeValue("");
+    } else {
+      toast({ title: "Environment scope already exists", description: value });
     }
   }
 
