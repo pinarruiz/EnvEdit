@@ -12,8 +12,8 @@ importers:
         specifier: 40.0.3
         version: 40.0.3
       '@mantine/hooks':
-        specifier: 7.9.2
-        version: 7.9.2(react@18.3.1)
+        specifier: 7.10.0
+        version: 7.10.0(react@18.3.1)
       '@radix-ui/react-accordion':
         specifier: 1.1.2
         version: 1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -383,8 +383,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.19':
     resolution: {integrity: sha512-kf37QtfW+Hwx/buWGMPcR60iF9ziHa6r/CZJIHbmcm4+0qrXiVdxegAH0F6yddEVQ7zdkjcGCgCzUu+BcbhQxw==}
 
-  '@mantine/hooks@7.9.2':
-    resolution: {integrity: sha512-qT8vvHZ8K/qFXSSIyq/NHpKgtEs1Vas4Z2tPPtMTN7oyibjsel09XebPAt59nkJS/SACQbja0GZ4lUXI2+AFFw==}
+  '@mantine/hooks@7.10.0':
+    resolution: {integrity: sha512-fnalwYS2WQEFS4wmhmAetDZ/VdJPLNeUXPX9t+S21o3p/dRTX1xhU2mS7yWaQUKM0hPD1TcujqXGlP2M2g/A9A==}
     peerDependencies:
       react: ^18.2.0
 
@@ -3174,7 +3174,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@mantine/hooks@7.9.2(react@18.3.1)':
+  '@mantine/hooks@7.10.0(react@18.3.1)':
     dependencies:
       react: 18.3.1
 
