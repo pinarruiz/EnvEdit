@@ -13,7 +13,7 @@
     "start:docker": "NODE_ENV=production pnpm build && NODE_ENV=production pnpm start",
     "lint": "next lint",
     "precommit": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@gitbeaker/rest": "40.0.3",
