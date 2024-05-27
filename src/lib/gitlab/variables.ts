@@ -15,6 +15,17 @@ export async function queryVariables(
   });
 }
 
+export async function queryVariable(
+  oauthToken: string,
+  projectId: SimpleProjectSchema["id"],
+  key: ProjectVariableSchema["key"],
+  environment_scope: ProjectVariableSchema["environment_scope"],
+) {
+  return await getApiObject(oauthToken).ProjectVariables.show(projectId, key, {
+    filter: { environment_scope: environment_scope },
+  });
+}
+
 export async function createVariable(
   oauthToken: string,
   projectId: SimpleProjectSchema["id"],

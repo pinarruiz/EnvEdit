@@ -1,6 +1,4 @@
 import React from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { cn } from "@/lib/utils";
 import {
   Dialog,
   DialogContent,
@@ -18,45 +16,12 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { VariableFormProps } from "@/types/variableform";
-import { UserContext } from "@/components/contexts/user";
-import { UserContextProviderType } from "@/types/usercontext";
-import { deleteVariable, updateCreateVariable } from "@/lib/gitlab/variables";
 import CopyToClipboard from "@/components/clipboard/copy";
 import CreateScope from "@/components/createscope";
+import EnvScopeButton from "@/components/envscopebutton";
 
 export default function VariableForm(props: VariableFormProps) {
-  const queryClient = useQueryClient();
-  const { userData } = React.useContext(UserContext) as UserContextProviderType;
-
   const [openDialog, setOpenDialog] = React.useState(false);
-
-  const updateEnvScopesMutation = useMutation({
-    mutationKey: ["updateEnvScopes", props.project_id, props.variable_name],
-    mutationFn: async (args: {
-      value: VariableFormProps["variable"]["value"];
-      environment_scope: VariableFormProps["variable"]["environment_scope"];
-      enabled: boolean;
-    }) => {
-      if (userData.accessToken) {
-        if (args.enabled) {
-          return await updateCreateVariable(
-            userData.accessToken,
-            props.project_id,
-            props.variable_name,
-            args.value,
-            args.environment_scope,
-          );
-        } else {
-          return await deleteVariable(
-            userData.accessToken,
-            props.project_id,
-            props.variable_name,
-            args.environment_scope,
-          );
-        }
-      }
-    },
-  });
 
   const variablePool = Object.keys(props.variable)
     .map((envName) => {
@@ -102,34 +67,16 @@ export default function VariableForm(props: VariableFormProps) {
                   {envValue}
                 </AccordionTrigger>
               </div>
-              <AccordionContent className="flex gap-2">
+              <AccordionContent>
                 {props.env_scopes.map((envName) => (
-                  <Button
+                  <EnvScopeButton
                     key={envName}
-                    variant="outline"
-                    className={cn(
-                      "duration-300 transition-[opacity,background]",
-                      variablePool[envValue].includes(envName) &&
-                        "bg-accent opacity-75 hover:opacity-100",
-                    )}
-                    onClick={async (event) => {
-                      event.preventDefault();
-                      await updateEnvScopesMutation.mutateAsync({
-                        environment_scope: envName,
-                        value: envValue,
-                        enabled: !variablePool[envValue].includes(envName),
-                      });
-                      await queryClient.invalidateQueries({
-                        queryKey: [
-                          "variables",
-                          props.project_id,
-                          userData.accessToken,
-                        ],
-                      });
-                    }}
-                  >
-                    {envName}
-                  </Button>
+                    className="m-1"
+                    env_value={envValue}
+                    env_scope={envName}
+                    project_id={props.project_id}
+                    variable_name={props.variable_name}
+                  />
                 ))}
               </AccordionContent>
             </AccordionItem>
