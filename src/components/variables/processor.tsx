@@ -8,7 +8,7 @@ import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/usercontext";
 import { VariableProcessorProps } from "@/types/variableprocessor";
 import { queryVariables } from "@/lib/gitlab/variables";
-import VariableCard, { LoadingVariableCard } from "@/components/variablecard";
+import VariableCard, { LoadingVariableCard } from "@/components/variables/card";
 import { GITLAB_PER_PAGE } from "@/lib/appEnv";
 import DownloadEnvButton from "@/components/downloadenv/button";
 import UploadEnvButton from "@/components/uploadenv/button";

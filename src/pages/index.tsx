@@ -1,6 +1,6 @@
 import React from "react";
 import BasicLayout from "@/components/layouts/basic";
-import ProjectProcessor from "@/components/projectprocessor";
+import ProjectProcessor from "@/components/projects/processor";
 import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/usercontext";
 

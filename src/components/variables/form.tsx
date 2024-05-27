@@ -17,8 +17,8 @@ import {
 } from "@/components/ui/accordion";
 import { VariableFormProps } from "@/types/variableform";
 import CopyToClipboard from "@/components/clipboard/copy";
-import CreateScope from "@/components/createscope";
-import EnvScopeButton from "@/components/envscopebutton";
+import CreateScope from "@/components/variables/createscope";
+import EnvScopeButton from "@/components/variables/envscopebutton";
 
 export default function VariableForm(props: VariableFormProps) {
   const [openDialog, setOpenDialog] = React.useState(false);

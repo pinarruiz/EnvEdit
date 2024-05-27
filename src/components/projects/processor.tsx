@@ -5,7 +5,7 @@ import { queryProjects } from "@/lib/gitlab/projects";
 import { UserContextProviderType } from "@/types/usercontext";
 import { UserContext } from "@/components/contexts/user";
 import { Input } from "@/components/ui/input";
-import ProjectCard from "@/components/projectcard";
+import ProjectCard from "@/components/projects/card";
 import { GITLAB_PER_PAGE } from "@/lib/appEnv";
 import { ProjectProcessorProps } from "@/types/projectprocessor";
 import { cn } from "@/lib/utils";

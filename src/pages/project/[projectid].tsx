@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
 import BasicLayout from "@/components/layouts/basic";
-import VariableProcessor from "@/components/variableprocessor";
+import VariableProcessor from "@/components/variables/processor";
 import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/usercontext";
 import { getProject } from "@/lib/gitlab/projects";

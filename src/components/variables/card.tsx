@@ -8,7 +8,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { VariableCardProps } from "@/types/variablecard";
 import { Separator } from "@/components/ui/separator";
-import VariableForm from "@/components/variableform";
+import VariableForm from "@/components/variables/form";
 
 function checkOverflow(ref: HTMLParagraphElement | null): boolean {
   if (ref) {
