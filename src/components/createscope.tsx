@@ -9,7 +9,7 @@ export default function CreateScope(props: CreateScopeProps) {
   const [newScopeValue, setNewScopeValue] = useInputState("");
 
   function setExtraEnvsProxy(value: string) {
-    if (!props.env_scopes.includes(value)) {
+    if (!props.envScopes.includes(value)) {
       props.setExtraEnvs((oldExtraEnvs) => [...oldExtraEnvs, value]);
       setNewScopeValue("");
     } else {

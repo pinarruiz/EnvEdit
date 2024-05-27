@@ -6,9 +6,9 @@ export type VariableCardProps = {
     ProjectVariableSchema["environment_scope"],
     ProjectVariableSchema["value"]
   >;
-  variable_name: string;
-  project_id: SimpleProjectSchema["id"];
-  env_scopes: ProjectVariableSchema["environment_scope"][];
+  variableName: string;
+  projectId: SimpleProjectSchema["id"];
+  envScopes: ProjectVariableSchema["environment_scope"][];
   extraEnvs: VariableCardProps["variable"]["environment_scope"][];
   setExtraEnvs: React.Dispatch<
     React.SetStateAction<VariableCardProps["variable"]["environment_scope"][]>

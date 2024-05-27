@@ -18,9 +18,9 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
   const scopedDataQUeryKey = [
     "variableQuery",
     userData.accessToken,
-    props.project_id,
-    props.variable_name,
-    props.env_scope,
+    props.projectId,
+    props.variableName,
+    props.envScope,
   ];
 
   const { data: scopedData, status: scopedStatus } = useQuery({
@@ -34,12 +34,12 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
         try {
           return await queryVariable(
             userData.accessToken,
-            props.project_id,
-            props.variable_name,
-            props.env_scope,
+            props.projectId,
+            props.variableName,
+            props.envScope,
           );
         } catch (error) {
-          return { value: props.env_value + "error" };
+          return { value: props.envValue + "error" };
         }
       }
     },
@@ -48,26 +48,26 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
   const updateEnvScopesMutation = useMutation({
     mutationKey: [
       "updateEnvScopes",
-      props.project_id,
-      props.variable_name,
-      props.env_value,
+      props.projectId,
+      props.variableName,
+      props.envValue,
     ],
     mutationFn: async (args: { enabled: boolean }) => {
       if (userData.accessToken) {
         if (args.enabled) {
           return await updateCreateVariable(
             userData.accessToken,
-            props.project_id,
-            props.variable_name,
-            props.env_value,
-            props.env_scope,
+            props.projectId,
+            props.variableName,
+            props.envValue,
+            props.envScope,
           );
         } else {
           return await deleteVariable(
             userData.accessToken,
-            props.project_id,
-            props.variable_name,
-            props.env_scope,
+            props.projectId,
+            props.variableName,
+            props.envScope,
           );
         }
       }
@@ -77,7 +77,7 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
   const envScopeIsEnabled =
     scopedStatus !== "pending" &&
     scopedData &&
-    scopedData.value === props.env_value;
+    scopedData.value === props.envValue;
 
   return (
     <Button
@@ -98,7 +98,7 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
         });
       }}
     >
-      {props.env_scope}
+      {props.envScope}
     </Button>
   );
 }

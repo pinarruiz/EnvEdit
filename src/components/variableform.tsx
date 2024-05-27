@@ -51,7 +51,7 @@ export default function VariableForm(props: VariableFormProps) {
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
         <DialogHeader>
-          <DialogTitle>Edit {props.variable_name}</DialogTitle>
+          <DialogTitle>Edit {props.variableName}</DialogTitle>
           <DialogDescription className="opacity-40">
             Found {Object.keys(props.variable).length} environments.
           </DialogDescription>
@@ -68,14 +68,14 @@ export default function VariableForm(props: VariableFormProps) {
                 </AccordionTrigger>
               </div>
               <AccordionContent>
-                {props.env_scopes.map((envName) => (
+                {props.envScopes.map((envName) => (
                   <EnvScopeButton
                     key={envName}
                     className="m-1"
-                    env_value={envValue}
-                    env_scope={envName}
-                    project_id={props.project_id}
-                    variable_name={props.variable_name}
+                    envValue={envValue}
+                    envScope={envName}
+                    projectId={props.projectId}
+                    variableName={props.variableName}
                   />
                 ))}
               </AccordionContent>
@@ -94,9 +94,9 @@ export default function VariableForm(props: VariableFormProps) {
             Close
           </Button>
           <CreateScope
-            variable_name={props.variable_name}
-            env_scopes={props.env_scopes}
-            project_id={props.project_id}
+            variableName={props.variableName}
+            envScopes={props.envScopes}
+            projectId={props.projectId}
             extraEnvs={props.extraEnvs}
             setExtraEnvs={props.setExtraEnvs}
           />

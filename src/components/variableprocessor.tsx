@@ -137,10 +137,10 @@ export default function VariableProcessor(props: VariableProcessorProps) {
         {Object.keys(_consolidatedVariables).map((key) => (
           <VariableCard
             key={key}
-            variable_name={key}
+            variableName={key}
             variable={_consolidatedVariables[key]}
-            env_scopes={_flatEnvironmentScopesExtras}
-            project_id={props.projectId}
+            envScopes={_flatEnvironmentScopesExtras}
+            projectId={props.projectId}
             extraEnvs={extraEnvs}
             setExtraEnvs={setExtraEnvs}
           />

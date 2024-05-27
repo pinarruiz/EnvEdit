@@ -3,9 +3,9 @@ import { VariableCardProps } from "@/types/variablecard";
 
 export type EnvScopeButtonProps = Pick<
   VariableCardProps,
-  "variable_name" | "project_id"
+  "variableName" | "projectId"
 > & {
-  env_scope: ProjectVariableSchema["environment_scope"];
-  env_value: ProjectVariableSchema["value"];
+  envScope: ProjectVariableSchema["environment_scope"];
+  envValue: ProjectVariableSchema["value"];
   className?: string;
 };
