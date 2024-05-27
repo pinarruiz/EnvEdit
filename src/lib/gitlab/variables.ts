@@ -1,20 +1,13 @@
-import {
-  Gitlab,
-  ProjectVariableSchema,
-  SimpleProjectSchema,
-} from "@gitbeaker/rest";
-import { GITLAB_DOMAIN, GITLAB_PER_PAGE } from "@/lib/appEnv";
+import { ProjectVariableSchema, SimpleProjectSchema } from "@gitbeaker/rest";
+import { GITLAB_PER_PAGE } from "@/lib/appEnv";
+import { getApiObject } from "@/lib/gitlab/utils";
 
 export async function queryVariables(
   oauthToken: string,
   projectId: SimpleProjectSchema["id"],
   page: number = 1,
 ) {
-  const api = new Gitlab({
-    host: `https://${GITLAB_DOMAIN}`,
-    oauthToken: oauthToken,
-  });
-  return await api.ProjectVariables.all(projectId, {
+  return await getApiObject(oauthToken).ProjectVariables.all(projectId, {
     pagination: "offset",
     showExpanded: true,
     page: page,
@@ -29,15 +22,15 @@ export async function createVariable(
   value: ProjectVariableSchema["value"],
   environmentScope: ProjectVariableSchema["environment_scope"],
 ) {
-  const api = new Gitlab({
-    host: `https://${GITLAB_DOMAIN}`,
-    oauthToken: oauthToken,
-  });
-
-  return await api.ProjectVariables.create(projectId, key, value, {
-    environmentScope: environmentScope,
-    protected: true,
-  });
+  return await getApiObject(oauthToken).ProjectVariables.create(
+    projectId,
+    key,
+    value,
+    {
+      environmentScope: environmentScope,
+      protected: true,
+    },
+  );
 }
 
 export async function updateVariable(
@@ -47,15 +40,15 @@ export async function updateVariable(
   value: ProjectVariableSchema["value"],
   environmentScope: ProjectVariableSchema["environment_scope"],
 ) {
-  const api = new Gitlab({
-    host: `https://${GITLAB_DOMAIN}`,
-    oauthToken: oauthToken,
-  });
-
-  return await api.ProjectVariables.edit(projectId, key, value, {
-    environmentScope: environmentScope,
-    filter: { environment_scope: environmentScope },
-  });
+  return await getApiObject(oauthToken).ProjectVariables.edit(
+    projectId,
+    key,
+    value,
+    {
+      environmentScope: environmentScope,
+      filter: { environment_scope: environmentScope },
+    },
+  );
 }
 
 export async function deleteVariable(
@@ -64,14 +57,13 @@ export async function deleteVariable(
   key: ProjectVariableSchema["key"],
   environmentScope: ProjectVariableSchema["environment_scope"],
 ) {
-  const api = new Gitlab({
-    host: `https://${GITLAB_DOMAIN}`,
-    oauthToken: oauthToken,
-  });
-
-  return await api.ProjectVariables.remove(projectId, key, {
-    filter: { environment_scope: environmentScope },
-  });
+  return await getApiObject(oauthToken).ProjectVariables.remove(
+    projectId,
+    key,
+    {
+      filter: { environment_scope: environmentScope },
+    },
+  );
 }
 
 export async function updateCreateVariable(
