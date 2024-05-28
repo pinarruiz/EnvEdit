@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import BasicLayout from "@/components/layouts/basic";
 import VariableProcessor from "@/components/variables/processor";
 import { UserContext } from "@/components/contexts/user";
-import { UserContextProviderType } from "@/types/usercontext";
+import { UserContextProviderType } from "@/types/contexts/user";
 import { getProject } from "@/lib/gitlab/projects";
 import { DEFAULT_TITLE } from "@/lib/appEnv";
 

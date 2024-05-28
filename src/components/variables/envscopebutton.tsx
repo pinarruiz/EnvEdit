@@ -2,9 +2,9 @@ import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { EnvScopeButtonProps } from "@/types/envscopebutton";
+import { EnvScopeButtonProps } from "@/types/variables/envscopebutton";
 import { UserContext } from "@/components/contexts/user";
-import { UserContextProviderType } from "@/types/usercontext";
+import { UserContextProviderType } from "@/types/contexts/user";
 import {
   deleteVariable,
   queryVariable,

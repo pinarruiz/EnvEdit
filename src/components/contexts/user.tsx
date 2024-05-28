@@ -2,7 +2,7 @@ import React from "react";
 import {
   UserContextProviderProps,
   UserContextProviderType,
-} from "@/types/usercontext";
+} from "@/types/contexts/user";
 import { User } from "@/types/user";
 
 export const UserContext = React.createContext<

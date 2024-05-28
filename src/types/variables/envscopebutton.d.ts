@@ -1,5 +1,5 @@
 import { ProjectVariableSchema } from "@gitbeaker/rest";
-import { VariableCardProps } from "@/types/variablecard";
+import { VariableCardProps } from "@/types/variables/card";
 
 export type EnvScopeButtonProps = Pick<
   VariableCardProps,

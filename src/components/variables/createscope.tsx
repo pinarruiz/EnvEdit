@@ -1,7 +1,7 @@
 import React from "react";
 import { useInputState } from "@mantine/hooks";
 import { useToast } from "@/components/ui/use-toast";
-import { CreateScopeProps } from "@/types/createscope";
+import { CreateScopeProps } from "@/types/variables/createscope";
 import RevealButton from "@/components/revealbutton";
 
 export default function CreateScope(props: CreateScopeProps) {

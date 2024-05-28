@@ -1,5 +1,5 @@
 import React from "react";
-import { GroupedVariables } from "@/types/variableform";
+import { GroupedVariables } from "@/types/variables/form";
 
 export type CreateValueProps = {
   variablePool: GroupedVariables;

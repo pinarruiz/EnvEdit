@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { VariableCardProps } from "@/types/variablecard";
+import { VariableCardProps } from "@/types/variables/card";
 
 export type VariableFormProps = VariableCardProps & { children?: ReactNode };
 

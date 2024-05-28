@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ProjectCardProps } from "@/types/projectcard";
+import { ProjectCardProps } from "@/types/projects/card";
 
 export default function ProjectCard(props: ProjectCardProps) {
   const router = useRouter();

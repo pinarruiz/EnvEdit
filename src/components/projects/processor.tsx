@@ -2,12 +2,12 @@ import React from "react";
 import { useDebouncedState, useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { queryProjects } from "@/lib/gitlab/projects";
-import { UserContextProviderType } from "@/types/usercontext";
+import { UserContextProviderType } from "@/types/contexts/user";
 import { UserContext } from "@/components/contexts/user";
 import { Input } from "@/components/ui/input";
 import ProjectCard from "@/components/projects/card";
 import { GITLAB_PER_PAGE } from "@/lib/appEnv";
-import { ProjectProcessorProps } from "@/types/projectprocessor";
+import { ProjectProcessorProps } from "@/types/projects/processor";
 import { cn } from "@/lib/utils";
 
 export default function ProjectProcessor(props: ProjectProcessorProps) {

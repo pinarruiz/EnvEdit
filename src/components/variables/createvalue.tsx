@@ -2,7 +2,7 @@ import React from "react";
 import { useInputState } from "@mantine/hooks";
 import { useToast } from "@/components/ui/use-toast";
 import RevealButton from "@/components/revealbutton";
-import { CreateValueProps } from "@/types/createvalue";
+import { CreateValueProps } from "@/types/variables/createvalue";
 
 export default function CreateValue(props: CreateValueProps) {
   const { toast } = useToast();

@@ -17,7 +17,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { updateCreateVariable } from "@/lib/gitlab/variables";
 import { UserContext } from "@/components/contexts/user";
-import { UserContextProviderType } from "@/types/usercontext";
+import { UserContextProviderType } from "@/types/contexts/user";
 import { readInputFile } from "@/lib/files";
 
 type UploadEnvDialogProps = {

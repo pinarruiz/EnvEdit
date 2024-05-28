@@ -15,7 +15,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
-import { GroupedVariables, VariableFormProps } from "@/types/variableform";
+import { GroupedVariables, VariableFormProps } from "@/types/variables/form";
 import CopyToClipboard from "@/components/clipboard/copy";
 import CreateScope from "@/components/variables/createscope";
 import EnvScopeButton from "@/components/variables/envscopebutton";

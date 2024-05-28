@@ -6,7 +6,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { VariableCardProps } from "@/types/variablecard";
+import { VariableCardProps } from "@/types/variables/card";
 import { Separator } from "@/components/ui/separator";
 import VariableForm from "@/components/variables/form";
 
