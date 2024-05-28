@@ -15,33 +15,31 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
-import { VariableFormProps } from "@/types/variableform";
+import { GroupedVariables, VariableFormProps } from "@/types/variableform";
 import CopyToClipboard from "@/components/clipboard/copy";
 import CreateScope from "@/components/variables/createscope";
 import EnvScopeButton from "@/components/variables/envscopebutton";
+import CreateValue from "@/components/variables/createvalue";
 
 export default function VariableForm(props: VariableFormProps) {
   const [openDialog, setOpenDialog] = React.useState(false);
+  const [extraEnvValues, setExtraEnvsValues] = React.useState<GroupedVariables>(
+    {},
+  );
 
-  const variablePool = Object.keys(props.variable)
-    .map((envName) => {
-      return { environment_scope: envName, value: props.variable[envName] };
-    })
-    .reduce(
-      (
-        group: Record<
-          VariableFormProps["variable"]["value"],
-          VariableFormProps["variable"]["environment_scope"][]
-        >,
-        envVar,
-      ) => {
+  const variablePool = {
+    ...extraEnvValues,
+    ...Object.keys(props.variable)
+      .map((envName) => {
+        return { environment_scope: envName, value: props.variable[envName] };
+      })
+      .reduce((group: GroupedVariables, envVar) => {
         const { value } = envVar;
         group[value] = group[value] ?? [];
         group[value].push(envVar.environment_scope);
         return group;
-      },
-      {},
-    );
+      }, {}),
+  };
 
   return (
     <Dialog open={openDialog} onOpenChange={setOpenDialog}>
@@ -93,6 +91,10 @@ export default function VariableForm(props: VariableFormProps) {
           >
             Close
           </Button>
+          <CreateValue
+            variablePool={variablePool}
+            setExtraEnvsValues={setExtraEnvsValues}
+          />
           <CreateScope
             variableName={props.variableName}
             envScopes={props.envScopes}
