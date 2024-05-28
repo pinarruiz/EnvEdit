@@ -7,6 +7,8 @@ import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/contexts/user";
 import { getProject } from "@/lib/gitlab/projects";
 import { DEFAULT_TITLE } from "@/lib/appEnv";
+import QuickLinks from "@/components/variables/quicklinks";
+import { ProjectSchema } from "@gitbeaker/rest";
 
 export default function Project() {
   const router = useRouter();
@@ -26,7 +28,12 @@ export default function Project() {
         (status === "success" && projectData ? projectData.name + " - " : "") +
         DEFAULT_TITLE
       }
+      className="flex flex-col gap-5"
     >
+      <QuickLinks
+        projectData={projectData as ProjectSchema}
+        loading={status === "pending"}
+      />
       <VariableProcessor
         projectId={projectId}
         loading={projectId === undefined}
