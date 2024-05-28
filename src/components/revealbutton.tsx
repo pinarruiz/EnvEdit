@@ -17,7 +17,7 @@ export default function RevealButton(props: RevealButtonProps) {
   const [isWriting, setIsWriting] = useToggle([false, true] as const);
 
   const sharedClassName = cn(
-    "overflow-hidden duration-300 transition-[background-color,width,padding,border] w-full sm:w-40",
+    "overflow-hidden duration-300 transition-[background-color,width,padding,border] w-full sm:w-44",
     props.className,
   );
 
@@ -53,7 +53,7 @@ export default function RevealButton(props: RevealButtonProps) {
         <Button
           size="icon"
           variant="outline"
-          className="flex"
+          className="flex px-1"
           onClick={(event) => {
             event.preventDefault();
             if (props.textInput === "") {
