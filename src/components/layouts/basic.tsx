@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import { UserContext } from "@/components/contexts/user";
 import { BasicLayoutProps } from "@/types/layouts";
@@ -64,7 +65,12 @@ export default function BasicLayout(props: BasicLayoutProps) {
       </Head>
       <div className="container transition-[padding] duration-300 sm:px-8 px-4 pb-5 flex flex-col">
         <Menu />
-        <div className="pt-5 flex-grow flex flex-col min-h-0">
+        <div
+          className={cn(
+            "pt-5 flex-grow flex flex-col min-h-0",
+            props.className,
+          )}
+        >
           {props.children}
           <Toaster />
         </div>
