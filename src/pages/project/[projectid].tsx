@@ -16,7 +16,8 @@ export default function Project() {
   const { data: projectData, status } = useQuery({
     queryKey: ["projectData", userData.accessToken, projectId],
     queryFn: () => getProject(userData.accessToken as string, projectId),
-    enabled: userData !== undefined && projectId !== undefined,
+    enabled:
+      userData && userData.email !== undefined && projectId !== undefined,
   });
 
   return (

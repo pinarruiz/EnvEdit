@@ -1,6 +1,6 @@
 export type User = {
-  email: string | null;
-  name: string | null;
+  email: string | undefined;
+  name: string | undefined;
   accessToken?: string;
   refreshToken?: string;
 };

@@ -11,8 +11,8 @@ export const UserContext = React.createContext<
 
 export function UserContextProvider(props: UserContextProviderProps) {
   const [userData, setUserData] = React.useState<User>({
-    email: null,
-    name: null,
+    email: undefined,
+    name: undefined,
   });
 
   return (
