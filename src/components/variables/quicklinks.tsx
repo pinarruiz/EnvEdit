@@ -54,7 +54,7 @@ export default function QuickLinks(props: QuickLinksProps) {
 
   return (
     <div className="container bg-background p-0 shadow-sm flex flex-col border rounded-lg">
-      <div className="transition-[padding,gap] duration-300 p-4 flex flex-col items-center gap-4 2xl:flex-row w-full 2xl:w-fit m-auto">
+      <div className="p-4 text-center">
         {Object.keys(quickLinks).map((quickLinkName) => {
           const quickLinkData = quickLinks[quickLinkName];
           const Icon = quickLinkData.icon;
@@ -65,7 +65,7 @@ export default function QuickLinks(props: QuickLinksProps) {
               method="get"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full"
+              className="inline-block m-1 first:ml-0 last:mr-0 w-full sm:w-fit"
             >
               <Button
                 variant="outline"
