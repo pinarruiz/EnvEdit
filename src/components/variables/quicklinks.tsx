@@ -7,6 +7,7 @@ import {
   FolderGit2,
   GitCommitHorizontal,
   GitMerge,
+  Loader2,
   LucideIcon,
   Settings,
   SquareAsterisk,
@@ -72,7 +73,11 @@ export default function QuickLinks(props: QuickLinksProps) {
                 className="flex py-5 gap-2 w-full"
                 disabled={props.loading}
               >
-                <Icon />
+                {props.loading ? (
+                  <Loader2 className="animate-spin" />
+                ) : (
+                  <Icon />
+                )}
                 <p>{quickLinkName}</p>
               </Button>
             </form>
