@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 
 [dev-packages]
-mkdocs-material = "==9.5.23"
+mkdocs-material = "==9.5.25"
 pygithub = "==2.3.0"
 requests = "==2.32.2"
 
