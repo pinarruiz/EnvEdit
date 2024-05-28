@@ -50,6 +50,7 @@ export default function BasicLayout(props: BasicLayoutProps) {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, session]);
 
   if (!userMeLoading && userMe && !Object.keys(userMe).includes("id")) {
