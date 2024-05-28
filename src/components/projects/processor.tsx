@@ -113,7 +113,7 @@ export default function ProjectProcessor(props: ProjectProcessorProps) {
           isLoading ||
           isFetchingNextPage ||
           status === "pending") &&
-          Array.from(Array(GITLAB_PER_PAGE)).map((index) => (
+          Array.from(Array(parseInt(GITLAB_PER_PAGE))).map((index) => (
             <ProjectCard
               key={`loading${index}`}
               projectName=""
