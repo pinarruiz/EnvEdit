@@ -66,7 +66,7 @@ export default function QuickLinks(props: QuickLinksProps) {
               method="get"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block m-1 first:ml-0 last:mr-0 w-full sm:w-fit"
+              className="inline-block my-1 sm:mx-1 first:ml-0 last:mr-0 w-full sm:w-fit"
             >
               <Button
                 variant="outline"

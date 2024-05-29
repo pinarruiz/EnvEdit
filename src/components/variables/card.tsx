@@ -43,7 +43,7 @@ export default function VariableCard(props: VariableCardProps) {
       setExtraEnvs={props.setExtraEnvs}
     >
       <div className="rounded-md border py-3 px-4 flex flex-col sm:flex-row transition h-full hover:bg-accent hover:cursor-pointer">
-        <p className="font-bold m-auto sm:m-0 pb-5 sm:pb-0">
+        <p className="font-bold m-auto sm:m-0 pb-5 sm:pb-0 break-all text-center">
           {props.variableName}
         </p>
         <HoverCard open={checkOverflow(envsPRef.current) ? undefined : false}>
