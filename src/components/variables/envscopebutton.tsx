@@ -96,6 +96,10 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
         await queryClient.invalidateQueries({
           queryKey: scopedDataQUeryKey,
         });
+
+        await queryClient.invalidateQueries({
+          queryKey: ["variables", props.projectId, userData.accessToken],
+        });
       }}
     >
       {props.envScope}
