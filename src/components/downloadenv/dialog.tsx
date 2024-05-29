@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { DialogHeader, DialogFooter } from "@/components/ui/dialog";
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
   DialogTitle,
   DialogDescription,
@@ -21,14 +20,16 @@ import { Checkbox } from "@/components/ui/checkbox";
 import scopedVarsToEnv from "@/lib/scopedVarsToEnv";
 
 type DownloadEnvDialogProps = {
-  children?: React.ReactNode;
   projectId: number;
   variables: ProjectVariableSchema[];
   env_scopes_no_extra: ProjectVariableSchema["environment_scope"][];
+  openedDialog: boolean;
+  setOpenedDialog: React.Dispatch<
+    React.SetStateAction<DownloadEnvDialogProps["openedDialog"]>
+  >;
 };
 
 export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
-  const [openedDialog, setOpenedDialog] = React.useState(false);
   const [checkedIncludeDefault, setCheckedIncludeDefault] =
     React.useState(true);
 
@@ -48,12 +49,11 @@ export default function DownloadEnvDialog(props: DownloadEnvDialogProps) {
 
   function handleDialogOpenClose(event: boolean) {
     setEnvSelected(undefined);
-    setOpenedDialog(event);
+    props.setOpenedDialog(event);
   }
 
   return (
-    <Dialog open={openedDialog} onOpenChange={handleDialogOpenClose}>
-      <DialogTrigger asChild>{props.children}</DialogTrigger>
+    <Dialog open={props.openedDialog} onOpenChange={handleDialogOpenClose}>
       <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
         <DialogHeader>
           <DialogTitle>Download environment</DialogTitle>

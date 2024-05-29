@@ -8,7 +8,6 @@ import {
   DialogHeader,
   DialogFooter,
   Dialog,
-  DialogTrigger,
   DialogContent,
   DialogTitle,
   DialogDescription,
@@ -21,16 +20,18 @@ import { UserContextProviderType } from "@/types/contexts/user";
 import { readInputFile } from "@/lib/files";
 
 type UploadEnvDialogProps = {
-  children?: React.ReactNode;
   env_scopes: ProjectVariableSchema["environment_scope"][];
   projectId: SimpleProjectSchema["id"];
+  openedDialog: boolean;
+  setOpenedDialog: React.Dispatch<
+    React.SetStateAction<UploadEnvDialogProps["openedDialog"]>
+  >;
 };
 
 export default function UploadEnvDialog(props: UploadEnvDialogProps) {
   const queryClient = useQueryClient();
 
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
-  const [openedDialog, setOpenedDialog] = React.useState(false);
   const [isUploading, setIsUploading] = React.useState(false);
   const [fileUploaded, setFileUploaded] = React.useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
@@ -49,7 +50,7 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
     }
     setFileUploaded(false);
     setSearchScope("");
-    setOpenedDialog(event);
+    props.setOpenedDialog(event);
   }
 
   const uploadVariablesMutation = useMutation({
@@ -81,8 +82,7 @@ export default function UploadEnvDialog(props: UploadEnvDialogProps) {
     isUploading;
 
   return (
-    <Dialog open={openedDialog} onOpenChange={handleDialogOpenClose}>
-      <DialogTrigger asChild>{props.children}</DialogTrigger>
+    <Dialog open={props.openedDialog} onOpenChange={handleDialogOpenClose}>
       <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
         <DialogHeader>
           <DialogTitle>Upload environment</DialogTitle>
