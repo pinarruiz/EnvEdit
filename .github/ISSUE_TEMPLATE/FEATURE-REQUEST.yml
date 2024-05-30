@@ -1,0 +1,28 @@
+---
+name: Feature Request
+description: File a bug report.
+title: "[FR]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for thinking about ways of improving!
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the new feature
+      description: Describe with as much detail as you considered needed what new feature you would like implemented.
+      placeholder: Tell us what you would like to see implemented
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](../blob/master/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's [Code of Conduct](../blob/master/CODE_OF_CONDUCT.md)
+          required: true
