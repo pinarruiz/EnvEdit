@@ -1,6 +1,8 @@
 import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useTimeout } from "@mantine/hooks";
 import { cn } from "@/lib/utils";
+import { CircleHelp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EnvScopeButtonProps } from "@/types/variables/envscopebutton";
 import { UserContext } from "@/components/contexts/user";
@@ -14,6 +16,12 @@ import {
 export default function EnvScopeButton(props: EnvScopeButtonProps) {
   const queryClient = useQueryClient();
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
+
+  const [confirm, setConfirm] = React.useState(false);
+  const { start: confirmTimerStart } = useTimeout(
+    () => setConfirm(false),
+    5000,
+  );
 
   const scopedDataQUeryKey = [
     "variableQuery",
@@ -90,19 +98,33 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
       )}
       onClick={async (event) => {
         event.preventDefault();
-        await updateEnvScopesMutation.mutateAsync({
-          enabled: !envScopeIsEnabled,
-        });
-        await queryClient.invalidateQueries({
-          queryKey: scopedDataQUeryKey,
-        });
+        if (confirm) {
+          setConfirm(false);
+          await updateEnvScopesMutation.mutateAsync({
+            enabled: !envScopeIsEnabled,
+          });
+          await queryClient.invalidateQueries({
+            queryKey: scopedDataQUeryKey,
+          });
 
-        await queryClient.invalidateQueries({
-          queryKey: ["variables", props.projectId, userData.accessToken],
-        });
+          await queryClient.invalidateQueries({
+            queryKey: ["variables", props.projectId, userData.accessToken],
+          });
+        } else {
+          setConfirm(true);
+          confirmTimerStart();
+        }
       }}
     >
-      {props.envScope}
+      <div className="flex">
+        <CircleHelp
+          className={cn(
+            "durationj-300 transition-[transform,width,margin]",
+            confirm ? "mr-2" : "scale-0 w-0 rotate-180",
+          )}
+        />
+        <p>{props.envScope}</p>
+      </div>
     </Button>
   );
 }
