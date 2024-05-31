@@ -1,8 +1,8 @@
-import React, { ChangeEventHandler } from "react";
-import { useToggle } from "@mantine/hooks";
-import { Button } from "@/components/ui/button";
+import React from "react";
+import { useTimeout, useToggle } from "@mantine/hooks";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { Button, ButtonProps } from "@/components/ui/button";
 import { Check, CircleX } from "lucide-react";
 
 type RevealButtonProps = {
@@ -11,26 +11,43 @@ type RevealButtonProps = {
   onInputEnterKeyPress: Function;
   actionName: string;
   className?: string;
+  variant?: ButtonProps["variant"];
+  openClassname?: string;
+  autoHideTimeoutMs?: number;
 };
 
 export default function RevealButton(props: RevealButtonProps) {
+  const { start: startHideTime, clear: clearHideTime } = useTimeout(() => {
+    setIsWriting(false);
+    props.setTextInput("");
+  }, props.autoHideTimeoutMs || 8000);
+
   const [isWriting, setIsWriting] = useToggle([false, true] as const);
+
+  function setTextInputProxy(event: React.ChangeEvent<HTMLInputElement>) {
+    if (event.target.value !== "") {
+      clearHideTime();
+    }
+    props.setTextInput(event);
+  }
 
   const sharedClassName = cn(
     "overflow-hidden duration-300 transition-[background-color,width,padding,border] w-full sm:w-44",
     props.className,
+    isWriting && props.openClassname,
   );
 
   return (
     <div className="flex overflow-hidden">
       <Button
         className={cn(sharedClassName, isWriting && "w-0 sm:w-0 p-0 border-0")}
+        variant={props.variant}
         onClick={(event) => {
           event.preventDefault();
           setIsWriting();
         }}
       >
-        {props.actionName}{" "}
+        {props.actionName}
       </Button>
       <div
         className={cn(
@@ -43,10 +60,12 @@ export default function RevealButton(props: RevealButtonProps) {
           placeholder={props.actionName}
           className="focus-visible:ring-transparent"
           value={props.textInput}
-          onChange={props.setTextInput as ChangeEventHandler}
+          onChange={setTextInputProxy}
           onKeyUp={(event) => {
             if (event.key === "Enter") {
-              props.onInputEnterKeyPress();
+              if (props.onInputEnterKeyPress()) {
+                startHideTime();
+              }
             }
           }}
         />
@@ -59,7 +78,9 @@ export default function RevealButton(props: RevealButtonProps) {
             if (props.textInput === "") {
               setIsWriting();
             } else {
-              props.onInputEnterKeyPress();
+              if (props.onInputEnterKeyPress()) {
+                startHideTime();
+              }
             }
           }}
         >

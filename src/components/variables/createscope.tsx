@@ -12,9 +12,11 @@ export default function CreateScope(props: CreateScopeProps) {
     if (!props.envScopes.includes(value)) {
       props.setExtraEnvs((oldExtraEnvs) => [...oldExtraEnvs, value]);
       setNewScopeValue("");
+      return true;
     } else {
       toast({ title: "Environment scope already exists", description: value });
     }
+    return false;
   }
 
   return (
@@ -23,8 +25,9 @@ export default function CreateScope(props: CreateScopeProps) {
       setTextInput={setNewScopeValue}
       onInputEnterKeyPress={() => {
         if (newScopeValue !== "") {
-          setExtraEnvsProxy(newScopeValue);
+          return setExtraEnvsProxy(newScopeValue);
         }
+        return false;
       }}
       actionName="New Scope"
     />

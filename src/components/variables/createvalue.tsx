@@ -14,9 +14,11 @@ export default function CreateValue(props: CreateValueProps) {
         return { ...oldExtraEnvsValues, ...{ [value]: [] } };
       });
       setNewValue("");
+      return true;
     } else {
       toast({ title: "Value already exists", description: value });
     }
+    return false;
   }
 
   return (
@@ -25,8 +27,9 @@ export default function CreateValue(props: CreateValueProps) {
       setTextInput={setNewValue}
       onInputEnterKeyPress={() => {
         if (newValue !== "") {
-          setExtraEnvsProxy(newValue);
+          return setExtraEnvsProxy(newValue);
         }
+        return false;
       }}
       actionName="New Value"
     />
