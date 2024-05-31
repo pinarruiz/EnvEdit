@@ -91,10 +91,10 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
     <Button
       variant="outline"
       className={cn(
-        "duration-300 transition-[opacity,background]",
+        "duration-300 transition-[opacity,background,border-color] border-2 dark:border",
         props.className,
         scopedStatus === "pending" && "duration-1000 animate-pulse",
-        envScopeIsEnabled && "bg-accent opacity-75 hover:opacity-100",
+        envScopeIsEnabled && "border-green-500 dark:border-green-800",
       )}
       onClick={async (event) => {
         event.preventDefault();
