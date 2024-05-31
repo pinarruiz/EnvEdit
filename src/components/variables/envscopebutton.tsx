@@ -99,21 +99,23 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
       )}
       onClick={async (event) => {
         event.preventDefault();
-        if (confirm) {
-          setConfirm(false);
-          await updateEnvScopesMutation.mutateAsync({
-            enabled: !envScopeIsEnabled,
-          });
-          await queryClient.invalidateQueries({
-            queryKey: scopedDataQueryKey,
-          });
+        if (scopedStatus !== "pending") {
+          if (confirm) {
+            setConfirm(false);
+            await updateEnvScopesMutation.mutateAsync({
+              enabled: !envScopeIsEnabled,
+            });
+            await queryClient.invalidateQueries({
+              queryKey: scopedDataQueryKey,
+            });
 
-          await queryClient.invalidateQueries({
-            queryKey: ["variables", props.projectId, userData.accessToken],
-          });
-        } else {
-          setConfirm(true);
-          confirmTimerStart();
+            await queryClient.invalidateQueries({
+              queryKey: ["variables", props.projectId, userData.accessToken],
+            });
+          } else {
+            setConfirm(true);
+            confirmTimerStart();
+          }
         }
       }}
     >
