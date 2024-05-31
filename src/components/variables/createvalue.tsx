@@ -11,7 +11,7 @@ export default function CreateValue(props: CreateValueProps) {
   function setExtraEnvsProxy(value: string) {
     if (!Object.keys(props.variablePool).includes(value)) {
       props.setExtraEnvsValues((oldExtraEnvsValues) => {
-        return { ...oldExtraEnvsValues, ...{ [value]: [] } };
+        return { ...oldExtraEnvsValues, [value]: [] };
       });
       setNewValue("");
       return true;
