@@ -44,7 +44,7 @@ export default function RevealButton(props: RevealButtonProps) {
         className={cn(
           "group/iconrbutton",
           sharedClassName,
-          isWriting && "w-0 sm:w-0 p-0 border-0",
+          isWriting && "w-0 sm:w-0 md:w-0 p-0 border-0",
         )}
         variant={props.variant}
         onClick={(event) => {
@@ -61,7 +61,7 @@ export default function RevealButton(props: RevealButtonProps) {
         className={cn(
           sharedClassName,
           "flex gap-2",
-          !isWriting && "sm:w-0 w-0",
+          !isWriting && "sm:w-0 md:w-0 w-0",
         )}
       >
         <Input

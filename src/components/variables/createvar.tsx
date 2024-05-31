@@ -35,8 +35,8 @@ export default function CreateVar(props: CreateVarProps) {
         return false;
       }}
       actionName="New Variable"
-      openClassname="sm:w-72"
-      className="sm:w-40"
+      openClassname="md:w-72"
+      className="sm:w-full md:w-44"
       variant="outline"
       hoverIcon={CirclePlus}
     />
