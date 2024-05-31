@@ -23,7 +23,7 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
     5000,
   );
 
-  const scopedDataQUeryKey = [
+  const scopedDataQueryKey = [
     "variableQuery",
     userData.accessToken,
     props.projectId,
@@ -32,7 +32,7 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
   ];
 
   const { data: scopedData, status: scopedStatus } = useQuery({
-    queryKey: scopedDataQUeryKey,
+    queryKey: scopedDataQueryKey,
     enabled:
       userData.accessToken !== undefined &&
       userData.accessToken !== null &&
@@ -104,7 +104,7 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
             enabled: !envScopeIsEnabled,
           });
           await queryClient.invalidateQueries({
-            queryKey: scopedDataQUeryKey,
+            queryKey: scopedDataQueryKey,
           });
 
           await queryClient.invalidateQueries({
