@@ -49,6 +49,7 @@ export default function RevealButton(props: RevealButtonProps) {
         variant={props.variant}
         onClick={(event) => {
           event.preventDefault();
+          startHideTime();
           setIsWriting();
         }}
       >
