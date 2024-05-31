@@ -1,5 +1,6 @@
 import React from "react";
 import { useInputState } from "@mantine/hooks";
+import { CirclePlus } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { CreateVarProps } from "@/types/variables/createvar";
 import RevealButton from "@/components/revealbutton";
@@ -33,8 +34,9 @@ export default function CreateVar(props: CreateVarProps) {
       }}
       actionName="New Variable"
       openClassname="sm:w-72"
-      className="sm:w-36"
+      className="sm:w-40"
       variant="outline"
+      hoverIcon={CirclePlus}
     />
   );
 }

@@ -3,7 +3,7 @@ import { useTimeout, useToggle } from "@mantine/hooks";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Button, ButtonProps } from "@/components/ui/button";
-import { Check, CircleX } from "lucide-react";
+import { Check, CircleX, LucideIcon } from "lucide-react";
 
 type RevealButtonProps = {
   textInput: string;
@@ -14,6 +14,7 @@ type RevealButtonProps = {
   variant?: ButtonProps["variant"];
   openClassname?: string;
   autoHideTimeoutMs?: number;
+  hoverIcon?: LucideIcon;
 };
 
 export default function RevealButton(props: RevealButtonProps) {
@@ -40,13 +41,20 @@ export default function RevealButton(props: RevealButtonProps) {
   return (
     <div className="flex overflow-hidden">
       <Button
-        className={cn(sharedClassName, isWriting && "w-0 sm:w-0 p-0 border-0")}
+        className={cn(
+          "group/iconrbutton",
+          sharedClassName,
+          isWriting && "w-0 sm:w-0 p-0 border-0",
+        )}
         variant={props.variant}
         onClick={(event) => {
           event.preventDefault();
           setIsWriting();
         }}
       >
+        {props.hoverIcon && (
+          <props.hoverIcon className="duration-300 opacity-70 rotate-180 scale-0 w-0 group-hover/iconrbutton:mr-3 group-hover/iconrbutton:rotate-0 group-hover/iconrbutton:scale-100 group-hover/iconrbutton:w-6" />
+        )}
         {props.actionName}
       </Button>
       <div
