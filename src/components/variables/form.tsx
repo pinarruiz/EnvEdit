@@ -45,7 +45,7 @@ export default function VariableForm(props: VariableFormProps) {
     <Dialog open={openDialog} onOpenChange={setOpenDialog}>
       <DialogTrigger asChild>{props.children}</DialogTrigger>
       <DialogContent
-        className="transition-[padding] sm:p-8 px-6 rounded-md overflow-y-auto max-h-[90%] max-w-7xl md:w-[90%] w-[95%]"
+        className="transition-[padding] sm:p-8 px-6 rounded-md overflow-y-auto max-h-[90%] max-w-7xl md:w-[90%] w-[95%] flex flex-col"
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
         <DialogHeader>
@@ -61,7 +61,7 @@ export default function VariableForm(props: VariableFormProps) {
                 <div className="flex gap-2">
                   <CopyToClipboard value={envValue} />
                 </div>
-                <AccordionTrigger className="flex-grow">
+                <AccordionTrigger className="flex-grow break-all">
                   {envValue}
                 </AccordionTrigger>
               </div>
