@@ -1,4 +1,5 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 import {
   Dialog,
   DialogContent,
@@ -37,6 +38,11 @@ export default function VariableForm(props: VariableFormProps) {
         const { value } = envVar;
         group[value] = group[value] ?? [];
         group[value].push(envVar.environment_scope);
+        if (!Object.keys(extraEnvValues).includes(value)) {
+          setExtraEnvsValues((oldExtraEnvsValues) => {
+            return { ...oldExtraEnvsValues, [value]: [] };
+          });
+        }
         return group;
       }, {}),
   };
@@ -61,8 +67,22 @@ export default function VariableForm(props: VariableFormProps) {
                 <div className="flex gap-2">
                   <CopyToClipboard value={envValue} />
                 </div>
-                <AccordionTrigger className="flex-grow break-all">
-                  {envValue}
+                <AccordionTrigger
+                  className={cn(
+                    "flex-grow break-all",
+                    variablePool[envValue].length === 0 &&
+                      "decoration-red-400 dark:decoration-red-800",
+                  )}
+                >
+                  <p
+                    className={cn(
+                      "duration-300",
+                      variablePool[envValue].length === 0 &&
+                        "font-bold text-red-400 dark:text-red-600 ",
+                    )}
+                  >
+                    {envValue}
+                  </p>
                 </AccordionTrigger>
               </div>
               <AccordionContent>
