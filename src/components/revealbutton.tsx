@@ -21,7 +21,7 @@ export default function RevealButton(props: RevealButtonProps) {
   const { start: startHideTime, clear: clearHideTime } = useTimeout(() => {
     setIsWriting(false);
     props.setTextInput("");
-  }, props.autoHideTimeoutMs || 8000);
+  }, props.autoHideTimeoutMs || 10000);
 
   const [isWriting, setIsWriting] = useToggle([false, true] as const);
 
