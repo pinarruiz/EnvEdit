@@ -146,7 +146,7 @@ export default function VariableProcessor(props: VariableProcessorProps) {
       </div>
       <div
         className={cn(
-          "transition-[gap] overflow-auto px-4 md:py-4 py-2 flex flex-col md:gap-4 gap-2",
+          "transition-[gap] overflow-hidden px-4 md:py-4 py-2 flex flex-col md:gap-4 gap-2",
           noResults || noVariables ? "flex" : "",
         )}
       >
