@@ -1,12 +1,9 @@
-import { Gitlab, SimpleProjectSchema } from "@gitbeaker/rest";
-import { GITLAB_DOMAIN, GITLAB_PER_PAGE } from "@/lib/appEnv";
+import { SimpleProjectSchema } from "@gitbeaker/rest";
+import { GITLAB_PER_PAGE } from "@/lib/appEnv";
+import { getApiObject } from "@/lib/gitlab/utils";
 
 export async function queryProjects(oauthToken: string, page: number = 1) {
-  const api = new Gitlab({
-    host: `https://${GITLAB_DOMAIN}`,
-    oauthToken: oauthToken,
-  });
-  return await api.Projects.all({
+  return await getApiObject(oauthToken).Projects.all({
     pagination: "offset",
     showExpanded: true,
     page: page,
@@ -19,9 +16,5 @@ export async function getProject(
   oauthToken: string,
   projectId: SimpleProjectSchema["id"],
 ) {
-  const api = new Gitlab({
-    host: `https://${GITLAB_DOMAIN}`,
-    oauthToken: oauthToken,
-  });
-  return await api.Projects.show(projectId);
+  return await getApiObject(oauthToken).Projects.show(projectId);
 }
