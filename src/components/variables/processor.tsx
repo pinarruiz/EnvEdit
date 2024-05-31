@@ -6,7 +6,10 @@ import { cn } from "@/lib/utils";
 import { ProjectVariableSchema } from "@gitbeaker/rest";
 import { UserContext } from "@/components/contexts/user";
 import { UserContextProviderType } from "@/types/contexts/user";
-import { VariableProcessorProps } from "@/types/variables/processor";
+import {
+  ConsolidatedVariables,
+  VariableProcessorProps,
+} from "@/types/variables/processor";
 import { queryVariables } from "@/lib/gitlab/variables";
 import VariableCard, { LoadingVariableCard } from "@/components/variables/card";
 import { GITLAB_PER_PAGE } from "@/lib/appEnv";
@@ -61,23 +64,17 @@ export default function VariableProcessor(props: VariableProcessorProps) {
     ...extraEnvs.filter((envName) => !_flatEnvironmentScopes.includes(envName)),
   ];
 
-  const _consolidatedVariables: Record<
-    ProjectVariableSchema["key"],
-    Record<
-      ProjectVariableSchema["environment_scope"],
-      ProjectVariableSchema["value"]
-    >
-  > = {};
-
-  _flatVariables?.forEach((variable) => {
-    if (variable.key.toLowerCase().includes(globalFilter.toLowerCase())) {
-      if (!Object.keys(_consolidatedVariables).includes(variable.key)) {
-        _consolidatedVariables[variable.key] = {};
-      }
-      _consolidatedVariables[variable.key][variable.environment_scope] =
-        variable.value;
-    }
-  });
+  const _consolidatedVariables: ConsolidatedVariables =
+    _flatVariables?.reduce(
+      (group: ConsolidatedVariables, variable: ProjectVariableSchema) => {
+        if (!Object.keys(group).includes(variable.key)) {
+          group[variable.key] = {};
+        }
+        group[variable.key][variable.environment_scope] = variable.value;
+        return group;
+      },
+      {},
+    ) || {};
 
   if (!isFetchingNextPage && !isLoading && hasNextPage) {
     fetchNextPage();
@@ -134,17 +131,21 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           noResults || noVariables ? "flex" : "",
         )}
       >
-        {Object.keys(_consolidatedVariables).map((key) => (
-          <VariableCard
-            key={key}
-            variableName={key}
-            variable={_consolidatedVariables[key]}
-            envScopes={_flatEnvironmentScopesExtras}
-            projectId={props.projectId}
-            extraEnvs={extraEnvs}
-            setExtraEnvs={setExtraEnvs}
-          />
-        ))}
+        {Object.keys(_consolidatedVariables)
+          .filter((key) =>
+            key.toLowerCase().includes(globalFilter.toLowerCase()),
+          )
+          .map((key) => (
+            <VariableCard
+              key={key}
+              variableName={key}
+              variable={_consolidatedVariables[key]}
+              envScopes={_flatEnvironmentScopesExtras}
+              projectId={props.projectId}
+              extraEnvs={extraEnvs}
+              setExtraEnvs={setExtraEnvs}
+            />
+          ))}
         {(props.loading ||
           isLoading ||
           isFetchingNextPage ||
