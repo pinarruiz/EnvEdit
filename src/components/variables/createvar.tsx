@@ -10,14 +10,16 @@ export default function CreateVar(props: CreateVarProps) {
   const [newVar, setNewVar] = useInputState("");
 
   function setExtraVarsProxy(value: string) {
-    if (!Object.keys(props.consolidatedVariables).includes(value)) {
+    const filteredValue = value.replaceAll(" ", "_");
+    if (!Object.keys(props.consolidatedVariables).includes(filteredValue)) {
       props.setExtraVars((oldExtraVars) => {
-        return [...oldExtraVars, value];
+        return [...oldExtraVars, filteredValue];
       });
       setNewVar("");
       return true;
     } else {
-      toast({ title: "Variable already exists", description: value });
+      setNewVar(filteredValue);
+      toast({ title: "Variable already exists", description: filteredValue });
     }
     return false;
   }
