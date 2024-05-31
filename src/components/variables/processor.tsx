@@ -82,6 +82,9 @@ export default function VariableProcessor(props: VariableProcessorProps) {
         if (!Object.keys(group).includes(variable.key)) {
           group[variable.key] = {};
         }
+        if (!extraVars.includes(variable.key)) {
+          setExtraVars((oldExtraVars) => [...oldExtraVars, variable.key]);
+        }
         group[variable.key][variable.environment_scope] = variable.value;
         return group;
       },
