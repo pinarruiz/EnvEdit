@@ -144,6 +144,13 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           <CreateVar
             consolidatedVariables={_consolidatedVariables}
             setExtraVars={setExtraVars}
+            loading={
+              props.loading ||
+              isLoading ||
+              isFetchingNextPage ||
+              status === "pending" ||
+              hasNextPage
+            }
           />
         </div>
       </div>

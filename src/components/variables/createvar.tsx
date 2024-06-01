@@ -39,6 +39,7 @@ export default function CreateVar(props: CreateVarProps) {
       className="sm:w-full md:w-44"
       variant="outline"
       hoverIcon={CirclePlus}
+      loading={props.loading}
     />
   );
 }

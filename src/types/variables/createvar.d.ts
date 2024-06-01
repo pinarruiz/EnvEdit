@@ -7,4 +7,5 @@ export type CreateVarProps = {
   setExtraVars: React.Dispatch<
     React.SetStateAction<ProjectVariableSchema["key"][]>
   >;
+  loading?: boolean;
 };

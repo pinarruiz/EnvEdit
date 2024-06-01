@@ -16,6 +16,7 @@ type RevealInputButtonProps = {
   openClassname?: string;
   autoHideTimeoutMs?: number;
   hoverIcon?: LucideIcon;
+  loading?: boolean;
 };
 
 export default function RevealInputButton(props: RevealInputButtonProps) {
@@ -44,6 +45,7 @@ export default function RevealInputButton(props: RevealInputButtonProps) {
       <IconRevealButton
         icon={props.hoverIcon}
         variant={props.variant}
+        loading={props.loading}
         className={cn(
           sharedClassName,
           isWriting && "w-0 sm:w-0 md:w-0 p-0 border-0",
