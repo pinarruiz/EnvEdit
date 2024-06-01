@@ -9,6 +9,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { VariableCardProps } from "@/types/variables/card";
 import { Separator } from "@/components/ui/separator";
 import VariableForm from "@/components/variables/form";
+import { cn } from "@/lib/utils";
+import { CircleAlert } from "lucide-react";
 
 function checkOverflow(ref: HTMLParagraphElement | null): boolean {
   if (ref) {
@@ -18,6 +20,11 @@ function checkOverflow(ref: HTMLParagraphElement | null): boolean {
   }
   return false;
 }
+
+const sharedAlertClassName = {
+  base: "absolute duration-300 text-red-400 dark:text-red-800 -right-1",
+  hidden: "w-0 h-0 scale-0 rotate-180",
+};
 
 export function LoadingVariableCard() {
   return (
@@ -42,7 +49,13 @@ export default function VariableCard(props: VariableCardProps) {
       extraEnvs={props.extraEnvs}
       setExtraEnvs={props.setExtraEnvs}
     >
-      <div className="rounded-md border py-3 px-4 flex flex-col sm:flex-row transition h-full hover:bg-accent hover:cursor-pointer">
+      <div
+        className={cn(
+          "rounded-md border py-3 px-4 flex flex-col sm:flex-row transition duration-300 h-full hover:bg-accent hover:cursor-pointer",
+          Object.keys(props.variable).length === 0 &&
+            "border-2 border-red-400 dark:border dark:border-red-800",
+        )}
+      >
         <p className="font-bold m-auto sm:m-0 pb-5 sm:pb-0 break-all text-center">
           {props.variableName}
         </p>
@@ -71,6 +84,24 @@ export default function VariableCard(props: VariableCardProps) {
             </ScrollArea>
           </HoverCardContent>
         </HoverCard>
+        <div className="relative">
+          <CircleAlert
+            className={cn(
+              sharedAlertClassName.base,
+              Object.keys(props.variable).length === 0
+                ? "duration-1000 animate-ping"
+                : sharedAlertClassName.hidden,
+            )}
+          />
+          <CircleAlert
+            className={cn(
+              sharedAlertClassName.base,
+              Object.keys(props.variable).length === 0
+                ? ""
+                : sharedAlertClassName.hidden,
+            )}
+          />
+        </div>
       </div>
     </VariableForm>
   );
