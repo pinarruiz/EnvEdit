@@ -2,7 +2,7 @@ import React from "react";
 import { SimpleProjectSchema, ProjectVariableSchema } from "@gitbeaker/rest";
 import { UploadCloudIcon } from "lucide-react";
 import UploadEnvDialog from "@/components/uploadenv/dialog";
-import IconRevealButton from "@/components/iconrevealbutton";
+import IconRevealButton from "@/components/buttons/iconreveal";
 
 type UploadEnvButtonProps = {
   projectId: SimpleProjectSchema["id"];
@@ -24,6 +24,7 @@ export default function UploadEnvButton(props: UploadEnvButtonProps) {
       <IconRevealButton
         loading={props.loading}
         icon={UploadCloudIcon}
+        variant="outline"
         onClick={() => setOpenedDialog(!openedDialog)}
       >
         Upload Env

@@ -1,7 +1,7 @@
 import React from "react";
 import { useInputState } from "@mantine/hooks";
 import { useToast } from "@/components/ui/use-toast";
-import RevealButton from "@/components/revealbutton";
+import RevealInputButton from "@/components/buttons/revealinput";
 import { CreateValueProps } from "@/types/variables/createvalue";
 
 export default function CreateValue(props: CreateValueProps) {
@@ -22,7 +22,7 @@ export default function CreateValue(props: CreateValueProps) {
   }
 
   return (
-    <RevealButton
+    <RevealInputButton
       textInput={newValue}
       setTextInput={setNewValue}
       onInputEnterKeyPress={() => {

@@ -4,8 +4,9 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Button, ButtonProps } from "@/components/ui/button";
 import { Check, CircleX, LucideIcon } from "lucide-react";
+import IconRevealButton from "@/components/buttons/iconreveal";
 
-type RevealButtonProps = {
+type RevealInputButtonProps = {
   textInput: string;
   setTextInput: Function;
   onInputEnterKeyPress: Function;
@@ -17,7 +18,7 @@ type RevealButtonProps = {
   hoverIcon?: LucideIcon;
 };
 
-export default function RevealButton(props: RevealButtonProps) {
+export default function RevealInputButton(props: RevealInputButtonProps) {
   const { start: startHideTime, clear: clearHideTime } = useTimeout(() => {
     setIsWriting(false);
     props.setTextInput("");
@@ -40,24 +41,21 @@ export default function RevealButton(props: RevealButtonProps) {
 
   return (
     <div className="flex overflow-hidden">
-      <Button
+      <IconRevealButton
+        icon={props.hoverIcon}
+        variant={props.variant}
         className={cn(
-          "group/iconrbutton",
           sharedClassName,
           isWriting && "w-0 sm:w-0 md:w-0 p-0 border-0",
         )}
-        variant={props.variant}
         onClick={(event) => {
           event.preventDefault();
           startHideTime();
           setIsWriting();
         }}
       >
-        {props.hoverIcon && (
-          <props.hoverIcon className="duration-300 opacity-70 rotate-180 scale-0 w-0 group-hover/iconrbutton:mr-3 group-hover/iconrbutton:rotate-0 group-hover/iconrbutton:scale-100 group-hover/iconrbutton:w-6" />
-        )}
         {props.actionName}
-      </Button>
+      </IconRevealButton>
       <div
         className={cn(
           sharedClassName,

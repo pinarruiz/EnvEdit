@@ -2,7 +2,7 @@ import React from "react";
 import { useInputState } from "@mantine/hooks";
 import { useToast } from "@/components/ui/use-toast";
 import { CreateScopeProps } from "@/types/variables/createscope";
-import RevealButton from "@/components/revealbutton";
+import RevealInputButton from "@/components/buttons/revealinput";
 
 export default function CreateScope(props: CreateScopeProps) {
   const { toast } = useToast();
@@ -20,7 +20,7 @@ export default function CreateScope(props: CreateScopeProps) {
   }
 
   return (
-    <RevealButton
+    <RevealInputButton
       textInput={newScopeValue}
       setTextInput={setNewScopeValue}
       onInputEnterKeyPress={() => {

@@ -3,7 +3,7 @@ import { useInputState } from "@mantine/hooks";
 import { CirclePlus } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { CreateVarProps } from "@/types/variables/createvar";
-import RevealButton from "@/components/revealbutton";
+import RevealInputButton from "@/components/buttons/revealinput";
 
 export default function CreateVar(props: CreateVarProps) {
   const { toast } = useToast();
@@ -25,7 +25,7 @@ export default function CreateVar(props: CreateVarProps) {
   }
 
   return (
-    <RevealButton
+    <RevealInputButton
       textInput={newVar}
       setTextInput={setNewVar}
       onInputEnterKeyPress={() => {

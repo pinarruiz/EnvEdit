@@ -2,7 +2,7 @@ import React from "react";
 import { ProjectVariableSchema, SimpleProjectSchema } from "@gitbeaker/rest";
 import { DownloadCloudIcon } from "lucide-react";
 import DownloadEnvDialog from "@/components/downloadenv/dialog";
-import IconRevealButton from "@/components/iconrevealbutton";
+import IconRevealButton from "@/components/buttons/iconreveal";
 
 type DownloadEnvButtonProps = {
   projectId: SimpleProjectSchema["id"];
@@ -26,6 +26,7 @@ export default function DownloadEnvButton(props: DownloadEnvButtonProps) {
       <IconRevealButton
         loading={props.loading}
         icon={DownloadCloudIcon}
+        variant="outline"
         onClick={() => setOpenedDialog(!openedDialog)}
       >
         Download Env
