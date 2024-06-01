@@ -9,17 +9,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { VariableCardProps } from "@/types/variables/card";
 import { Separator } from "@/components/ui/separator";
 import VariableForm from "@/components/variables/form";
-import { cn } from "@/lib/utils";
+import { checkOverflow, cn } from "@/lib/utils";
 import { CircleAlert } from "lucide-react";
-
-function checkOverflow(ref: HTMLParagraphElement | null): boolean {
-  if (ref) {
-    return (
-      ref.scrollHeight > ref.clientHeight || ref.scrollWidth > ref.clientWidth
-    );
-  }
-  return false;
-}
 
 const sharedAlertClassName = {
   base: "absolute duration-300 text-red-400 dark:text-red-800 -right-1",
