@@ -5,5 +5,5 @@ contact_links:
     url: https://gitlab.com/EnvEdit/EnvEdit
     about: All issues or code should be submitted to the Gitlab repository
   - name: EnvEdit Docs
-    url: https://pinarruiz.github.io/EnvEdit/
+    url: https://envedit.gitlab.io/EnvEdit/docs/
     about: Review the docs in case you missed something.

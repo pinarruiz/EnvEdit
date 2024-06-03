@@ -1,0 +1,34 @@
+---
+include:
+  - local: /ci/generics.yml
+
+mkdocs:
+  extends: .python_job
+  stage: build
+  needs: []
+  variables:
+    SITE_NAME: "${CI_PROJECT_TITLE} Docs"
+    SITE_URL: "${CI_PAGES_URL}/docs"
+    REPOSITORY_NAME: $CI_PROJECT_TITLE
+  script:
+    - mkdocs build -d mkdocs-result
+  artifacts:
+    paths:
+      - mkdocs-result
+
+pages:
+  stage: deploy
+  needs:
+    - job: secret_detection
+      artifacts: false
+    - job: markdownlint
+      artifacts: false
+    - job: mkdocs
+      artifacts: true
+  script:
+    - echo "Deploying docs"
+    - rm -rfv public && mkdir -p public
+    - mv -v mkdocs-result public/docs
+  artifacts:
+    paths:
+      - public

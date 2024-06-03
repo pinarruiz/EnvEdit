@@ -1,9 +1,9 @@
 ---
 site_name: !ENV [SITE_NAME, "EnvEdit Docs"]
-site_url: !ENV [PAGES_URL, "https://pinarruiz.github.io/EnvEdit/"]
-repo_name: !ENV [REPOSITORY_NAME, "EnvEdit"]
-repo_url: !ENV [REPOSITORY_URL, "https://github.com/pinarruiz/EnvEdit"]
-edit_uri: "edit/master/docs/"
+site_url: !ENV [PAGES_URL, "https://envedit.gitlab.io/EnvEdit/docs"]
+repo_name: !ENV [CI_PROJECT_TITLE, "EnvEdit"]
+repo_url: !ENV [CI_PROJECT_URL, "https://gitlab.com/EnvEdit/EnvEdit"]
+edit_uri_template: "-/edit/main/docs/{path}?ref_type=heads"
 
 extra:
   generator: false
@@ -42,7 +42,7 @@ theme:
     - toc.follow
     # - toc.integrate
   icon:
-    repo: fontawesome/brands/github
+    repo: fontawesome/brands/gitlab
     edit: material/pencil
     view: material/eye
   palette:

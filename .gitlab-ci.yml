@@ -3,8 +3,10 @@ stages:
   - tests
   - dependencies
   - build
+  - deploy
 
 include:
   - local: /ci/renovate.yml
   - local: /ci/docker.yml
   - local: /ci/tests.yml
+  - local: /ci/pages.yml
