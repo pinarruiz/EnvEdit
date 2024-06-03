@@ -25,6 +25,13 @@ pages:
       artifacts: false
     - job: mkdocs
       artifacts: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - if: $CI_COMMIT_REF_SLUG == "main"
+      when: on_success
   script:
     - echo "Deploying docs"
     - rm -rfv public && mkdir -p public
