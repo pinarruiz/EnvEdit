@@ -1,4 +1,7 @@
 ---
+include:
+  - local: /ci/generics.yml
+
 .generic_test:
   stage: tests
   needs: []
@@ -8,31 +11,14 @@
     - when: on_success
 
 .node_tests:
-  extends: .generic_test
-  image: node:22.2.0-alpine
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}-node-cache
-    paths:
-      - .pnpm-store
-  before_script:
-    - apk add jq git
-    - npm i -g $(cat package.json | jq -re '.packageManager')
-    - pnpm config set store-dir .pnpm-store
-    - pnpm i
+  extends:
+    - .node_job
+    - .generic_test
 
 .python_tests:
-  extends: .generic_test
-  image: python:3.12.3
-  variables:
-    PIP_CACHE_DIR: .cache/pip
-    PIPENV_CACHE_DIR: .cache/pipenv
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}-python-cache
-    paths:
-      - .cache
-  before_script:
-    - pip install pipenv==2023.12.1
-    - pipenv install --dev --system
+  extends:
+    - .python_job
+    - .generic_test
 
 eslint:
   extends: .node_tests
