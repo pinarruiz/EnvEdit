@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Github } from "lucide-react";
+import { Gitlab } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -24,17 +24,17 @@ export default function Menu() {
             <Tooltip delayDuration={500}>
               <TooltipTrigger asChild>
                 <Link
-                  href="https://github.com/pinarruiz/EnvEdit"
+                  href="https://gitlab.com/EnvEdit/EnvEdit"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Button size="icon" variant="outline">
-                    <Github />
+                    <Gitlab />
                   </Button>
                 </Link>
               </TooltipTrigger>
               <TooltipContent className="mt-1">
-                <p>pinarruiz/EnvEdit</p>
+                <p>EnvEdit/EnvEdit</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
