@@ -18,6 +18,7 @@ mkdocs:
 
 pages:
   stage: deploy
+  image: alpine
   needs:
     - job: secret_detection
       artifacts: false
