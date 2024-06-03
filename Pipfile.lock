@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9d08987a7893bc6d3fe81f3699e12c7cf92f3e456b77e98ae56f74d4e8848e65"
+            "sha256": "ea2674f5d08c79de01c264acf6a7a35e6d520e4dc57c27eec109d769a7b8300c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -27,11 +27,11 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:0569859f95fc761b18b45ef421b1290a0f65f147e92a1e5eb3e635f9a5e4e66f",
-                "sha256:dc383c07b76109f368f6106eee2b593b04a011ea4d55f652c6ca24a754d1cdd1"
+                "sha256:3cd43f1c6fa7dedc5899d69d3ad0398fd018ad1a17fba83ddaf78aa46c747516",
+                "sha256:ddc6c8ce995e6987e7faf5e3f1b02b302836a0e5d98ece18392cb1a36c72ad56"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==2024.2.2"
+            "version": "==2024.6.2"
         },
         "cffi": {
             "hashes": [
@@ -653,11 +653,11 @@
         },
         "typing-extensions": {
             "hashes": [
-                "sha256:83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0",
-                "sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a"
+                "sha256:6024b58b69089e5a89c347397254e35f1bf02a907728ec7fee9bf0fe837d203a",
+                "sha256:915f5e35ff76f56588223f15fdd5938f9a1cf9195c0de25130c627e4d597f6d1"
             ],
             "markers": "python_version >= '3.8'",
-            "version": "==4.11.0"
+            "version": "==4.12.1"
         },
         "urllib3": {
             "hashes": [
@@ -780,6 +780,23 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==1.16.0"
+        },
+        "yamllint": {
+            "hashes": [
+                "sha256:2e16e504bb129ff515b37823b472750b36b6de07963bd74b307341ef5ad8bdc3",
+                "sha256:7a003809f88324fd2c877734f2d575ee7881dd9043360657cc8049c809eba6cd"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==1.35.1"
+        },
+        "yamllint-junit": {
+            "hashes": [
+                "sha256:0b73b78b93a2767255671ade24c6f50440b2d4229f1398e528b071a2def27d21",
+                "sha256:af7e04313d7f4d73aaccb89214cbb9fdc58b5966697327b0548f881d0b51f74a"
+            ],
+            "index": "pypi",
+            "version": "==0.10.1"
         }
     }
 }

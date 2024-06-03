@@ -2,7 +2,23 @@
 build:
   stage: build
   image: docker:26.1.3-cli
-  needs: []
+  needs:
+    - job: prettier
+      artifacts: false
+    - job: test_build
+      artifacts: false
+    - job: eslint
+      artifacts: false
+    - job: shell_check
+      artifacts: false
+    - job: yamllint
+      artifacts: false
+    - job: markdownlint
+      artifacts: false
+    - job: hadolint
+      artifacts: false
+    - job: secret_detection
+      artifacts: false
   services:
     - docker:26.1.3-dind
   rules:
@@ -14,6 +30,7 @@ build:
       when: on_success
     - if: $CI_COMMIT_TAG
       when: on_success
+    - when: on_success
   before_script:
     - apk add git
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
@@ -24,11 +41,11 @@ build:
       --driver-opt default-load=true \
       --name=container --bootstrap --use
   script:
-    - ash ci/docker-metadata.sh
+    - ash ci/utils/docker-metadata.sh
     - |
       docker buildx build --builder=container  \
       --push --provenance=false \
-      $(ash ci/docker-metadata.sh) \
+      $(ash ci/utils/docker-metadata.sh) \
       --platform linux/arm64/v8,linux/amd64 \
       --cache-to type=registry,ref=$CI_REGISTRY_IMAGE/cache \
       --cache-from type=registry,ref=$CI_REGISTRY_IMAGE/cache .

@@ -2,6 +2,10 @@ node_modules
 src/components/ui
 .gitignore
 .husky
+.pnpm-store
 pnpm-lock.yaml
 Pipfile
 Pipfile.lock
+.gitlab-ci.yml
+ci
+renovate.json

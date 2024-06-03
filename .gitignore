@@ -208,3 +208,10 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+
+# Test reports
+shellcheck-result.xml
+yamllint-result.xml
+markdownlint-result.xml
+markdownlint-result.json
+hadolint-result

@@ -1,0 +1,115 @@
+---
+.generic_test:
+  stage: tests
+  needs: []
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - when: on_success
+
+.node_tests:
+  extends: .generic_test
+  image: node:22.2.0-alpine
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-node-cache
+    paths:
+      - .pnpm-store
+  before_script:
+    - apk add jq git
+    - npm i -g $(cat package.json | jq -re '.packageManager')
+    - pnpm config set store-dir .pnpm-store
+    - pnpm i
+
+.python_tests:
+  extends: .generic_test
+  image: python:3.12.3
+  variables:
+    PIP_CACHE_DIR: .cache/pip
+    PIPENV_CACHE_DIR: .cache/pipenv
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-python-cache
+    paths:
+      - .cache
+  before_script:
+    - pip install pipenv==2023.12.1
+    - pipenv install --dev --system
+
+eslint:
+  extends: .node_tests
+  script:
+    - pnpm lint -f junit -o eslint-result.xml
+    - pnpm lint
+  artifacts:
+    reports:
+      junit: eslint-result.xml
+    when: always
+
+prettier:
+  extends: .node_tests
+  script:
+    - pnpm prettier -c .
+
+test_build:
+  extends: .node_tests
+  script:
+    - pnpm build
+
+shell_check:
+  extends: .generic_test
+  image: koalaman/shellcheck-alpine:v0.10.0
+  before_script:
+    - apk add git xmlstarlet
+    - git ls-files --exclude='*.sh' --ignored -c
+  script:
+    - shellcheck -f checkstyle $(git ls-files --exclude='*.sh' --ignored -c) | xmlstarlet tr ci/utils/checkstyle2junit.xslt > shellcheck-result.xml
+  artifacts:
+    reports:
+      junit: shellcheck-result.xml
+    when: always
+
+yamllint:
+  extends: .python_tests
+  script:
+    - yamllint .
+    - yamllint -f parsable . | yamllint-junit -o yamllint-result.xml
+  artifacts:
+    reports:
+      junit: yamllint-result.xml
+    when: always
+
+markdownlint:
+  extends: .node_tests
+  script:
+    - pnpm markdownlint-cli2 --config ci/utils/.markdownlint-cli2.jsonc $(git ls-files --exclude='*.md' --ignored -c)
+  artifacts:
+    reports:
+      junit: markdownlint-result.xml
+      codequality: markdownlint-result.json
+    when: always
+
+hadolint:
+  extends: .generic_test
+  image: hadolint/hadolint:2.12.0-alpine
+  before_script:
+    - mkdir -p hadolint-result
+    - hadolint Dockerfile || true
+  script:
+    - hadolint -f gitlab_codeclimate Dockerfile > hadolint-result/hadolint-$(md5sum Dockerfile | cut -d" " -f1).json
+  artifacts:
+    reports:
+      codequality:
+        - hadolint-result/*
+    when: always
+
+secret_detection:
+  extends: .generic_test
+  image: registry.gitlab.com/security-products/secrets:6.0.1
+  variables:
+    GIT_DEPTH: "50"
+  script:
+    - /analyzer run
+  artifacts:
+    access: 'developer'
+    reports:
+      secret_detection: gl-secret-detection-report.json
+    when: always

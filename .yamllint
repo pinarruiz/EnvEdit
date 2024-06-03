@@ -3,3 +3,6 @@ extends: default
 
 ignore:
   - pnpm-lock.yaml
+
+rules:
+  line-length: disable

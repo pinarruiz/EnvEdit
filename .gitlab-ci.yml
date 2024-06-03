@@ -7,3 +7,4 @@ stages:
 include:
   - local: /ci/renovate.yml
   - local: /ci/docker.yml
+  - local: /ci/tests.yml

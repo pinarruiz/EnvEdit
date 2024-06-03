@@ -7,8 +7,9 @@ RUN adduser -s /bin/ash -D ${APP_USER} && chown -R ${APP_USER}:${APP_USER} /home
 
 COPY --chown=$APP_USER:$APP_USER package.json pnpm-lock.yaml ./
 
-RUN apk add --no-cache jq && \	
-	npm i -g $(cat package.json | jq -re '.packageManager') && \
+# hadolint ignore=DL3018
+RUN apk add --no-cache jq && \
+	npm i -g "$(jq -re '.packageManager' < package.json)" && \
 	apk del jq
 
 USER ${APP_USER}
