@@ -6,6 +6,10 @@ mkdocs:
   extends: .python_job
   stage: build
   needs: []
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - when: on_success
   variables:
     SITE_NAME: "${CI_PROJECT_TITLE} Docs"
     SITE_URL: "${CI_PAGES_URL}/docs"
