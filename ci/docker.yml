@@ -1,0 +1,34 @@
+---
+build:
+  stage: build
+  image: docker:26.1.3-cli
+  needs: []
+  services:
+    - docker:26.1.3-dind
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - if: $CI_COMMIT_REF_SLUG == "main"
+      when: on_success
+    - if: $CI_COMMIT_TAG
+      when: on_success
+  before_script:
+    - apk add git
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
+    - docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN $GITHUB_REGISTRY
+    - |
+      docker buildx create --driver docker-container \
+      --driver-opt default-load=true \
+      --name=container --bootstrap --use
+  script:
+    - ash ci/docker-metadata.sh
+    - |
+      docker buildx build --builder=container  \
+      --push --provenance=false \
+      $(ash ci/docker-metadata.sh) \
+      --platform linux/arm64/v8,linux/amd64 \
+      --cache-to type=registry,ref=$CI_REGISTRY_IMAGE/cache \
+      --cache-from type=registry,ref=$CI_REGISTRY_IMAGE/cache .

@@ -1,0 +1,9 @@
+---
+stages:
+  - tests
+  - dependencies
+  - build
+
+include:
+  - local: /ci/renovate.yml
+  - local: /ci/docker.yml

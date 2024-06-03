@@ -1,0 +1,46 @@
+---
+.renovate:
+  image: ghcr.io/renovatebot/renovate:37.382.2
+  variables:
+    RENOVATE_PLATFORM: gitlab
+    RENOVATE_ENDPOINT: $CI_API_V4_URL
+    RENOVATE_BASE_DIR: $CI_PROJECT_DIR/renovate
+    RENOVATE_ONBOARDING_CONFIG: '{"$$schema": "https://docs.renovatebot.com/renovate-schema.json", "extends": ["config:recommended"] }'
+    RENOVATE_REPOSITORY_CACHE: "enabled"
+    RENOVATE_LOG_FILE: renovate-log.ndjson
+    RENOVATE_LOG_FILE_LEVEL: debug
+    RENOVATE_AUTODISCOVER: true
+    RENOVATE_AUTODISCOVER_NAMESPACES: '["EnvEdit"]'
+    RENOVATE_REVIEWERS: '["@alejandropinarruiz"]'
+    RENOVATE_ASSIGNEES: '["@alejandropinarruiz"]'
+    RENOVATE_PR_HOURLY_LIMIT: 0
+    RENOVATE_PR_CONCURRENT_LIMIT: 0
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-renovate
+    paths:
+      - $RENOVATE_BASE_DIR/cache/renovate/repository/
+  script:
+    - renovate $RENOVATE_EXTRA_FLAGS
+
+check_config:
+  extends: .renovate
+  stage: tests
+  needs: []
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "push"
+    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+  script:
+    - renovate-config-validator
+
+renovate:
+  extends: .renovate
+  stage: dependencies
+  resource_group: renovate
+  interruptible: true
+  needs:
+    - job: check_config
+      artifacts: false
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
