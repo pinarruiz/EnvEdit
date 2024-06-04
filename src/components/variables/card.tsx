@@ -13,7 +13,7 @@ import { checkOverflow, cn } from "@/lib/utils";
 import { CircleAlert } from "lucide-react";
 
 const sharedAlertClassName = {
-  base: "absolute duration-300 text-red-400 dark:text-red-800 -right-1",
+  base: "absolute duration-300 text-red-400 dark:text-red-800 sm:-right-1",
   hidden: "w-0 h-0 scale-0 rotate-180",
 };
 
@@ -75,7 +75,7 @@ export default function VariableCard(props: VariableCardProps) {
             </ScrollArea>
           </HoverCardContent>
         </HoverCard>
-        <div className="relative">
+        <div className="w-6 h-6 m-auto sm:relative sm:w-0 sm:h-0 sm:m-0">
           <CircleAlert
             className={cn(
               sharedAlertClassName.base,
