@@ -52,7 +52,11 @@ export default function RevealInputButton(props: RevealInputButtonProps) {
         )}
         onClick={(event) => {
           event.preventDefault();
-          startHideTime();
+          if (isWriting) {
+            clearHideTime();
+          } else {
+            startHideTime();
+          }
           setIsWriting();
         }}
       >

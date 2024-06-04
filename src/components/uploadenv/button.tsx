@@ -26,6 +26,7 @@ export default function UploadEnvButton(props: UploadEnvButtonProps) {
         icon={UploadCloudIcon}
         variant="outline"
         onClick={() => setOpenedDialog(!openedDialog)}
+        className="w-full md:w-fit"
       >
         Upload Env
       </IconRevealButton>

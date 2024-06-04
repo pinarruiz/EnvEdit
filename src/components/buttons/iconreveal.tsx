@@ -17,7 +17,7 @@ export default function IconRevealButton(props: IconRevealButtonProps) {
       onClick={props.onClick}
       variant={props.variant}
       className={cn(
-        "duration-300 whitespace-nowrap flex group/iconrbutton w-full md:w-fit",
+        "duration-300 whitespace-nowrap flex group/iconrbutton",
         props.className,
       )}
     >

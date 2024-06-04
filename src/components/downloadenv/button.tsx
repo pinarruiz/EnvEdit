@@ -28,6 +28,7 @@ export default function DownloadEnvButton(props: DownloadEnvButtonProps) {
         icon={DownloadCloudIcon}
         variant="outline"
         onClick={() => setOpenedDialog(!openedDialog)}
+        className="w-full md:w-fit"
       >
         Download Env
       </IconRevealButton>
