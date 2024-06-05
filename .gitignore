@@ -215,3 +215,6 @@ yamllint-result.xml
 markdownlint-result.xml
 markdownlint-result.json
 hadolint-result
+
+# Local Netlify folder
+.netlify

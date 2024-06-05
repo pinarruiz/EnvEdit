@@ -1,0 +1,48 @@
+---
+deploy_netlify:
+  image: node:22.2.0
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-node-cache
+    paths:
+      - .pnpm-store
+  stage: deploy
+  needs:
+    - job: prettier
+      artifacts: false
+    - job: test_build
+      artifacts: false
+    - job: eslint
+      artifacts: false
+    - job: shell_check
+      artifacts: false
+    - job: yamllint
+      artifacts: false
+    - job: markdownlint
+      artifacts: false
+    - job: hadolint
+      artifacts: false
+    - job: secret_detection
+      artifacts: false
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - if: $CI_COMMIT_REF_SLUG == "main"
+    - when: never
+  environment:
+    name: prod
+    url: https://envedit.netlify.app/
+  before_script:
+    - apt-get update
+    - apt-get install -y jq git
+    - npm i -g $(cat package.json | jq -re '.packageManager')
+    - pnpm config set store-dir .pnpm-store
+    - pnpm i
+    - pnpm netlify --telemetry-disable
+  script:
+    - pnpm netlify env:set NEXTAUTH_URL "${NEXTAUTH_URL}"
+    - pnpm netlify env:set NEXTAUTH_SECRET "${NEXTAUTH_SECRET}"
+    - pnpm netlify env:set GITLAB_CLIENT_ID "${GITLAB_CLIENT_ID}"
+    - pnpm netlify env:set GITLAB_CLIENT_SECRET "${GITLAB_CLIENT_SECRET}"
+    - pnpm netlify:deploy --prod

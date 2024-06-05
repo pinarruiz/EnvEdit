@@ -10,3 +10,4 @@ include:
   - local: /ci/docker.yml
   - local: /ci/tests.yml
   - local: /ci/pages.yml
+  - local: /ci/netlify.yml

@@ -6,7 +6,7 @@
   "scripts": {
     "summary:build": "node src/lib/summaries.mjs build",
     "telemetry:disable": "next telemetry disable",
-    "build:pre": "pnpm summary:build && pnpm telemetry:disable",
+    "build:pre": "pnpm summary:build && pnpm telemetry:disable && netlify --telemetry-disable",
     "dev": "pnpm build:pre && next dev",
     "build": "pnpm build:pre && next build",
     "start": "NODE_ENV=production next start",
@@ -14,6 +14,7 @@
     "start:docker": "NODE_ENV=production pnpm build && NODE_ENV=production pnpm start",
     "lint": "next lint",
     "precommit": "lint-staged",
+    "netlify:deploy": "netlify deploy --build",
     "prepare": "husky"
   },
   "dependencies": {
@@ -46,6 +47,7 @@
     "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "5.3.2",
     "@tanstack/eslint-plugin-query": "5.35.6",
     "@tanstack/react-query-devtools": "5.40.1",
     "@types/node": "20.14.2",
@@ -62,6 +64,7 @@
     "markdownlint-cli2-formatter-codequality": "0.0.4",
     "markdownlint-cli2-formatter-junit": "0.0.9",
     "markdownlint-cli2-formatter-summarize": "0.0.6",
+    "netlify-cli": "17.25.0",
     "postcss": "8.4.38",
     "prettier": "3.3.1",
     "shadcn-ui": "0.8.0",
