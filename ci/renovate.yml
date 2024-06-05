@@ -28,9 +28,9 @@ check_config:
   needs: []
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
-    - if: $CI_PIPELINE_SOURCE == "push"
-    - if: $CI_PIPELINE_SOURCE == "web"
-    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_REF_SLUG == "$CI_DEFAULT_BRANCH"
+    - when: never
   script:
     - renovate-config-validator
 
