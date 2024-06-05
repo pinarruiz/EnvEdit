@@ -11,7 +11,7 @@ mkdocs:
       when: never
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       when: never
-    - if: $CI_COMMIT_REF_SLUG == "$CI_DEFAULT_BRANCH"
+    - if: $CI_COMMIT_REF_SLUG == "main"
     - when: never
   variables:
     SITE_NAME: "${CI_PROJECT_TITLE} Docs"
@@ -38,7 +38,7 @@ pages:
       when: never
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       when: never
-    - if: $CI_COMMIT_REF_SLUG == "$CI_DEFAULT_BRANCH"
+    - if: $CI_COMMIT_REF_SLUG == "main"
       when: on_success
   script:
     - echo "Deploying docs"
