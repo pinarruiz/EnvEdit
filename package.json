@@ -4,8 +4,9 @@
   "license": "Apache-2.0",
   "packageManager": "pnpm@9.2.0",
   "scripts": {
+    "summary:build": "node src/lib/summaries.mjs build",
     "telemetry:disable": "next telemetry disable",
-    "build:pre": "pnpm telemetry:disable",
+    "build:pre": "pnpm summary:build && pnpm telemetry:disable",
     "dev": "pnpm build:pre && next dev",
     "build": "pnpm build:pre && next build",
     "start": "NODE_ENV=production next start",
@@ -51,6 +52,7 @@
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "autoprefixer": "10.4.19",
+    "boxen": "7.1.1",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",
     "eslint-config-prettier": "9.1.0",
