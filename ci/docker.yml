@@ -1,5 +1,5 @@
 ---
-build:
+docker_build_push:
   stage: build
   image: docker:26.1.4-cli
   needs:
