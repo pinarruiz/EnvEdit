@@ -17,9 +17,9 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
   const queryClient = useQueryClient();
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
 
-  const [confirm, setConfirm] = React.useState(false);
+  const [isConfirming, setIsConfirm] = React.useState(false);
   const { start: confirmTimerStart } = useTimeout(
-    () => setConfirm(false),
+    () => setIsConfirm(false),
     5000,
   );
 
@@ -100,8 +100,8 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
       onClick={async (event) => {
         event.preventDefault();
         if (scopedStatus !== "pending") {
-          if (confirm) {
-            setConfirm(false);
+          if (isConfirming) {
+            setIsConfirm(false);
             await updateEnvScopesMutation.mutateAsync({
               enabled: !envScopeIsEnabled,
             });
@@ -113,7 +113,7 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
               queryKey: ["variables", props.projectId, userData.accessToken],
             });
           } else {
-            setConfirm(true);
+            setIsConfirm(true);
             confirmTimerStart();
           }
         }
@@ -123,7 +123,7 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
         <CircleHelp
           className={cn(
             "durationj-300 transition-[transform,width,margin]",
-            confirm ? "mr-2" : "scale-0 w-0 rotate-180",
+            isConfirming ? "mr-2" : "scale-0 w-0 rotate-180",
           )}
         />
         <p>{props.envScope}</p>
