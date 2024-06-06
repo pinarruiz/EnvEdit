@@ -25,15 +25,17 @@ docker_build_push:
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: never
     - if: $CI_COMMIT_REF_SLUG == "main"
     - if: $CI_COMMIT_TAG
     - when: never
   before_script:
     - apk add git
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
-    - docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN $GITHUB_REGISTRY
+    - |
+      if [ "$CI_COMMIT_REF_PROTECTED" == "true" ]; then
+        docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
+        docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN $GITHUB_REGISTRY
+      fi
     - |
       docker buildx create --driver docker-container \
       --driver-opt default-load=true \
@@ -49,18 +51,19 @@ docker_build_push:
       --cache-from type=registry,ref=$CI_REGISTRY_IMAGE/cache .
 
 container_scanning:
-  image: registry.gitlab.com/security-products/container-scanning:7
+  image: registry.gitlab.com/security-products/container-scanning:7.3.2
   stage: build
   variables:
     CS_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     GIT_STRATEGY: none
+    CS_DOCKERFILE_PATH: Dockerfile
+    CS_SCHEMA_MODEL: 15
   needs:
     - docker_build_push
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: never
     - if: $CI_COMMIT_REF_SLUG == "main"
     - if: $CI_COMMIT_TAG
     - when: never

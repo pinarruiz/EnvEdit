@@ -13,9 +13,10 @@ if [ -n "${CI_COMMIT_TAG}" ]; then
 		put_tag "latest"
 	fi
 else
-	put_tag "edge"
+	if [ "${CI_PIPELINE_SOURCE}" != "merge_request_event" ]; then
+		put_tag "edge"
+	fi
 fi
 
 echo "--tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
 echo "--tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
-echo "--tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
