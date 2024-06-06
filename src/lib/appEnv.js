@@ -1,10 +1,10 @@
-const domainName = process.env.DOMAIN_NAME || "http://localhost:3000";
+const nextauthUrl = process.env.NEXTAUTH_URL || "http://localhost:3000";
 
 module.exports = {
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
   SECRET: process.env.NEXTAUTH_SECRET,
-  DOMAIN_NAME: domainName,
-  NEXTAUTH_URL: domainName,
+  DOMAIN_NAME: nextauthUrl,
+  NEXTAUTH_URL: nextauthUrl,
   GITLAB_CLIENT_ID: process.env.GITLAB_CLIENT_ID || "",
   GITLAB_CLIENT_SECRET: process.env.GITLAB_CLIENT_SECRET || "",
   GITLAB_DOMAIN:

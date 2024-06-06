@@ -11,7 +11,7 @@ const boxenGenericOptions = {
 
 const buildMessage = [
   `Gitlab Domain: ${appEnv.GITLAB_DOMAIN}`,
-  `Domain name: ${appEnv.DOMAIN_NAME}`,
+  `NextAuth URL: ${appEnv.NEXTAUTH_URL}`,
 ];
 
 const boxes = {
