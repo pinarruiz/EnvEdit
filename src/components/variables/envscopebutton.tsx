@@ -1,6 +1,6 @@
 import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useTimeout } from "@mantine/hooks";
+import { useCountdown } from "usehooks-ts";
 import { cn } from "@/lib/utils";
 import { CircleHelp } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,15 +13,26 @@ import {
   updateCreateVariable,
 } from "@/lib/gitlab/variables";
 
+const confirmTimeMs = 5000;
+const confirmSteps = 100;
+
 export default function EnvScopeButton(props: EnvScopeButtonProps) {
   const queryClient = useQueryClient();
   const { userData } = React.useContext(UserContext) as UserContextProviderType;
 
-  const [isConfirming, setIsConfirm] = React.useState(false);
-  const { start: confirmTimerStart } = useTimeout(
-    () => setIsConfirm(false),
-    5000,
-  );
+  const [
+    isConfirmingCount,
+    {
+      startCountdown: isConfirmingCountdownStart,
+      resetCountdown: isConfirmingCountdownReset,
+    },
+  ] = useCountdown({
+    countStart: confirmSteps,
+    intervalMs: Math.floor(confirmTimeMs / confirmSteps),
+  });
+
+  const isConfirming =
+    isConfirmingCount !== 0 && isConfirmingCount !== confirmSteps;
 
   const scopedDataQueryKey = [
     "variableQuery",
@@ -101,7 +112,7 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
         event.preventDefault();
         if (scopedStatus !== "pending") {
           if (isConfirming) {
-            setIsConfirm(false);
+            isConfirmingCountdownReset();
             await updateEnvScopesMutation.mutateAsync({
               enabled: !envScopeIsEnabled,
             });
@@ -113,8 +124,8 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
               queryKey: ["variables", props.projectId, userData.accessToken],
             });
           } else {
-            setIsConfirm(true);
-            confirmTimerStart();
+            isConfirmingCountdownReset();
+            isConfirmingCountdownStart();
           }
         }
       }}
