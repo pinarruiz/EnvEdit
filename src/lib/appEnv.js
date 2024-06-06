@@ -7,7 +7,8 @@ module.exports = {
   NEXTAUTH_URL: domainName,
   GITLAB_CLIENT_ID: process.env.GITLAB_CLIENT_ID || "",
   GITLAB_CLIENT_SECRET: process.env.GITLAB_CLIENT_SECRET || "",
-  GITLAB_DOMAIN: process.env.GITLAB_DOMAIN || "gitlab.com",
+  GITLAB_DOMAIN:
+    process.env.GITLAB_DOMAIN || process.env.CI_SERVER_HOST || "gitlab.com",
   GITLAB_PER_PAGE: process.env.GITLAB_PER_PAGE || "50",
   DEFAULT_TITLE: process.env.DEFAULT_TITLE || "EnvEdit",
 };
