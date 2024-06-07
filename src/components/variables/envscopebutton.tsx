@@ -2,7 +2,6 @@ import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCountdown } from "usehooks-ts";
 import { cn } from "@/lib/utils";
-import { CircleHelp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EnvScopeButtonProps } from "@/types/variables/envscopebutton";
 import { UserContext } from "@/components/contexts/user";
@@ -99,46 +98,53 @@ export default function EnvScopeButton(props: EnvScopeButtonProps) {
     scopedData.value === props.envValue;
 
   return (
-    <Button
-      variant={envScopeIsEnabled ? "default" : "outline"}
+    <div
       className={cn(
-        "duration-300 transition-[opacity,background,border-color,color]",
+        "w-fit inline-flex rounded-lg",
         props.className,
-        scopedStatus === "pending" && "duration-1000 animate-pulse",
-        envScopeIsEnabled &&
-          "hover:bg-green-500 bg-green-600 dark:hover:bg-green-600 dark:bg-green-700 dark:text-white",
+        isConfirming && "",
       )}
-      onClick={async (event) => {
-        event.preventDefault();
-        if (scopedStatus !== "pending") {
-          if (isConfirming) {
-            isConfirmingCountdownReset();
-            await updateEnvScopesMutation.mutateAsync({
-              enabled: !envScopeIsEnabled,
-            });
-            await queryClient.invalidateQueries({
-              queryKey: scopedDataQueryKey,
-            });
-
-            await queryClient.invalidateQueries({
-              queryKey: ["variables", props.projectId, userData.accessToken],
-            });
-          } else {
-            isConfirmingCountdownReset();
-            isConfirmingCountdownStart();
-          }
-        }
-      }}
+      style={
+        isConfirming
+          ? {
+              background: `conic-gradient(hsl(var(--primary)) ${isConfirmingCount}%, hsl(var(--card)) ${isConfirmingCount}%)`,
+            }
+          : {}
+      }
     >
-      <div className="flex">
-        <CircleHelp
-          className={cn(
-            "durationj-300 transition-[transform,width,margin]",
-            isConfirming ? "mr-2" : "scale-0 w-0 rotate-180",
-          )}
-        />
+      <Button
+        variant="outline"
+        disabled={updateEnvScopesMutation.isPending}
+        className={cn(
+          "duration-300 transition-[opacity,background,border-color,color] m-1",
+          scopedStatus === "pending" && "duration-1000 animate-pulse",
+          envScopeIsEnabled &&
+            "hover:bg-green-500 bg-green-600 dark:hover:bg-green-600 dark:bg-green-700 text-white hover:text-white dark:text-white",
+        )}
+        onClick={async (event) => {
+          event.preventDefault();
+          if (scopedStatus !== "pending") {
+            if (isConfirming) {
+              isConfirmingCountdownReset();
+              await updateEnvScopesMutation.mutateAsync({
+                enabled: !envScopeIsEnabled,
+              });
+              await queryClient.invalidateQueries({
+                queryKey: scopedDataQueryKey,
+              });
+
+              await queryClient.invalidateQueries({
+                queryKey: ["variables", props.projectId, userData.accessToken],
+              });
+            } else {
+              isConfirmingCountdownReset();
+              isConfirmingCountdownStart();
+            }
+          }
+        }}
+      >
         <p>{props.envScope}</p>
-      </div>
-    </Button>
+      </Button>
+    </div>
   );
 }

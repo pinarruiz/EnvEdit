@@ -89,7 +89,7 @@ export default function VariableForm(props: VariableFormProps) {
                 {props.envScopes.map((envName) => (
                   <EnvScopeButton
                     key={envName}
-                    className="m-1"
+                    className="first:ml-0 mr-[0.125rem] last:mr-0"
                     envValue={envValue}
                     envScope={envName}
                     projectId={props.projectId}
