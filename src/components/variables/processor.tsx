@@ -92,19 +92,24 @@ export default function VariableProcessor(props: VariableProcessorProps) {
     ) || {}),
   };
 
+  const _filteredConsolidatedVariablesKeys = Object.keys(
+    _consolidatedVariables,
+  ).filter((key) => key.toLowerCase().includes(globalFilter.toLowerCase()));
+
   if (!isFetchingNextPage && !isLoading && hasNextPage) {
     fetchNextPage();
   }
 
   const noVariables =
-    !isFetchingNextPage && !isLoading && _flatVariables?.length === 0;
+    !isFetchingNextPage &&
+    !isLoading &&
+    Object.keys(_consolidatedVariables).length === 0;
 
   const noResults =
     !isFetchingNextPage &&
     !isLoading &&
-    _flatVariables &&
-    _flatVariables.length > 0 &&
-    Object.keys(_consolidatedVariables).length === 0;
+    Object.keys(_consolidatedVariables).length > 0 &&
+    _filteredConsolidatedVariablesKeys.length === 0;
 
   return (
     <div className="container bg-background p-0 shadow-sm flex flex-col border rounded-lg">
@@ -113,7 +118,7 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           placeholder="Filter variables ..."
           onChange={(event) => setGlobalFilter(String(event.target.value))}
           className="w-full"
-          disabled={_flatVariables?.length === 0}
+          disabled={Object.keys(_consolidatedVariables).length === 0}
         />
         <div className="w-full md:w-auto flex flex-col md:flex-row gap-2 md:gap-4">
           <div className="flex gap-2 md:gap-4 w-full md:w-auto">
@@ -160,21 +165,17 @@ export default function VariableProcessor(props: VariableProcessorProps) {
           noResults || noVariables ? "flex" : "",
         )}
       >
-        {Object.keys(_consolidatedVariables)
-          .filter((key) =>
-            key.toLowerCase().includes(globalFilter.toLowerCase()),
-          )
-          .map((key) => (
-            <VariableCard
-              key={key}
-              variableName={key}
-              variable={_consolidatedVariables[key]}
-              envScopes={_flatEnvironmentScopesExtras}
-              projectId={props.projectId}
-              extraEnvs={extraEnvs}
-              setExtraEnvs={setExtraEnvs}
-            />
-          ))}
+        {_filteredConsolidatedVariablesKeys.map((key) => (
+          <VariableCard
+            key={key}
+            variableName={key}
+            variable={_consolidatedVariables[key]}
+            envScopes={_flatEnvironmentScopesExtras}
+            projectId={props.projectId}
+            extraEnvs={extraEnvs}
+            setExtraEnvs={setExtraEnvs}
+          />
+        ))}
         {(props.loading ||
           isLoading ||
           isFetchingNextPage ||
