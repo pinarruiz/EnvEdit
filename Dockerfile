@@ -1,6 +1,6 @@
 FROM node:22.3.0-alpine
 
-ENV APP_USER envedit
+ENV APP_USER=envedit
 WORKDIR /home/${APP_USER}/envedit
 
 RUN adduser -s /bin/ash -D ${APP_USER} && chown -R ${APP_USER}:${APP_USER} /home/${APP_USER}
