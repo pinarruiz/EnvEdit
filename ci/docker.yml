@@ -1,7 +1,7 @@
 ---
 docker_build_push:
   stage: build
-  image: docker:26.1.4-cli
+  image: docker:27.0.2-cli
   needs:
     - job: prettier
       artifacts: false
@@ -20,7 +20,7 @@ docker_build_push:
     - job: secret_detection
       artifacts: false
   services:
-    - docker:26.1.4-dind
+    - docker:27.0.2-dind
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
