@@ -40,6 +40,13 @@ prettier:
 
 test_build:
   extends: .node_tests
+  cache:
+    - key: ${CI_COMMIT_REF_SLUG}-node-cache
+      paths:
+        - .pnpm-store
+    - key: ${CI_COMMIT_REF_SLUG}-next-cache
+      paths:
+        - .next/cache
   script:
     - pnpm build
 
