@@ -3,6 +3,7 @@ stages:
   - tests
   - dependencies
   - build
+  - postbuild
   - deploy
 
 include:
