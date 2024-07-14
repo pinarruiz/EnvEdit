@@ -16,6 +16,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { ChevronUp } from "lucide-react";
 import { GroupedVariables, VariableFormProps } from "@/types/variables/form";
 import CopyToClipboard from "@/components/clipboard/copy";
 import CreateScope from "@/components/variables/createscope";
@@ -24,6 +25,7 @@ import CreateValue from "@/components/variables/createvalue";
 
 export default function VariableForm(props: VariableFormProps) {
   const [openDialog, setOpenDialog] = React.useState(false);
+  const [accordionOpen, setAccordionOpen] = React.useState<string[]>([]);
   const [extraEnvValues, setExtraEnvsValues] = React.useState<GroupedVariables>(
     {},
   );
@@ -60,7 +62,46 @@ export default function VariableForm(props: VariableFormProps) {
             Found {Object.keys(props.variable).length} environments.
           </DialogDescription>
         </DialogHeader>
-        <Accordion type="multiple" className="w-full">
+        <div
+          className={cn(
+            "duration-300 sm:text-right overflow-hidden",
+            Object.keys(variablePool).length <= 1 ? "h-0" : "h-10",
+          )}
+        >
+          <Button
+            variant="outline"
+            className="w-full sm:w-fit min-w-36"
+            onClick={(e) => {
+              e.preventDefault();
+              setAccordionOpen(
+                accordionOpen.length > 0 ||
+                  accordionOpen.length === Object.keys(variablePool).length
+                  ? []
+                  : Object.keys(variablePool),
+              );
+            }}
+          >
+            {accordionOpen.length > 0 ||
+            accordionOpen.length === Object.keys(variablePool).length
+              ? "Collapse all"
+              : "Open all"}
+            <ChevronUp
+              className={cn(
+                "w-4 h-4 ml-2 duration-300",
+                accordionOpen.length > 0 ||
+                  accordionOpen.length === Object.keys(variablePool).length
+                  ? ""
+                  : "rotate-180",
+              )}
+            />
+          </Button>
+        </div>
+        <Accordion
+          type="multiple"
+          className="w-full"
+          value={accordionOpen}
+          onValueChange={setAccordionOpen}
+        >
           {Object.keys(variablePool).map((envValue) => (
             <AccordionItem value={envValue} key={envValue}>
               <div className="flex items-center gap-4 [&>h3]:flex-grow">
