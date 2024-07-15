@@ -65,7 +65,9 @@ export default function VariableForm(props: VariableFormProps) {
         <div
           className={cn(
             "duration-300 sm:text-right overflow-hidden",
-            Object.keys(variablePool).length <= 1 ? "min-h-0" : "min-h-10",
+            Object.keys(variablePool).length <= 1
+              ? "min-h-0 max-h-0"
+              : "min-h-10 max-h-10",
           )}
         >
           <Button
