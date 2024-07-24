@@ -1,6 +1,6 @@
 ---
 .renovate:
-  image: ghcr.io/renovatebot/renovate:37.440.0
+  image: ghcr.io/renovatebot/renovate:37.440.5
   variables:
     RENOVATE_PLATFORM: gitlab
     RENOVATE_ENDPOINT: $CI_API_V4_URL
