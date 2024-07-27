@@ -139,8 +139,8 @@ importers:
         specifier: 0.0.4
         version: 0.0.4(markdownlint-cli2@0.13.0)
       markdownlint-cli2-formatter-junit:
-        specifier: 0.0.9
-        version: 0.0.9(markdownlint-cli2@0.13.0)
+        specifier: 0.0.10
+        version: 0.0.10(markdownlint-cli2@0.13.0)
       markdownlint-cli2-formatter-summarize:
         specifier: 0.0.6
         version: 0.0.6(markdownlint-cli2@0.13.0)
@@ -2787,10 +2787,6 @@ packages:
     resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
     engines: {node: '>= 12'}
 
-  date-format@4.0.3:
-    resolution: {integrity: sha512-7P3FyqDcfeznLZp2b+OMitV9Sz2lUnsT87WaTat9nVwqsBkTzPG3lPLNwW3en6F4pHUiWzr6vb8CLhjdK9bcxQ==}
-    engines: {node: '>=4.0'}
-
   date-time@3.1.0:
     resolution: {integrity: sha512-uqCUKXE5q1PNBXjPqvwhwJf9SwMoAHBgWJ6DcrnS5o+W2JOiIILl0JEdVD8SGujrNS02GGxgwAg2PN2zONgtjg==}
     engines: {node: '>=6'}
@@ -4246,9 +4242,9 @@ packages:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
     engines: {node: '>=4.0'}
 
-  junit-report-builder@3.2.1:
-    resolution: {integrity: sha512-IMCp5XyDQ4YESDE4Za7im3buM0/7cMnRfe17k2X8B05FnUl9vqnaliX6cgOEmPIeWKfJrEe/gANRq/XgqttCqQ==}
-    engines: {node: '>=8'}
+  junit-report-builder@4.0.0:
+    resolution: {integrity: sha512-Wmr5TdZVne2L7D2ZIOvC0iGQNbvAxK+hSStmfjd+Qfdgr0pkd/ZwZlezIRMeWfaqJorP/+MYSqYcPbaWpo+fJQ==}
+    engines: {node: '>=16'}
 
   junk@4.0.1:
     resolution: {integrity: sha512-Qush0uP+G8ZScpGMZvHUiRfI0YBWuB3gVBYlI0v0vvOJt5FLicco+IkP0a50LqTTQhmts/m6tP5SWE+USyIvcQ==}
@@ -4486,8 +4482,8 @@ packages:
     peerDependencies:
       markdownlint-cli2: '>=0.0.4'
 
-  markdownlint-cli2-formatter-junit@0.0.9:
-    resolution: {integrity: sha512-x6Ku+MiiishoI0HHjHIU7l8yug0L/ysjvVXulX2COKL1vifj91k+Q5NdyE28Q5c2W0KulpDrZeayg4mZX4LK8A==}
+  markdownlint-cli2-formatter-junit@0.0.10:
+    resolution: {integrity: sha512-0V70E3aKkT6vD80QPkbmuOyf66j1lvo5EwVVfWz15hgZcC3JgxuRihoQbQC1NEKhYkeSQpYRSt+JRIaKWTHBhw==}
     peerDependencies:
       markdownlint-cli2: '>=0.0.4'
 
@@ -9367,8 +9363,6 @@ snapshots:
 
   data-uri-to-buffer@4.0.1: {}
 
-  date-format@4.0.3: {}
-
   date-time@3.1.0:
     dependencies:
       time-zone: 1.0.0
@@ -11068,9 +11062,8 @@ snapshots:
       object.assign: 4.1.4
       object.values: 1.1.7
 
-  junit-report-builder@3.2.1:
+  junit-report-builder@4.0.0:
     dependencies:
-      date-format: 4.0.3
       lodash: 4.17.21
       make-dir: 3.1.0
       xmlbuilder: 15.1.1
@@ -11344,9 +11337,9 @@ snapshots:
     dependencies:
       markdownlint-cli2: 0.13.0
 
-  markdownlint-cli2-formatter-junit@0.0.9(markdownlint-cli2@0.13.0):
+  markdownlint-cli2-formatter-junit@0.0.10(markdownlint-cli2@0.13.0):
     dependencies:
-      junit-report-builder: 3.2.1
+      junit-report-builder: 4.0.0
       markdownlint-cli2: 0.13.0
 
   markdownlint-cli2-formatter-summarize@0.0.6(markdownlint-cli2@0.13.0):
