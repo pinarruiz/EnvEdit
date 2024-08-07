@@ -1,6 +1,6 @@
 ---
 deploy_netlify:
-  image: node:22.5.1
+  image: node:22.6.0
   cache:
     - key: ${CI_COMMIT_REF_SLUG}-node-cache
       paths:
