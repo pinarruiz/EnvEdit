@@ -145,8 +145,8 @@ importers:
         specifier: 0.0.6
         version: 0.0.6(markdownlint-cli2@0.13.0)
       netlify-cli:
-        specifier: 17.34.1
-        version: 17.34.1(@types/node@20.16.1)(ioredis@5.4.1)
+        specifier: 17.34.2
+        version: 17.34.2(@types/node@20.16.1)(ioredis@5.4.1)
       postcss:
         specifier: 8.4.41
         version: 8.4.41
@@ -4735,8 +4735,8 @@ packages:
   nested-error-stacks@2.1.1:
     resolution: {integrity: sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==}
 
-  netlify-cli@17.34.1:
-    resolution: {integrity: sha512-tTorZ+zyrqou0HguiQJKe2xLZqxhQIckM5X+WmK5p4CMo/9mqA/qhYWKWz7nWbfWTj5iuCQSKKFQgTuJCva+Og==}
+  netlify-cli@17.34.2:
+    resolution: {integrity: sha512-hG9i55hxqt8XexCdwhiQU1EkvPSuh9HMOkJo9I70B6FoLchsDmVbJ1ru1DL55I0TI9o9F7idxVgJpCZjJMcz/Q==}
     engines: {node: '>=18.14.0'}
     hasBin: true
 
@@ -5686,11 +5686,6 @@ packages:
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
-    hasBin: true
-
-  semver@7.6.2:
-    resolution: {integrity: sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==}
-    engines: {node: '>=10'}
     hasBin: true
 
   semver@7.6.3:
@@ -6647,7 +6642,7 @@ snapshots:
 
   '@babel/helper-annotate-as-pure@7.22.5':
     dependencies:
-      '@babel/types': 7.24.8
+      '@babel/types': 7.25.2
 
   '@babel/helper-compilation-targets@7.22.15':
     dependencies:
@@ -8436,7 +8431,7 @@ snapshots:
       debug: 4.3.6(supports-color@9.4.0)
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.6.2
+      semver: 7.6.3
       ts-api-utils: 1.3.0(typescript@5.5.4)
     optionalDependencies:
       typescript: 5.5.4
@@ -8451,7 +8446,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.4
-      semver: 7.6.2
+      semver: 7.6.3
       ts-api-utils: 1.3.0(typescript@5.5.4)
     optionalDependencies:
       typescript: 5.5.4
@@ -11572,7 +11567,7 @@ snapshots:
 
   nested-error-stacks@2.1.1: {}
 
-  netlify-cli@17.34.1(@types/node@20.16.1)(ioredis@5.4.1):
+  netlify-cli@17.34.2(@types/node@20.16.1)(ioredis@5.4.1):
     dependencies:
       '@bugsnag/js': 7.25.0
       '@fastify/static': 7.0.4
@@ -12696,8 +12691,6 @@ snapshots:
       semver: 7.6.3
 
   semver@6.3.1: {}
-
-  semver@7.6.2: {}
 
   semver@7.6.3: {}
 
