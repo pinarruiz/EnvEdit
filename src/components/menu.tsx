@@ -24,7 +24,7 @@ export default function Menu() {
             <Tooltip delayDuration={500}>
               <TooltipTrigger asChild>
                 <Link
-                  href="https://gitlab.com/EnvEdit/EnvEdit"
+                  href="https://gitlab.com/pinarnet/envedit"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -34,7 +34,7 @@ export default function Menu() {
                 </Link>
               </TooltipTrigger>
               <TooltipContent className="mt-1">
-                <p>EnvEdit/EnvEdit</p>
+                <p>PinarNet/EnvEdit</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

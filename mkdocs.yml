@@ -1,8 +1,8 @@
 ---
 site_name: !ENV [SITE_NAME, "EnvEdit Docs"]
-site_url: !ENV [PAGES_URL, "https://envedit.gitlab.io/EnvEdit/docs"]
+site_url: !ENV [PAGES_URL, "https://pinarnet.gitlab.io/envedit/docs"]
 repo_name: !ENV [CI_PROJECT_TITLE, "EnvEdit"]
-repo_url: !ENV [CI_PROJECT_URL, "https://gitlab.com/EnvEdit/EnvEdit"]
+repo_url: !ENV [CI_PROJECT_URL, "https://gitlab.com/pinarnet/envedit"]
 edit_uri_template: "-/edit/main/docs/{path}?ref_type=heads"
 
 extra:
