@@ -139,8 +139,8 @@ importers:
         specifier: 0.0.4
         version: 0.0.4(markdownlint-cli2@0.13.0)
       markdownlint-cli2-formatter-junit:
-        specifier: 0.0.11
-        version: 0.0.11(markdownlint-cli2@0.13.0)
+        specifier: 0.0.12
+        version: 0.0.12(markdownlint-cli2@0.13.0)
       markdownlint-cli2-formatter-summarize:
         specifier: 0.0.7
         version: 0.0.7(markdownlint-cli2@0.13.0)
@@ -4468,8 +4468,8 @@ packages:
     peerDependencies:
       markdownlint-cli2: '>=0.0.4'
 
-  markdownlint-cli2-formatter-junit@0.0.11:
-    resolution: {integrity: sha512-6H1LsIedPxJXsrbvk/jJzF9GiiIZD5l/djXCVnQ5qiPSkKXXQMN7uIeEGId3Kwmm6pzPEKJ7g6d+WKn0esPArw==}
+  markdownlint-cli2-formatter-junit@0.0.12:
+    resolution: {integrity: sha512-lQyOMLoDJ9NU6jqvVUlpED5PKZ8K4v8kkKtBBOyv0yP7xYXlKpdT6Riq5LltfIEKrqIZEL6I4Olhc3SCEzzSog==}
     peerDependencies:
       markdownlint-cli2: '>=0.0.4'
 
@@ -11298,7 +11298,7 @@ snapshots:
     dependencies:
       markdownlint-cli2: 0.13.0
 
-  markdownlint-cli2-formatter-junit@0.0.11(markdownlint-cli2@0.13.0):
+  markdownlint-cli2-formatter-junit@0.0.12(markdownlint-cli2@0.13.0):
     dependencies:
       junit-report-builder: 5.0.0
       markdownlint-cli2: 0.13.0
