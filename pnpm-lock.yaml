@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@gitbeaker/rest':
-        specifier: 40.1.4
-        version: 40.1.4
+        specifier: 40.2.0
+        version: 40.2.0
       '@mantine/hooks':
         specifier: 7.12.2
         version: 7.12.2(react@18.3.1)
@@ -684,16 +684,16 @@ packages:
   '@floating-ui/utils@0.1.1':
     resolution: {integrity: sha512-m0G6wlnhm/AX0H12IOWtK8gASEMffnX08RtKkCgTdHb9JpHKGloI7icFfLg9ZmQeavcvR0PKmzxClyuFPSjKWw==}
 
-  '@gitbeaker/core@40.1.4':
-    resolution: {integrity: sha512-LfagsDzXJYsqfjCwKT8UX8h7rofFeOk3XWNohZoPxPft8jQX3+G9Hhubg71k/xqucPTrxLWqPLBL1o+Dbm09Hw==}
+  '@gitbeaker/core@40.2.0':
+    resolution: {integrity: sha512-N8CHHDQjTGa+Skf3rLEpzTB4G/oHIqLkgOVDyle6dAhoxx/MLt8365gghqlA5uOSL3lVqS1PSQzfyRbDb4nUng==}
     engines: {node: '>=18.20.0'}
 
-  '@gitbeaker/requester-utils@40.1.4':
-    resolution: {integrity: sha512-820U9H8h03mXqRxNt20O28CRkCCqy+1GW1poVmnGAcfuTWBv7jmAfYAREM4wSid/mLQ5CEPQM5lnYBX8ViDuuQ==}
+  '@gitbeaker/requester-utils@40.2.0':
+    resolution: {integrity: sha512-UDwAxxfxR4yrcdvwrd+yFLr/H4c17wbEKDW5jNO9hPv2ndgCNzYYzA0wT4JUXZeVEk0XkctY+9focjSHm2G6BA==}
     engines: {node: '>=18.20.0'}
 
-  '@gitbeaker/rest@40.1.4':
-    resolution: {integrity: sha512-E0M835RlCW4XyaGYuDCRX+QF7lspRQfnKxeJiy3RYMQ+ZqmKODtONVCShYESHjenL6U7h30ghrviogBb0rWVlQ==}
+  '@gitbeaker/rest@40.2.0':
+    resolution: {integrity: sha512-Anw66tii8JAMa72AWaUMz5roP8mBiVGV/g95oFQQMS3hc0m+/Vfaq8v6HZgYb9xuq+vF6bFMqieFnUDsx39p9Q==}
     engines: {node: '>=18.20.0'}
 
   '@humanwhocodes/config-array@0.11.14':
@@ -7062,23 +7062,23 @@ snapshots:
 
   '@floating-ui/utils@0.1.1': {}
 
-  '@gitbeaker/core@40.1.4':
+  '@gitbeaker/core@40.2.0':
     dependencies:
-      '@gitbeaker/requester-utils': 40.1.4
+      '@gitbeaker/requester-utils': 40.2.0
       qs: 6.12.3
       xcase: 2.0.1
 
-  '@gitbeaker/requester-utils@40.1.4':
+  '@gitbeaker/requester-utils@40.2.0':
     dependencies:
       picomatch-browser: 2.2.6
       qs: 6.12.3
       rate-limiter-flexible: 4.0.1
       xcase: 2.0.1
 
-  '@gitbeaker/rest@40.1.4':
+  '@gitbeaker/rest@40.2.0':
     dependencies:
-      '@gitbeaker/core': 40.1.4
-      '@gitbeaker/requester-utils': 40.1.4
+      '@gitbeaker/core': 40.2.0
+      '@gitbeaker/requester-utils': 40.2.0
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
