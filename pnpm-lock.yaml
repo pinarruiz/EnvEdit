@@ -145,8 +145,8 @@ importers:
         specifier: 0.0.7
         version: 0.0.7(markdownlint-cli2@0.14.0)
       netlify-cli:
-        specifier: 17.35.0
-        version: 17.35.0(@types/node@20.16.5)(ioredis@5.4.1)
+        specifier: 17.36.0
+        version: 17.36.0(@types/node@20.16.5)(ioredis@5.4.1)
       postcss:
         specifier: 8.4.45
         version: 8.4.45
@@ -4755,8 +4755,8 @@ packages:
   nested-error-stacks@2.1.1:
     resolution: {integrity: sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==}
 
-  netlify-cli@17.35.0:
-    resolution: {integrity: sha512-ftVu3mmGVDyfjtAXQeQ+IODmKmqRzAMZHQI2U1kNWXxipPIig2DUfK3ZhBR20o2vH6aO9l4x8XXAlqBQFruMdQ==}
+  netlify-cli@17.36.0:
+    resolution: {integrity: sha512-DnUbd9N/4lXFPdkkOowaTL1E3RDGaf+7LCOzt0udMzECvC+B5mYCFoVas9aVddedkjitwZTHZLi5gtBO4nVzCA==}
     engines: {node: '>=18.14.0'}
     hasBin: true
 
@@ -11618,7 +11618,7 @@ snapshots:
 
   nested-error-stacks@2.1.1: {}
 
-  netlify-cli@17.35.0(@types/node@20.16.5)(ioredis@5.4.1):
+  netlify-cli@17.36.0(@types/node@20.16.5)(ioredis@5.4.1):
     dependencies:
       '@bugsnag/js': 7.25.0
       '@fastify/static': 7.0.4
