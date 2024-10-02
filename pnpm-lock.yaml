@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@gitbeaker/rest':
-        specifier: 40.3.0
-        version: 40.3.0
+        specifier: 40.4.0
+        version: 40.4.0
       '@mantine/hooks':
         specifier: 7.13.2
         version: 7.13.2(react@18.3.1)
@@ -688,16 +688,16 @@ packages:
   '@floating-ui/utils@0.1.1':
     resolution: {integrity: sha512-m0G6wlnhm/AX0H12IOWtK8gASEMffnX08RtKkCgTdHb9JpHKGloI7icFfLg9ZmQeavcvR0PKmzxClyuFPSjKWw==}
 
-  '@gitbeaker/core@40.3.0':
-    resolution: {integrity: sha512-YSsWN+5Nruw3q61Pu04u7kB+f3Y/LqyYRlTm10S4eKI897xEIuVaztyELBRc66t4CJeGZqqsaYAmXcJN5BVqXA==}
+  '@gitbeaker/core@40.4.0':
+    resolution: {integrity: sha512-RR5H5cXqfxfa3MkFHYR7qU9z1DckqnDVi9l2za4W5Sfo8zNop6Ci5uDDZx4EkRR4Ri9MJGQULFYHw1sKAK9OJg==}
     engines: {node: '>=18.20.0'}
 
-  '@gitbeaker/requester-utils@40.3.0':
-    resolution: {integrity: sha512-Pt6aBoWoTbA/9XtSE5uMYb1h+Ucgrq1EPhIXOoNsIsVlajsbExIHVQrWyCW3dVHCskKPRyJ54tY/nRiBENE3Ng==}
+  '@gitbeaker/requester-utils@40.4.0':
+    resolution: {integrity: sha512-onR/oJr/plaUehkZGdCkkl9qF0BfeuSchrl6+6cvvEy6q3zVXgZHLCMXZW7sGafpr61IFOqU8/W3bTP+14Njog==}
     engines: {node: '>=18.20.0'}
 
-  '@gitbeaker/rest@40.3.0':
-    resolution: {integrity: sha512-/gqp44KGae7Qsw2oeKYe9YiyYaP8lVNDZuanGgr6mg3CUdk0uG2PakNt0BNCph0ezyQWPmfcobBytMe75+dugQ==}
+  '@gitbeaker/rest@40.4.0':
+    resolution: {integrity: sha512-C+kQkwA3WD09jvwtdrBqifuRPQgetw4egLCZdKAGUfw5y8E5Vh/jjmTq2RIzV9JlKfJmJCK3sKaOoPQkqN4erA==}
     engines: {node: '>=18.20.0'}
 
   '@humanwhocodes/config-array@0.13.0':
@@ -5400,10 +5400,6 @@ packages:
     resolution: {integrity: sha512-FLpr4flz5xZTSJxSeaheeMKN/EDzMdK7b8PTOC6a5PYFKTucWbdqjgqaEyH0shFiSJrVB1+Qqi4Tk19ccU6Aug==}
     engines: {node: '>=12.20'}
 
-  qs@6.12.3:
-    resolution: {integrity: sha512-AWJm14H1vVaO/iNZ4/hO+HyaTehuy9nRqVdkTqlJt0HWvBiBIEXFmb4C0DGeYo3Xes9rrEW+TxHsaigCbN5ICQ==}
-    engines: {node: '>=0.6'}
-
   qs@6.13.0:
     resolution: {integrity: sha512-+38qI9SOr8tfZ4QmJNplMUxqjbe7LKvvZgWdExBOmd+egZTtjLB67Gu0HRX3u/XOq7UU2Nx6nsjvS16Z9uwfpg==}
     engines: {node: '>=0.6'}
@@ -7080,23 +7076,23 @@ snapshots:
 
   '@floating-ui/utils@0.1.1': {}
 
-  '@gitbeaker/core@40.3.0':
+  '@gitbeaker/core@40.4.0':
     dependencies:
-      '@gitbeaker/requester-utils': 40.3.0
-      qs: 6.12.3
+      '@gitbeaker/requester-utils': 40.4.0
+      qs: 6.13.0
       xcase: 2.0.1
 
-  '@gitbeaker/requester-utils@40.3.0':
+  '@gitbeaker/requester-utils@40.4.0':
     dependencies:
       picomatch-browser: 2.2.6
-      qs: 6.12.3
+      qs: 6.13.0
       rate-limiter-flexible: 4.0.1
       xcase: 2.0.1
 
-  '@gitbeaker/rest@40.3.0':
+  '@gitbeaker/rest@40.4.0':
     dependencies:
-      '@gitbeaker/core': 40.3.0
-      '@gitbeaker/requester-utils': 40.3.0
+      '@gitbeaker/core': 40.4.0
+      '@gitbeaker/requester-utils': 40.4.0
 
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
@@ -12443,10 +12439,6 @@ snapshots:
   pupa@3.1.0:
     dependencies:
       escape-goat: 4.0.0
-
-  qs@6.12.3:
-    dependencies:
-      side-channel: 1.0.6
 
   qs@6.13.0:
     dependencies:
