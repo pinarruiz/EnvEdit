@@ -145,8 +145,8 @@ importers:
         specifier: 0.0.7
         version: 0.0.7(markdownlint-cli2@0.14.0)
       netlify-cli:
-        specifier: 17.37.0
-        version: 17.37.0(@types/node@20.16.13)(ioredis@5.4.1)
+        specifier: 17.37.1
+        version: 17.37.1(@types/node@20.16.13)(ioredis@5.4.1)
       postcss:
         specifier: 8.4.47
         version: 8.4.47
@@ -775,8 +775,8 @@ packages:
     resolution: {integrity: sha512-7rdPzo8bggt3D2CVO+U1rmEtxxs8X7cLusDbHZRJaMlxqxBD05mXgThj5DUJMFOvmfVjhEH/S/3AyiLUbDQGDg==}
     engines: {node: ^14.16.0 || >=16.0.0}
 
-  '@netlify/blobs@8.0.1':
-    resolution: {integrity: sha512-IrZHVqillU0x12eDbsap4Ba6poi+4IdVCYjZa+tA0eD95TaSbSqfw1zNkO27MiKw0pOjPB6+RXFK4pdfOs/qUQ==}
+  '@netlify/blobs@8.1.0':
+    resolution: {integrity: sha512-9hIbusvAZjSGBJ42OyFC2AxsEph1LuKQahMWFcPGEIsOqIYHhMRkYA7wSUMhH7naydjNmllpcp3pJLOK4RhFaQ==}
     engines: {node: ^14.16.0 || >=16.0.0}
 
   '@netlify/build-info@7.15.1':
@@ -2737,8 +2737,8 @@ packages:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
 
-  cookie@0.7.0:
-    resolution: {integrity: sha512-qCf+V4dtlNhSRXGAZatc1TasyFO6GjohcOul807YOb5ik3+kQSnb4d7iajeCL8QHaJ4uZEjCgiCJerKXwdRVlQ==}
+  cookie@0.7.1:
+    resolution: {integrity: sha512-6DnInpx7SJ2AK3+CTUE/ZM0vWTUboZCegxhC2xiIydHR9jNuTAASBrfEpHhiGOZw/nX51bHt6YQl8jsGo4y/0w==}
     engines: {node: '>= 0.6'}
 
   cookie@0.7.2:
@@ -3344,8 +3344,8 @@ packages:
     resolution: {integrity: sha512-1KboYwxxCG5kwkJHR5LjFDTD1Mgl8n4PIMcCuhhd/1OqaxlC68P3QKbvvAbZVUtVgtlxEdTgSUwf6yxwzRCuuA==}
     engines: {node: '>= 0.10.26'}
 
-  express@4.21.0:
-    resolution: {integrity: sha512-VqcNGcj/Id5ZT1LZ/cfihi3ttTn+NJmkli2eZADigjq29qTlWi/hAQ43t/VLPq8+UX06FCEx3ByOYet6ZFblng==}
+  express@4.21.1:
+    resolution: {integrity: sha512-YSFlK1Ee0/GC8QaO91tHcDxJiE/X4FbpAyQWkxAvG6AXCuR65YzK8ua6D9hvi/TzUfZMpc+BwuM1IPw8fmQBiQ==}
     engines: {node: '>= 0.10.0'}
 
   ext-list@2.2.2:
@@ -4771,8 +4771,8 @@ packages:
   nested-error-stacks@2.1.1:
     resolution: {integrity: sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==}
 
-  netlify-cli@17.37.0:
-    resolution: {integrity: sha512-oP3SzF2ciGRMGFDmK+PxLdQ3w1zrwSZEHbiP7fqM4910D2ELaGFESsuaNuWCP1pWSJHVqPmOxlY5KfVr47HC7w==}
+  netlify-cli@17.37.1:
+    resolution: {integrity: sha512-OGa4/p/RZG2/GxvoKAvo5pK1sZka9fCfdEH/nSfNpo0yotyTZMWuWMn14WzfJ0+hdTL6b2FEIMi3JhJtsaquZA==}
     engines: {node: '>=18.14.0'}
     hasBin: true
 
@@ -7197,7 +7197,7 @@ snapshots:
 
   '@netlify/blobs@7.4.0': {}
 
-  '@netlify/blobs@8.0.1': {}
+  '@netlify/blobs@8.1.0': {}
 
   '@netlify/build-info@7.15.1':
     dependencies:
@@ -9401,7 +9401,7 @@ snapshots:
 
   cookie@0.6.0: {}
 
-  cookie@0.7.0: {}
+  cookie@0.7.1: {}
 
   cookie@0.7.2: {}
 
@@ -10153,14 +10153,14 @@ snapshots:
     dependencies:
       on-headers: 1.0.2
 
-  express@4.21.0:
+  express@4.21.1:
     dependencies:
       accepts: 1.3.8
       array-flatten: 1.1.1
       body-parser: 1.20.3
       content-disposition: 0.5.4
       content-type: 1.0.5
-      cookie: 0.6.0
+      cookie: 0.7.1
       cookie-signature: 1.0.6
       debug: 2.6.9
       depd: 2.0.0
@@ -10886,7 +10886,7 @@ snapshots:
 
   ipaddr.js@1.9.1: {}
 
-  ipx@2.1.0(@netlify/blobs@8.0.1)(ioredis@5.4.1):
+  ipx@2.1.0(@netlify/blobs@8.1.0)(ioredis@5.4.1):
     dependencies:
       '@fastify/accept-negotiator': 1.1.0
       citty: 0.1.6
@@ -10902,7 +10902,7 @@ snapshots:
       sharp: 0.32.6
       svgo: 3.3.2
       ufo: 1.5.3
-      unstorage: 1.10.2(@netlify/blobs@8.0.1)(ioredis@5.4.1)
+      unstorage: 1.10.2(@netlify/blobs@8.1.0)(ioredis@5.4.1)
       xss: 1.0.15
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -11669,11 +11669,11 @@ snapshots:
 
   nested-error-stacks@2.1.1: {}
 
-  netlify-cli@17.37.0(@types/node@20.16.13)(ioredis@5.4.1):
+  netlify-cli@17.37.1(@types/node@20.16.13)(ioredis@5.4.1):
     dependencies:
       '@bugsnag/js': 7.25.0
       '@fastify/static': 7.0.4
-      '@netlify/blobs': 8.0.1
+      '@netlify/blobs': 8.1.0
       '@netlify/build': 29.55.2(@opentelemetry/api@1.8.0)(@types/node@20.16.13)
       '@netlify/build-info': 7.15.1
       '@netlify/config': 20.19.0
@@ -11699,7 +11699,7 @@ snapshots:
       concordance: 5.0.4
       configstore: 6.0.0
       content-type: 1.0.5
-      cookie: 0.7.0
+      cookie: 0.7.2
       cron-parser: 4.9.0
       debug: 4.3.7(supports-color@9.4.0)
       decache: 4.6.2
@@ -11709,7 +11709,7 @@ snapshots:
       envinfo: 7.14.0
       etag: 1.8.1
       execa: 5.1.1
-      express: 4.21.0
+      express: 4.21.1
       express-logging: 1.1.1
       extract-zip: 2.0.1
       fastest-levenshtein: 1.0.16
@@ -11730,7 +11730,7 @@ snapshots:
       https-proxy-agent: 7.0.5
       inquirer: 6.5.2
       inquirer-autocomplete-prompt: 1.4.0(inquirer@6.5.2)
-      ipx: 2.1.0(@netlify/blobs@8.0.1)(ioredis@5.4.1)
+      ipx: 2.1.0(@netlify/blobs@8.1.0)(ioredis@5.4.1)
       is-docker: 3.0.0
       is-stream: 4.0.1
       is-wsl: 3.1.0
@@ -13489,7 +13489,7 @@ snapshots:
 
   unpipe@1.0.0: {}
 
-  unstorage@1.10.2(@netlify/blobs@8.0.1)(ioredis@5.4.1):
+  unstorage@1.10.2(@netlify/blobs@8.1.0)(ioredis@5.4.1):
     dependencies:
       anymatch: 3.1.3
       chokidar: 3.6.0
@@ -13502,7 +13502,7 @@ snapshots:
       ofetch: 1.3.4
       ufo: 1.5.3
     optionalDependencies:
-      '@netlify/blobs': 8.0.1
+      '@netlify/blobs': 8.1.0
       ioredis: 5.4.1
     transitivePeerDependencies:
       - uWebSockets.js
