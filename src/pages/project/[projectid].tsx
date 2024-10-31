@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
+import { Skeleton } from "@/components/ui/skeleton";
 import BasicLayout from "@/components/layouts/basic";
 import VariableProcessor from "@/components/variables/processor";
 import { UserContext } from "@/components/contexts/user";
@@ -30,6 +31,12 @@ export default function Project() {
       }
       className="flex flex-col gap-5"
     >
+      {status === "pending" ? (
+        <Skeleton className="h-7 w-1/2 duration-1000 m-auto" />
+      ) : (
+        <h1 className="text-center font-bold text-xl">{projectData?.name}</h1>
+      )}
+
       <QuickLinks
         projectData={projectData as ProjectSchema}
         loading={status === "pending"}
