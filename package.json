@@ -66,7 +66,7 @@
     "markdownlint-cli2-formatter-junit": "0.0.12",
     "markdownlint-cli2-formatter-summarize": "0.0.7",
     "netlify-cli": "17.37.2",
-    "postcss": "8.4.47",
+    "postcss": "8.4.48",
     "prettier": "3.3.3",
     "shadcn-ui": "0.9.3",
     "tailwindcss": "3.4.14",
