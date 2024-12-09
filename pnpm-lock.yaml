@@ -133,17 +133,17 @@ importers:
         specifier: 15.2.10
         version: 15.2.10
       markdownlint-cli2:
-        specifier: 0.15.0
-        version: 0.15.0
+        specifier: 0.16.0
+        version: 0.16.0
       markdownlint-cli2-formatter-codequality:
         specifier: 0.0.5
-        version: 0.0.5(markdownlint-cli2@0.15.0)
+        version: 0.0.5(markdownlint-cli2@0.16.0)
       markdownlint-cli2-formatter-junit:
         specifier: 0.0.12
-        version: 0.0.12(markdownlint-cli2@0.15.0)
+        version: 0.0.12(markdownlint-cli2@0.16.0)
       markdownlint-cli2-formatter-summarize:
         specifier: 0.0.7
-        version: 0.0.7(markdownlint-cli2@0.15.0)
+        version: 0.0.7(markdownlint-cli2@0.16.0)
       netlify-cli:
         specifier: 17.38.1
         version: 17.38.1(@types/node@22.10.2)(ioredis@5.4.1)
@@ -4518,8 +4518,8 @@ packages:
     peerDependencies:
       markdownlint-cli2: '>=0.0.4'
 
-  markdownlint-cli2@0.15.0:
-    resolution: {integrity: sha512-4P/lnxQxU2R5lywRJs4b2ajm8z65CW8qqR1bTIcdQ5EG+nZpC6HJlJUnmIR5ee+uecUkoMroazxWcLB7etSmrg==}
+  markdownlint-cli2@0.16.0:
+    resolution: {integrity: sha512-oy5dJdOxGMKSwrlouxdEGf6N4O2Iz8oJ4/HO2Ix67o4vTK1AQNGjZUNwTIzfa5x+XbJ++dfgR1gLfILajsW+1Q==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -11414,30 +11414,30 @@ snapshots:
       punycode.js: 2.3.1
       uc.micro: 2.1.0
 
-  markdownlint-cli2-formatter-codequality@0.0.5(markdownlint-cli2@0.15.0):
+  markdownlint-cli2-formatter-codequality@0.0.5(markdownlint-cli2@0.16.0):
     dependencies:
-      markdownlint-cli2: 0.15.0
+      markdownlint-cli2: 0.16.0
 
-  markdownlint-cli2-formatter-default@0.0.5(markdownlint-cli2@0.15.0):
+  markdownlint-cli2-formatter-default@0.0.5(markdownlint-cli2@0.16.0):
     dependencies:
-      markdownlint-cli2: 0.15.0
+      markdownlint-cli2: 0.16.0
 
-  markdownlint-cli2-formatter-junit@0.0.12(markdownlint-cli2@0.15.0):
+  markdownlint-cli2-formatter-junit@0.0.12(markdownlint-cli2@0.16.0):
     dependencies:
       junit-report-builder: 5.0.0
-      markdownlint-cli2: 0.15.0
+      markdownlint-cli2: 0.16.0
 
-  markdownlint-cli2-formatter-summarize@0.0.7(markdownlint-cli2@0.15.0):
+  markdownlint-cli2-formatter-summarize@0.0.7(markdownlint-cli2@0.16.0):
     dependencies:
-      markdownlint-cli2: 0.15.0
+      markdownlint-cli2: 0.16.0
 
-  markdownlint-cli2@0.15.0:
+  markdownlint-cli2@0.16.0:
     dependencies:
       globby: 14.0.2
       js-yaml: 4.1.0
       jsonc-parser: 3.3.1
       markdownlint: 0.36.1
-      markdownlint-cli2-formatter-default: 0.0.5(markdownlint-cli2@0.15.0)
+      markdownlint-cli2-formatter-default: 0.0.5(markdownlint-cli2@0.16.0)
       micromatch: 4.0.8
 
   markdownlint-micromark@0.1.12: {}
