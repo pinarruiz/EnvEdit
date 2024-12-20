@@ -94,8 +94,8 @@ importers:
         version: 3.1.0(react@19.0.0)
     devDependencies:
       '@netlify/plugin-nextjs':
-        specifier: 5.9.1
-        version: 5.9.1
+        specifier: 5.9.2
+        version: 5.9.2
       '@tanstack/eslint-plugin-query':
         specifier: 5.62.1
         version: 5.62.1(eslint@8.57.1)(typescript@5.7.2)
@@ -1028,8 +1028,8 @@ packages:
     peerDependencies:
       '@opentelemetry/api': ~1.8.0
 
-  '@netlify/plugin-nextjs@5.9.1':
-    resolution: {integrity: sha512-aHw/vUNKqUml795b1iCTc1CcyNHwM9BaF03HSPr6VoUgm4kSCmoDbLKdiKdm1FsvbHi+Ajeb+YoohWp16z1NHQ==}
+  '@netlify/plugin-nextjs@5.9.2':
+    resolution: {integrity: sha512-uoceIqubfp99UysXV0JvYL8uIybSnfAywwP1b3wNQLu+EueCRKuNvRiiwBkA5gta/rTEp23xD1HmuyT/9JDbaA==}
     engines: {node: '>=18.0.0'}
 
   '@netlify/plugins-list@6.80.0':
@@ -7536,7 +7536,7 @@ snapshots:
     dependencies:
       '@opentelemetry/api': 1.8.0
 
-  '@netlify/plugin-nextjs@5.9.1': {}
+  '@netlify/plugin-nextjs@5.9.2': {}
 
   '@netlify/plugins-list@6.80.0': {}
 
