@@ -64,7 +64,7 @@ export default function BasicLayout(props: BasicLayoutProps) {
         <title>{props.title || DEFAULT_TITLE}</title>
       </Head>
       <div className="container transition-[padding] duration-300 sm:px-8 px-4 pb-5 flex flex-col">
-        <Menu />
+        <Menu className="sticky top-0 z-40 " />
         <div
           className={cn(
             "pt-5 flex-grow flex flex-col min-h-0",
