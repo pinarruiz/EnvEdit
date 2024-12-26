@@ -61,7 +61,7 @@
     "eslint-config-prettier": "9.1.0",
     "husky": "9.1.7",
     "lint-staged": "15.2.11",
-    "markdownlint-cli2": "0.16.0",
+    "markdownlint-cli2": "0.17.0",
     "markdownlint-cli2-formatter-codequality": "0.0.5",
     "markdownlint-cli2-formatter-junit": "0.0.12",
     "markdownlint-cli2-formatter-summarize": "0.0.7",
