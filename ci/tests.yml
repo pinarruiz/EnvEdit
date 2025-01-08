@@ -99,7 +99,7 @@ hadolint:
 
 secret_detection:
   extends: .generic_test
-  image: registry.gitlab.com/security-products/secrets:6.11.0
+  image: registry.gitlab.com/security-products/secrets:6.12.0
   variables:
     GIT_DEPTH: "50"
   script:
