@@ -52,7 +52,7 @@
     "@tanstack/eslint-plugin-query": "5.62.16",
     "@tanstack/react-query-devtools": "5.63.0",
     "@types/node": "22.10.5",
-    "@types/react": "19.0.3",
+    "@types/react": "19.0.4",
     "@types/react-dom": "19.0.2",
     "autoprefixer": "10.4.20",
     "boxen": "8.0.1",
