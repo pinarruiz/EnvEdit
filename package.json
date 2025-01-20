@@ -18,7 +18,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@gitbeaker/rest": "42.0.2",
+    "@gitbeaker/rest": "42.1.0",
     "@mantine/hooks": "7.16.1",
     "@radix-ui/react-accordion": "1.2.2",
     "@radix-ui/react-checkbox": "1.1.3",
