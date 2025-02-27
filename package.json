@@ -68,7 +68,7 @@
     "netlify-cli": "18.1.0",
     "postcss": "8.5.3",
     "prettier": "3.5.2",
-    "shadcn-ui": "0.9.4",
+    "shadcn-ui": "0.9.5",
     "tailwindcss": "3.4.17",
     "typescript": "5.8.2"
   },
