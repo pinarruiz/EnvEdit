@@ -12,8 +12,8 @@ importers:
         specifier: 42.1.0
         version: 42.1.0
       '@mantine/hooks':
-        specifier: 7.17.0
-        version: 7.17.0(react@19.0.0)
+        specifier: 7.17.1
+        version: 7.17.1(react@19.0.0)
       '@radix-ui/react-accordion':
         specifier: 1.2.3
         version: 1.2.3(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -773,8 +773,8 @@ packages:
     resolution: {integrity: sha512-9I2Zn6+NJLfaGoz9jN3lpwDgAYvfGeNYdbAIjJOqzs4Tpc+VU3Jqq4IofSUBKajiDS8k9fZIg18/z13mpk1bsA==}
     engines: {node: '>=8'}
 
-  '@mantine/hooks@7.17.0':
-    resolution: {integrity: sha512-vo3K49mLy1nJ8LQNb5KDbJgnX0xwt3Y8JOF3ythjB5LEFMptdLSSgulu64zj+QHtzvffFCsMb05DbTLLpVP/JQ==}
+  '@mantine/hooks@7.17.1':
+    resolution: {integrity: sha512-mkHLrXMPd5xdI5WD7UOLwNEpdh/i6A7HaRDTXvjDE2/S0N8VmAE+BlvdyvWRMi7ODp2zVqJdP8cF1tgUn+Z0fA==}
     peerDependencies:
       react: ^18.x || ^19.x
 
@@ -6930,7 +6930,7 @@ snapshots:
 
   '@lukeed/ms@2.0.2': {}
 
-  '@mantine/hooks@7.17.0(react@19.0.0)':
+  '@mantine/hooks@7.17.1(react@19.0.0)':
     dependencies:
       react: 19.0.0
 
