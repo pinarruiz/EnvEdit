@@ -48,7 +48,7 @@
     "usehooks-ts": "3.1.1"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "5.9.4",
+    "@netlify/plugin-nextjs": "5.10.0",
     "@tanstack/eslint-plugin-query": "5.68.0",
     "@tanstack/react-query-devtools": "5.68.0",
     "@types/node": "22.13.10",
