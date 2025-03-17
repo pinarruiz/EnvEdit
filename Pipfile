@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 
 [dev-packages]
-mkdocs-material = "==9.6.7"
+mkdocs-material = "==9.6.9"
 yamllint = "==1.36.2"
 yamllint-junit  = "==0.10.1"
 
