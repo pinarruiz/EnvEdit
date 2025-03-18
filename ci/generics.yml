@@ -12,7 +12,7 @@
     - pnpm i
 
 .python_job:
-  image: python:3.13.1
+  image: python:3.13.2
   variables:
     PIP_CACHE_DIR: .cache/pip
     PIPENV_CACHE_DIR: .cache/pipenv
