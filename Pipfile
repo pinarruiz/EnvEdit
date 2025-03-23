@@ -7,7 +7,7 @@ name = "pypi"
 
 [dev-packages]
 mkdocs-material = "==9.6.9"
-yamllint = "==1.36.2"
+yamllint = "==1.37.0"
 yamllint-junit  = "==0.10.1"
 
 [requires]
