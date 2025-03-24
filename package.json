@@ -51,7 +51,7 @@
     "@netlify/plugin-nextjs": "5.10.1",
     "@tanstack/eslint-plugin-query": "5.68.0",
     "@tanstack/react-query-devtools": "5.69.0",
-    "@types/node": "22.13.11",
+    "@types/node": "22.13.13",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
     "autoprefixer": "10.4.21",
