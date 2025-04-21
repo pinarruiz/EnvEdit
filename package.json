@@ -2,7 +2,7 @@
   "name": "env-edit",
   "version": "0.0.1",
   "license": "Apache-2.0",
-  "packageManager": "pnpm@10.8.0",
+  "packageManager": "pnpm@10.9.0",
   "scripts": {
     "summary:build": "node src/lib/summaries.mjs build",
     "telemetry:disable": "next telemetry disable",
