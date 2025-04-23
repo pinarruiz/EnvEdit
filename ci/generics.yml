@@ -12,7 +12,7 @@
     - pnpm i
 
 .python_job:
-  image: python:3.13.2
+  image: python:3.13.3
   variables:
     PIP_CACHE_DIR: .cache/pip
     PIPENV_CACHE_DIR: .cache/pipenv
@@ -21,5 +21,5 @@
     paths:
       - .cache
   before_script:
-    - pip install pipenv==2024.1.0
+    - pip install pipenv==2025.0.2
     - pipenv install --dev --system
