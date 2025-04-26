@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@gitbeaker/rest':
-        specifier: 42.4.0
-        version: 42.4.0
+        specifier: 42.5.0
+        version: 42.5.0
       '@mantine/hooks':
         specifier: 7.17.4
         version: 7.17.4(react@19.1.0)
@@ -591,8 +591,8 @@ packages:
     resolution: {integrity: sha512-HLdLS9LPBMVQumvroQg/4qkphLDtwDB+ygEsrD2u4oYCMUtXV4V1xaVqU4yTXjbTJ5sItOtdB43vYRkBcgueBw==}
     engines: {node: '>=18.20.0'}
 
-  '@gitbeaker/rest@42.4.0':
-    resolution: {integrity: sha512-6QQxQc3OhIyH7Pma69K5vIk8yG4VwaHmItpPG0cUc6Z66jOfaOzYpbrdZI1fLZvc6uowb3CwTYdMRie/x2Ld2w==}
+  '@gitbeaker/rest@42.5.0':
+    resolution: {integrity: sha512-oC5cM6jS7aFOp0luTw5mWSRuMgdxwHRLZQ/aWkI+ETMfsprR/HyxsXfljlMY/XJ/fRxTbRJiodR5Axf66WjO3w==}
     engines: {node: '>=18.20.0'}
 
   '@humanwhocodes/config-array@0.13.0':
@@ -6753,7 +6753,7 @@ snapshots:
       rate-limiter-flexible: 4.0.1
       xcase: 2.0.1
 
-  '@gitbeaker/rest@42.4.0':
+  '@gitbeaker/rest@42.5.0':
     dependencies:
       '@gitbeaker/core': 42.5.0
       '@gitbeaker/requester-utils': 42.5.0
