@@ -139,8 +139,8 @@ importers:
         specifier: 0.0.6
         version: 0.0.6(markdownlint-cli2@0.17.2)
       markdownlint-cli2-formatter-junit:
-        specifier: 0.0.12
-        version: 0.0.12(markdownlint-cli2@0.17.2)
+        specifier: 0.0.13
+        version: 0.0.13(markdownlint-cli2@0.17.2)
       markdownlint-cli2-formatter-summarize:
         specifier: 0.0.7
         version: 0.0.7(markdownlint-cli2@0.17.2)
@@ -3956,8 +3956,8 @@ packages:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
     engines: {node: '>=4.0'}
 
-  junit-report-builder@5.0.0:
-    resolution: {integrity: sha512-mWPsMQ84WXVQRgD8WuIPpxhyDKSGBAY5EBKqoJQBjdRltKHVzgbLhMGwzTria6SECiWjjqBjnlAN7qc0Cdiupw==}
+  junit-report-builder@5.1.1:
+    resolution: {integrity: sha512-ZNOIIGMzqCGcHQEA2Q4rIQQ3Df6gSIfne+X9Rly9Bc2y55KxAZu8iGv+n2pP0bLf0XAOctJZgeloC54hWzCahQ==}
     engines: {node: '>=16'}
 
   junk@4.0.1:
@@ -4182,8 +4182,8 @@ packages:
     peerDependencies:
       markdownlint-cli2: '>=0.0.4'
 
-  markdownlint-cli2-formatter-junit@0.0.12:
-    resolution: {integrity: sha512-lQyOMLoDJ9NU6jqvVUlpED5PKZ8K4v8kkKtBBOyv0yP7xYXlKpdT6Riq5LltfIEKrqIZEL6I4Olhc3SCEzzSog==}
+  markdownlint-cli2-formatter-junit@0.0.13:
+    resolution: {integrity: sha512-kcMhBxKPiidhtRqoS4YWnhVObEWnKFad0y09Hz7np3bA52ztL7QUUFVxrTITqTaH2KMqK+/qH+ErzA9IsOrYTQ==}
     peerDependencies:
       markdownlint-cli2: '>=0.0.4'
 
@@ -10460,7 +10460,7 @@ snapshots:
       object.assign: 4.1.7
       object.values: 1.2.1
 
-  junit-report-builder@5.0.0:
+  junit-report-builder@5.1.1:
     dependencies:
       lodash: 4.17.21
       make-dir: 3.1.0
@@ -10708,9 +10708,9 @@ snapshots:
     dependencies:
       markdownlint-cli2: 0.17.2
 
-  markdownlint-cli2-formatter-junit@0.0.12(markdownlint-cli2@0.17.2):
+  markdownlint-cli2-formatter-junit@0.0.13(markdownlint-cli2@0.17.2):
     dependencies:
-      junit-report-builder: 5.0.0
+      junit-report-builder: 5.1.1
       markdownlint-cli2: 0.17.2
 
   markdownlint-cli2-formatter-summarize@0.0.7(markdownlint-cli2@0.17.2):

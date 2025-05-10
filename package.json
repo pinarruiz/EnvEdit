@@ -63,7 +63,7 @@
     "lint-staged": "15.5.2",
     "markdownlint-cli2": "0.17.2",
     "markdownlint-cli2-formatter-codequality": "0.0.6",
-    "markdownlint-cli2-formatter-junit": "0.0.12",
+    "markdownlint-cli2-formatter-junit": "0.0.13",
     "markdownlint-cli2-formatter-summarize": "0.0.7",
     "netlify-cli": "21.5.0",
     "postcss": "8.5.3",
