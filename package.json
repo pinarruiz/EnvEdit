@@ -60,7 +60,7 @@
     "eslint-config-next": "15.3.2",
     "eslint-config-prettier": "10.1.5",
     "husky": "9.1.7",
-    "lint-staged": "15.5.2",
+    "lint-staged": "16.0.0",
     "markdownlint-cli2": "0.18.1",
     "markdownlint-cli2-formatter-codequality": "0.0.6",
     "markdownlint-cli2-formatter-junit": "0.0.13",
