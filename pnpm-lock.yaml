@@ -145,8 +145,8 @@ importers:
         specifier: 0.0.7
         version: 0.0.7(markdownlint-cli2@0.18.1)
       netlify-cli:
-        specifier: 21.5.0
-        version: 21.5.0(@types/node@22.15.21)(picomatch@4.0.2)
+        specifier: 21.6.0
+        version: 21.6.0(@types/node@22.15.21)(picomatch@4.0.2)
       postcss:
         specifier: 8.5.5
         version: 8.5.5
@@ -647,8 +647,8 @@ packages:
     engines: {node: ^14.16.0 || >=16.0.0}
     hasBin: true
 
-  '@netlify/build@32.1.4':
-    resolution: {integrity: sha512-iHBGNPsDU6Ec9VkMGb/HFroi/2AIP1oExt5wKJY0r6pqv1b0InGI51nnDfzVQJTtnmfhyL4pad3nGvMuHJlcIQ==}
+  '@netlify/build@32.2.0':
+    resolution: {integrity: sha512-skkBDpHFBfdOemRigAlwXTWGdYRSVSpiA4UDt4u6I/amocMekIa3E5iZn6qhLDZ/QJkNbttFzzhkq0LD2wlByw==}
     engines: {node: ^14.16.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -4478,8 +4478,8 @@ packages:
   nested-error-stacks@2.1.1:
     resolution: {integrity: sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==}
 
-  netlify-cli@21.5.0:
-    resolution: {integrity: sha512-tS3JbJ+pcv0/u3D+nqC+u+v/+aNXT5/dliaMZ7KTYkbMamKy1nTJfswGaRDE09bdDxcKxtYgdgMth0lnBlOJFQ==}
+  netlify-cli@21.6.0:
+    resolution: {integrity: sha512-Ccauuu3QSSixxxrwkSpoLhETjxkBzUuAr1mlnqZ52P3TS0283s8qaPplxJHrrfv7Am5VsY5hAkbWDbz7W71ANQ==}
     engines: {node: '>=18.14.0'}
     hasBin: true
 
@@ -6725,7 +6725,7 @@ snapshots:
       yaml: 2.7.1
       yargs: 17.7.2
 
-  '@netlify/build@32.1.4(@opentelemetry/api@1.8.0)(@types/node@22.15.21)(picomatch@4.0.2)':
+  '@netlify/build@32.2.0(@opentelemetry/api@1.8.0)(@types/node@22.15.21)(picomatch@4.0.2)':
     dependencies:
       '@bugsnag/js': 7.25.0
       '@netlify/blobs': 8.2.0
@@ -11087,12 +11087,12 @@ snapshots:
 
   nested-error-stacks@2.1.1: {}
 
-  netlify-cli@21.5.0(@types/node@22.15.21)(picomatch@4.0.2):
+  netlify-cli@21.6.0(@types/node@22.15.21)(picomatch@4.0.2):
     dependencies:
       '@fastify/static': 7.0.4
       '@netlify/api': 13.4.0
       '@netlify/blobs': 8.2.0
-      '@netlify/build': 32.1.4(@opentelemetry/api@1.8.0)(@types/node@22.15.21)(picomatch@4.0.2)
+      '@netlify/build': 32.2.0(@opentelemetry/api@1.8.0)(@types/node@22.15.21)(picomatch@4.0.2)
       '@netlify/build-info': 9.0.4
       '@netlify/config': 22.2.0
       '@netlify/edge-bundler': 13.0.3
