@@ -88,7 +88,7 @@ importers:
         version: 3.3.1
       tailwindcss-animate:
         specifier: 1.0.7
-        version: 1.0.7(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.15.31)(typescript@5.8.3)))
+        version: 1.0.7(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)))
       usehooks-ts:
         specifier: 3.1.1
         version: 3.1.1(react@19.1.0)
@@ -103,8 +103,8 @@ importers:
         specifier: 5.80.7
         version: 5.80.7(@tanstack/react-query@5.80.7(react@19.1.0))(react@19.1.0)
       '@types/node':
-        specifier: 22.15.31
-        version: 22.15.31
+        specifier: 22.15.32
+        version: 22.15.32
       '@types/react':
         specifier: 19.1.8
         version: 19.1.8
@@ -146,7 +146,7 @@ importers:
         version: 0.0.7(markdownlint-cli2@0.18.1)
       netlify-cli:
         specifier: 22.1.3
-        version: 22.1.3(@types/node@22.15.31)(picomatch@4.0.2)
+        version: 22.1.3(@types/node@22.15.32)(picomatch@4.0.2)
       postcss:
         specifier: 8.5.6
         version: 8.5.6
@@ -158,7 +158,7 @@ importers:
         version: 0.9.5
       tailwindcss:
         specifier: 3.4.17
-        version: 3.4.17(ts-node@10.9.2(@types/node@22.15.31)(typescript@5.8.3))
+        version: 3.4.17(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -1616,8 +1616,8 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node@22.15.31':
-    resolution: {integrity: sha512-jnVe5ULKl6tijxUhvQeNbQG/84fHfg+yMak02cT8QVhBx/F05rAVxCGBYYTh2EKz22D6JF5ktXuNwdx7b9iEGw==}
+  '@types/node@22.15.32':
+    resolution: {integrity: sha512-3jigKqgSjsH6gYZv2nEsqdXfZqIFGAV36XYYjf9KGZ3PSG+IhLecqPnI310RvjutyMwifE2hhhNEklOUrvx/wA==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -6519,7 +6519,7 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 22.15.31
+      '@types/node': 22.15.32
       '@types/yargs': 16.0.9
       chalk: 4.1.2
 
@@ -6599,7 +6599,7 @@ snapshots:
       yaml: 2.8.0
       yargs: 17.7.2
 
-  '@netlify/build@33.4.3(@opentelemetry/api@1.8.0)(@types/node@22.15.31)(picomatch@4.0.2)':
+  '@netlify/build@33.4.3(@opentelemetry/api@1.8.0)(@types/node@22.15.32)(picomatch@4.0.2)':
     dependencies:
       '@bugsnag/js': 8.2.0
       '@netlify/blobs': 9.1.5
@@ -6655,7 +6655,7 @@ snapshots:
       strip-ansi: 7.1.0
       supports-color: 10.0.0
       terminal-link: 4.0.0
-      ts-node: 10.9.2(@types/node@22.15.31)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@22.15.32)(typescript@5.8.3)
       typescript: 5.8.3
       uuid: 11.1.0
       yargs: 17.7.2
@@ -7653,7 +7653,7 @@ snapshots:
 
   '@types/http-proxy@1.17.16':
     dependencies:
-      '@types/node': 22.15.31
+      '@types/node': 22.15.32
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -7671,7 +7671,7 @@ snapshots:
 
   '@types/ms@2.1.0': {}
 
-  '@types/node@22.15.31':
+  '@types/node@22.15.32':
     dependencies:
       undici-types: 6.21.0
 
@@ -7699,7 +7699,7 @@ snapshots:
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 22.15.31
+      '@types/node': 22.15.32
     optional: true
 
   '@typescript-eslint/eslint-plugin@8.32.0(@typescript-eslint/parser@8.32.0(eslint@8.57.1)(typescript@5.8.3))(eslint@8.57.1)(typescript@5.8.3)':
@@ -10877,12 +10877,12 @@ snapshots:
 
   negotiator@0.6.3: {}
 
-  netlify-cli@22.1.3(@types/node@22.15.31)(picomatch@4.0.2):
+  netlify-cli@22.1.3(@types/node@22.15.32)(picomatch@4.0.2):
     dependencies:
       '@fastify/static': 7.0.4
       '@netlify/api': 14.0.3
       '@netlify/blobs': 9.1.5
-      '@netlify/build': 33.4.3(@opentelemetry/api@1.8.0)(@types/node@22.15.31)(picomatch@4.0.2)
+      '@netlify/build': 33.4.3(@opentelemetry/api@1.8.0)(@types/node@22.15.32)(picomatch@4.0.2)
       '@netlify/build-info': 10.0.5
       '@netlify/config': 23.0.10
       '@netlify/edge-bundler': 14.0.6
@@ -11443,13 +11443,13 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.5.6
 
-  postcss-load-config@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@22.15.31)(typescript@5.8.3)):
+  postcss-load-config@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)):
     dependencies:
       lilconfig: 3.1.3
       yaml: 2.7.1
     optionalDependencies:
       postcss: 8.5.6
-      ts-node: 10.9.2(@types/node@22.15.31)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@22.15.32)(typescript@5.8.3)
 
   postcss-nested@6.2.0(postcss@8.5.6):
     dependencies:
@@ -12256,11 +12256,11 @@ snapshots:
 
   tailwind-merge@3.3.1: {}
 
-  tailwindcss-animate@1.0.7(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.15.31)(typescript@5.8.3))):
+  tailwindcss-animate@1.0.7(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))):
     dependencies:
-      tailwindcss: 3.4.17(ts-node@10.9.2(@types/node@22.15.31)(typescript@5.8.3))
+      tailwindcss: 3.4.17(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
 
-  tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.15.31)(typescript@5.8.3)):
+  tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -12279,7 +12279,7 @@ snapshots:
       postcss: 8.5.6
       postcss-import: 15.1.0(postcss@8.5.6)
       postcss-js: 4.0.1(postcss@8.5.6)
-      postcss-load-config: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@22.15.31)(typescript@5.8.3))
+      postcss-load-config: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3))
       postcss-nested: 6.2.0(postcss@8.5.6)
       postcss-selector-parser: 6.1.2
       resolve: 1.22.10
@@ -12405,14 +12405,14 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-node@10.9.2(@types/node@22.15.31)(typescript@5.8.3):
+  ts-node@10.9.2(@types/node@22.15.32)(typescript@5.8.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.15.31
+      '@types/node': 22.15.32
       acorn: 8.14.1
       acorn-walk: 8.3.4
       arg: 4.1.3
