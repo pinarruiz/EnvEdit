@@ -11,4 +11,4 @@ yamllint = "==1.37.1"
 yamllint-junit  = "==0.10.1"
 
 [requires]
-python_version = "3.13.3"
+python_version = "3.13.5"
