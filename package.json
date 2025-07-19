@@ -58,7 +58,7 @@
     "boxen": "8.0.1",
     "eslint": "8.57.1",
     "eslint-config-next": "15.4.5",
-    "eslint-config-prettier": "10.1.5",
+    "eslint-config-prettier": "10.1.8",
     "husky": "9.1.7",
     "lint-staged": "16.1.2",
     "markdownlint-cli2": "0.18.1",
