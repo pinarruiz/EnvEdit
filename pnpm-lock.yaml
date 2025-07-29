@@ -145,8 +145,8 @@ importers:
         specifier: 0.0.7
         version: 0.0.7(markdownlint-cli2@0.18.1)
       netlify-cli:
-        specifier: 22.4.0
-        version: 22.4.0(@types/node@22.15.32)(picomatch@4.0.2)
+        specifier: 23.0.0
+        version: 23.0.0(@types/node@22.15.32)(picomatch@4.0.2)
       postcss:
         specifier: 8.5.6
         version: 8.5.6
@@ -679,8 +679,8 @@ packages:
     engines: {node: '>=18.14.0'}
     hasBin: true
 
-  '@netlify/build@34.3.0':
-    resolution: {integrity: sha512-fMN7bjvDZLxYY21IB6aM0wLFvnSA21DsTY/RMt1iHzjADWKSepzoweICAGpAJn9uvznRcawBotl6LHuAsoOcpQ==}
+  '@netlify/build@35.0.0':
+    resolution: {integrity: sha512-mFl2WKefjinzOnQoZ5osZPNH7Qw6/iqDcKFenTbDJ5x2clQqGB3DClp5AyKvsxkN1/bdHwe/OHV3lS7+CYLk0Q==}
     engines: {node: '>=18.14.0'}
     hasBin: true
     peerDependencies:
@@ -694,8 +694,8 @@ packages:
     resolution: {integrity: sha512-NGkTvsVWs8gbd/wKOQnGjjxtaeTS+2UbqF/eZ5A/hFCXMNWf6xMQ7BcBM+pWLojHJWg/o8P1VgCZ1FDa8Zni4w==}
     engines: {node: '>=18.14.0'}
 
-  '@netlify/config@23.2.0':
-    resolution: {integrity: sha512-zlI792/efPUY1XKtBML2OJBgKMyfNQIeGEYibH8SqeDxPjNuCy0qELE0U9Sc6+Ss34XryPBUPdV60tYhSoe6lw==}
+  '@netlify/config@24.0.0':
+    resolution: {integrity: sha512-g54OUVw8YEoIQFLx4gZPUl3225UUJUZFplGg92aoZS1Zkt3SLLa9lV1VUX43NPvC9i19R2UPTetl57hWryqiEA==}
     engines: {node: '>=18.14.0'}
     hasBin: true
 
@@ -2754,8 +2754,8 @@ packages:
     resolution: {integrity: sha512-1gxPBJpI/pcjQhKgIU91II6Wkay+dLcN3M6rf2uwP8hRur3HtQXjVrdAK3sjC0piaEuxzMwjXChcETiJl47lAQ==}
     engines: {node: '>=18'}
 
-  dotenv@16.5.0:
-    resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
+  dotenv@16.6.1:
+    resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
     engines: {node: '>=12'}
 
   dunder-proto@1.0.1:
@@ -4392,8 +4392,8 @@ packages:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
     engines: {node: '>= 0.6'}
 
-  netlify-cli@22.4.0:
-    resolution: {integrity: sha512-kYvWfwit1i+J5wXOL/i8cNHOiUT3cr1rWjlNQwVEuRv+ztoUwXZ0fhUx2Uaq6X1z/UO6rW9NNAONZbIbGEzGoQ==}
+  netlify-cli@23.0.0:
+    resolution: {integrity: sha512-tors9tlkZjPIV9zMg9RMVQhG/aRBXQ8+zVHibb8asqkfSibztTRVFomDFc09A2yIhRXld9TPil/BDvfqSm0ozw==}
     engines: {node: '>=20.12.2'}
     hasBin: true
 
@@ -4500,8 +4500,8 @@ packages:
     resolution: {integrity: sha512-V6gygoYb/5EmNI+MEGrWkC+e6+Rr7mTmfHrxDbLzxQogBkgzo76rkok0Am6thgSF7Mv2nLOajAJj5vDJZEFn7g==}
     engines: {node: ^16.14.0 || >=18.0.0}
 
-  normalize-package-data@7.0.0:
-    resolution: {integrity: sha512-k6U0gKRIuNCTkwHGZqblCfLfBRh+w1vI6tBo+IeJwq2M8FUiOqhX7GH+GArQGScA7azd1WfyRCvxoXDO3hQDIA==}
+  normalize-package-data@7.0.1:
+    resolution: {integrity: sha512-linxNAT6M0ebEYZOx2tO6vBEFsVgnPpv+AVjk0wJHfaUIbq31Jm3T6vvZaarnOeWDh8ShnwXuaAyM7WT3RzErA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
   normalize-path@2.1.1:
@@ -6093,6 +6093,9 @@ packages:
   zod@3.24.4:
     resolution: {integrity: sha512-OdqJE9UDRPwWsrHjLN2F8bPxvwJBK22EHLWtanu0LSYr5YqzsaaW3RMgmjwr8Rypg5k+meEJdSPXJZXE/yqOMg==}
 
+  zod@4.0.14:
+    resolution: {integrity: sha512-nGFJTnJN6cM2v9kXL+SOBq3AtjQby3Mv5ySGFof5UGRHrRioSJ5iG680cYNjE/yWk671nROcpPj4hAS8nyLhSw==}
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -6559,12 +6562,12 @@ snapshots:
       yaml: 2.8.0
       yargs: 17.7.2
 
-  '@netlify/build@34.3.0(@opentelemetry/api@1.8.0)(@types/node@22.15.32)(picomatch@4.0.2)':
+  '@netlify/build@35.0.0(@opentelemetry/api@1.8.0)(@types/node@22.15.32)(picomatch@4.0.2)':
     dependencies:
       '@bugsnag/js': 8.2.0
       '@netlify/blobs': 10.0.7
       '@netlify/cache-utils': 6.0.3
-      '@netlify/config': 23.2.0
+      '@netlify/config': 24.0.0
       '@netlify/edge-bundler': 14.2.2
       '@netlify/functions-utils': 6.2.0(supports-color@10.0.0)
       '@netlify/git-utils': 6.0.2
@@ -6575,7 +6578,7 @@ snapshots:
       '@opentelemetry/api': 1.8.0
       '@sindresorhus/slugify': 2.2.1
       ansi-escapes: 7.0.0
-      chalk: 5.4.1
+      ansis: 4.1.0
       clean-stack: 5.2.0
       execa: 8.0.1
       fdir: 6.4.4(picomatch@4.0.2)
@@ -6636,7 +6639,7 @@ snapshots:
       path-exists: 5.0.0
       readdirp: 4.1.2
 
-  '@netlify/config@23.2.0':
+  '@netlify/config@24.0.0':
     dependencies:
       '@iarna/toml': 2.2.5
       '@netlify/api': 14.0.3
@@ -6662,6 +6665,7 @@ snapshots:
       validate-npm-package-name: 5.0.1
       yaml: 2.8.0
       yargs: 17.7.2
+      zod: 4.0.14
 
   '@netlify/dev-utils@4.1.0':
     dependencies:
@@ -8831,7 +8835,7 @@ snapshots:
     dependencies:
       type-fest: 4.41.0
 
-  dotenv@16.5.0: {}
+  dotenv@16.6.1: {}
 
   dunder-proto@1.0.1:
     dependencies:
@@ -10252,7 +10256,7 @@ snapshots:
   lambda-local@2.2.0:
     dependencies:
       commander: 10.0.1
-      dotenv: 16.5.0
+      dotenv: 16.6.1
       winston: 3.17.0
 
   language-subtag-registry@0.3.23: {}
@@ -10799,14 +10803,14 @@ snapshots:
 
   negotiator@0.6.3: {}
 
-  netlify-cli@22.4.0(@types/node@22.15.32)(picomatch@4.0.2):
+  netlify-cli@23.0.0(@types/node@22.15.32)(picomatch@4.0.2):
     dependencies:
       '@fastify/static': 7.0.4
       '@netlify/api': 14.0.3
       '@netlify/blobs': 10.0.7
-      '@netlify/build': 34.3.0(@opentelemetry/api@1.8.0)(@types/node@22.15.32)(picomatch@4.0.2)
+      '@netlify/build': 35.0.0(@opentelemetry/api@1.8.0)(@types/node@22.15.32)(picomatch@4.0.2)
       '@netlify/build-info': 10.0.7
-      '@netlify/config': 23.2.0
+      '@netlify/config': 24.0.0
       '@netlify/dev-utils': 4.1.0
       '@netlify/edge-bundler': 14.2.2
       '@netlify/edge-functions': 2.16.2
@@ -10834,7 +10838,7 @@ snapshots:
       debug: 4.4.1(supports-color@10.0.0)
       decache: 4.6.2
       dot-prop: 9.0.0
-      dotenv: 16.5.0
+      dotenv: 16.6.1
       env-paths: 3.0.0
       envinfo: 7.14.0
       etag: 1.8.1
@@ -10873,7 +10877,7 @@ snapshots:
       nanospinner: 1.2.2
       netlify-redirector: 0.5.0
       node-fetch: 3.3.2
-      normalize-package-data: 7.0.0
+      normalize-package-data: 7.0.1
       open: 10.1.2
       p-filter: 4.1.0
       p-map: 7.0.3
@@ -11016,7 +11020,7 @@ snapshots:
       semver: 7.7.2
       validate-npm-package-license: 3.0.4
 
-  normalize-package-data@7.0.0:
+  normalize-package-data@7.0.1:
     dependencies:
       hosted-git-info: 8.1.0
       semver: 7.7.2
@@ -12685,3 +12689,5 @@ snapshots:
       readable-stream: 4.7.0
 
   zod@3.24.4: {}
+
+  zod@4.0.14: {}
