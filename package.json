@@ -70,7 +70,7 @@
     "prettier": "3.5.3",
     "shadcn-ui": "0.9.5",
     "tailwindcss": "3.4.17",
-    "typescript": "5.8.3"
+    "typescript": "5.9.2"
   },
   "lint-staged": {
     "*.{tsx,ts,mjs,js}": [
