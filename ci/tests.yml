@@ -52,7 +52,7 @@ test_build:
 
 shell_check:
   extends: .generic_test
-  image: koalaman/shellcheck-alpine:v0.10.0
+  image: koalaman/shellcheck-alpine:v0.11.0
   before_script:
     - apk add git xmlstarlet
     - git ls-files --exclude='*.sh' --ignored -c
