@@ -85,7 +85,7 @@ markdownlint:
 
 hadolint:
   extends: .generic_test
-  image: hadolint/hadolint:v2.13.1-alpine
+  image: hadolint/hadolint:v2.14.0-alpine
   before_script:
     - mkdir -p hadolint-result
     - hadolint Dockerfile || true
