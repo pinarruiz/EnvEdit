@@ -1,6 +1,6 @@
 ---
 .node_job:
-  image: node:22.19.0-alpine
+  image: node:22.20.0-alpine
   cache:
     key: ${CI_COMMIT_REF_SLUG}-node-cache
     paths:
