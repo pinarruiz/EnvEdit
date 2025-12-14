@@ -136,8 +136,8 @@ importers:
         specifier: 0.20.0
         version: 0.20.0
       markdownlint-cli2-formatter-codequality:
-        specifier: 0.0.6
-        version: 0.0.6(markdownlint-cli2@0.20.0)
+        specifier: 0.0.7
+        version: 0.0.7(markdownlint-cli2@0.20.0)
       markdownlint-cli2-formatter-junit:
         specifier: 0.0.13
         version: 0.0.13(markdownlint-cli2@0.20.0)
@@ -4278,8 +4278,8 @@ packages:
     resolution: {integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==}
     hasBin: true
 
-  markdownlint-cli2-formatter-codequality@0.0.6:
-    resolution: {integrity: sha512-31vsIBLTT6iZvfmJL2ZbbH04uUimfInUgwe3ZMrqjIdYfBjDcd70w+QmlSXhnGLas2bB8gzJrIR6BARvWO55Rg==}
+  markdownlint-cli2-formatter-codequality@0.0.7:
+    resolution: {integrity: sha512-7DmWN/l3SHqCZn8iWik1qTkJq6p2j12Snmt94uNhD8dkZyR18k1rkRFaM6e04AyNAww+frNuUAupVHmnNMspPQ==}
     peerDependencies:
       markdownlint-cli2: '>=0.0.4'
 
@@ -10824,7 +10824,7 @@ snapshots:
       punycode.js: 2.3.1
       uc.micro: 2.1.0
 
-  markdownlint-cli2-formatter-codequality@0.0.6(markdownlint-cli2@0.20.0):
+  markdownlint-cli2-formatter-codequality@0.0.7(markdownlint-cli2@0.20.0):
     dependencies:
       markdownlint-cli2: 0.20.0
 
