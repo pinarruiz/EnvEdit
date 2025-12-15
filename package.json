@@ -54,7 +54,7 @@
     "@types/node": "24.9.2",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
-    "autoprefixer": "10.4.21",
+    "autoprefixer": "10.4.23",
     "boxen": "8.0.1",
     "eslint": "8.57.1",
     "eslint-config-next": "15.5.6",
