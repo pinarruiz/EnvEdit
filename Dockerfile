@@ -1,4 +1,4 @@
-FROM node:24.11.0-alpine
+FROM node:24.13.0-alpine
 
 ENV APP_USER=envedit
 WORKDIR /home/${APP_USER}/envedit
